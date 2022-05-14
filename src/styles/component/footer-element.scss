@@ -1,0 +1,25 @@
+@use '../root.scss' as root;
+
+.footer-element {
+  background-color: root.$primary;
+  padding: 1em 0;
+  text-align: center;
+  color: #fff;
+  font-size: 1em;
+  box-shadow: 0 -5px 5px rgba(0,0,0,.2);
+
+  p:first-child {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+}
+
+.footer-element.app {
+  margin-bottom: 80px;
+}
+
+@media screen and(min-width: 1024px) {
+  .footer-element.app{
+    margin-bottom: 0;
+  }
+}

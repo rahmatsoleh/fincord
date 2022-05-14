@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,300&display=swap');
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+* {
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+$dark-primary: #03045e;
+$primary: #0077b6;
+$scondary-1: #00b4d8;
+$scondary-2: #90e0ef;
+$scondary-3: #caf0f8;
+
+main {
+  min-height: 90vh;
+  background-color: $scondary-2;
+  margin-top: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+  main.app {
+    margin-top: 90px;
+    margin-left: 120px;
+  }
+}

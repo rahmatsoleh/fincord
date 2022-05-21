@@ -5,6 +5,7 @@ import LaporanPage from '../views/pages/laporan';
 import TransaksiPage from '../views/pages/transaksi';
 import RencanaPage from '../views/pages/rencana';
 import TagihanPage from '../views/pages/tagihan';
+import Notifications from '../views/pages/notifications';
 
 const routes = {
   '/': LandingPage,
@@ -14,7 +15,7 @@ const routes = {
   '/transaksi': TransaksiPage,
   '/rencana': RencanaPage,
   '/tagihan': TagihanPage,
-
+  '/notifikasi': Notifications,
 };
 
 export default routes;

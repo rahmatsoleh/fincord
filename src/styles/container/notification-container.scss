@@ -1,0 +1,71 @@
+@use '../root.scss' as root;
+
+article.notification {
+  .notification-header {
+    background-color: root.$primary;
+    color: #fff;
+    padding: 1em 1.5em;
+    border-radius: 0 0 30px 30px;
+
+    h2 {
+      font-size: 2em;
+    }
+  }
+
+  .notification-list {
+    margin-top: 1em;
+
+    .notif-item.readed {
+      background-color: #fff;
+    }
+
+    .notif-item:hover {
+      background-color: root.$scondary-3;
+    }
+
+    .notif-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      padding: .5em .5em 1.5em;
+      border-bottom: 1px solid #ccc;
+      background-color: rgb(245,245,245);
+
+      div:first-child {
+        max-width: 60%;
+
+        h3 {
+          text-transform: uppercase;
+          color: root.$dark-primary;
+        }
+
+        p:first-child {
+          color: root.$scondary-1;
+          font-weight: 500;
+        }
+
+        p:last-child {
+          width: 100%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  article.notification {
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    padding-bottom: 10em;
+
+    .notification-list {
+      margin-top: 2em;
+      .notif-item {
+        padding: 1em 2em 2em;
+      }
+    }
+  }
+}

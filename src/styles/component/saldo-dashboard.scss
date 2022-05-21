@@ -1,0 +1,50 @@
+@use '../root.scss' as root;
+
+.balance-dashboard {
+  .balance-dashboard-main {
+    padding: .5em .5em 0;
+    
+    h2 {
+      color: root.$dark-primary;
+    }
+  }
+
+  .balance-trans {
+    margin-top: 1em;
+    display: flex;
+    gap: .5em;
+
+    .trans-item {
+      border: 2px solid root.$primary;
+      border-radius: 7px;
+      box-shadow: 0 4px 5px rgba(0,0,0, .2);
+      padding: 10px 5px;
+      display: flex;
+      gap: .5em;
+      align-items: center;
+      width: 100%;
+
+      div:first-child {
+        font-size: 2em;
+        color: root.$primary;
+        display: none;
+      }
+
+      h3 {
+        color: root.$dark-primary;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .balance-dashboard {
+    .balance-trans {
+      .trans-item {
+        div:first-child {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@use '../root.scss' as root;
+
+.card-expend {
+  border: 2px solid root.$primary;
+  border-radius: 5px;
+  box-shadow: 0 4px 5px rgba($color: #000000, $alpha: .2);
+  margin-bottom: 1em;
+  
+  .card-expend-header {
+    background-color: root.$primary;
+    padding: .5em;
+
+    p {
+      font-size: 1.2em;
+      font-weight: 400;
+      color: root.$scondary-3;
+    }
+    div {
+      position: relative;
+    }
+  }
+
+  .card-expend-detail {
+    padding: 1em .5em .5em;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+
+      .key {
+        text-align: left;
+      }
+
+      .value {
+        text-align: right;
+      }
+
+      td, th {
+        padding: 5px 0;
+      }
+
+      th {
+        color: root.$dark-primary;
+      }
+    }
+  }
+}

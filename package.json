@@ -25,6 +25,7 @@
     "file-loader": "^6.2.0",
     "font-awesome-sass": "^4.7.0",
     "html-webpack-plugin": "^5.5.0",
+    "jquery": "^3.6.0",
     "node-sass": "^7.0.1",
     "sass": "^1.51.0",
     "sass-loader": "^12.6.0",

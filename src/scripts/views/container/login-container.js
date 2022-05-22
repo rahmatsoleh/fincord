@@ -14,8 +14,7 @@ class LoginContainer extends HTMLElement {
             <form action="">
               <input type="text" id="username" name="username" placeholder="Username" required>
 
-              <input type="text" id="password" name="password" placeholder="Password" required>
-              <input type="checkbox" onclick="hidePassword()"> Show Password
+              <input type="password" id="password" name="password" placeholder="Password" required>
               
               <input type="submit" value="Log in">
               <p>Don't have an account? <a href="/#/registration">Create one</a></p>

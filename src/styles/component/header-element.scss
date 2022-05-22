@@ -3,12 +3,14 @@
 .header-element {
   display: flex;
   gap: .5em;
-  padding: 10px 1em;
-  background-color: root.$scondary-3;
+  align-items: center;
+  padding: 20px 10%;
+  background-color: root.$white;
   box-shadow: 0 5px 5px rgba(0,0,0,0.2);
 
   img {
-    width: 50px;
+    width: 44px;
+    height: 50px;
   }
 
   h1 {
@@ -25,5 +27,11 @@
     right: 0;
     z-index: 99;
     padding: 1em;
+  }
+}
+
+@media screen and(max-width:650px) {
+  .header-element {
+    justify-content: center;
   }
 }

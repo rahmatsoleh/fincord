@@ -17,16 +17,25 @@ $primary: #0077b6;
 $scondary-1: #00b4d8;
 $scondary-2: #90e0ef;
 $scondary-3: #caf0f8;
+$white: #fff;
 
 main {
   min-height: 90vh;
-  background-color: $scondary-2;
-  margin-top: 10px;
+  // background-color: $scondary-2;
+  // margin-top: 10px;
+}
+
+header-element.app {
+  display: none;
 }
 
 @media screen and (min-width: 1024px) {
   main.app {
     margin-top: 90px;
     margin-left: 120px;
+  }
+
+  header-element.app {
+    display: block;
   }
 }

@@ -1,0 +1,37 @@
+@use '../root.scss' as root;
+
+.card-bill {
+  border: 2px solid root.$primary;
+  border-radius: 7px;
+  box-shadow: 0 4px 5px rgba(0,0,0,.2);
+  padding: 1.5em 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+
+  .card-bill-left {
+    max-width: 65%;
+
+    p:first-child {
+      font-size: 1.2em;
+      color: root.$primary;
+      margin-bottom: 8px;
+    }
+
+    p:last-child {
+      font-size: 1.5em;
+      font-weight: 600;
+      color: root.$dark-primary;
+    }
+  }
+
+  .card-bill-right {
+    text-align: center;
+    color: root.$primary;
+
+    p {
+      margin-top: 5px;
+    }
+  }
+}

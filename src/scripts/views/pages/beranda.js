@@ -1,9 +1,10 @@
 import pageRender from '../../utils/page-render';
+import '../container/dashboard-container';
 
 const BerandaPage = {
   async render() {
     pageRender('beranda', 'app');
-    return '<h1>Halaman Beranda <i class="fa-solid fa-arrow-down"></i></h1>';
+    return '<dashboard-container></dashboard-container>';
   },
 
   async afterRender() {

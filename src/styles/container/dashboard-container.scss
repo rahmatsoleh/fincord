@@ -1,0 +1,76 @@
+@use '../root.scss' as root;
+
+article.dashboard {
+  background-color: root.$primary;
+
+  .dashboard-header {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: .5em;
+
+      .profile-images {
+        width: 50px;
+        height: 50px;
+        background-color: #fff;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+        overflow: hidden;
+
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      p {
+        font-size: 1.3em;
+        color: root.$scondary-3;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 2em;
+      color: root.$scondary-3;
+      padding: 10px;
+      position: relative;
+
+      .new {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: rgb(252, 50, 50);
+        display: none;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+      }
+
+      .active {
+        display: block;
+      }
+    }
+  }
+
+  section:last-child {
+    background-color: #fff;
+    border-radius: 30px 30px 0 0;
+    padding: .5em;
+    box-shadow: 0 -5px 5px rgba(0,0,0,.2);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  article.dashboard {
+    section:last-child {
+      padding: 2em;
+    }
+  }
+}

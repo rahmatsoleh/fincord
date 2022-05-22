@@ -1,0 +1,11 @@
+@use '../root.scss' as root;
+
+.dashboard-expend {
+  p.title {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 1.3em;
+    font-weight: 500;
+    color: root.$primary;
+  }
+}

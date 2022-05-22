@@ -1,9 +1,10 @@
 import pageRender from '../../utils/page-render';
+import '../container/login-container';
 
 const LoginPage = {
   async render() {
     pageRender('login');
-    return '<h1>Halaman Login Page</h1>';
+    return '<login-container></login-container>';
   },
 
   async afterRender() {

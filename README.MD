@@ -39,4 +39,9 @@ npm run build
 - Login with Email or Username  
     > Username: User1  
     > Password: 12345678
-
+    
+## Contributors
+- [x] [Rahmat Soleh](https://github.com/rahmatsoleh)
+- [x] [Hafidz Ubaidillah](https://github.com/Dzyfhuba)
+- [x] [Eka Zuni Selviana](https://github.com/Ekazunis)
+- [x] [M Ilyas Arman S](https://github.com/milyasarmans)

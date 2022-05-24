@@ -6,19 +6,19 @@
     min-height: 80vh;
     display: flex;
     justify-content: center;
-    padding: 6em 0;
+    padding: 6rem 0;
     
     .card{
         box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
         border-radius: 8px;
         width: 300px;
         height: auto;
-        padding: 2em 3em;
+        padding: 2rem 3rem;
 
         h1 {
             text-align: center;
             font-size: 20px;
-            padding: 1em 0 2em;
+            padding: 1rem 0 2rem;
             color: root.$primary;
             text-transform: uppercase;
         }
@@ -85,10 +85,10 @@
 @media screen and (max-width: 800px) {
 .main-registration{
     height: auto;
-    padding: 3em 0;
+    padding: 3rem 0;
   }
 
   .main-registration .card{
-      margin: 0 2em;
+      margin: 0 2rem;
   }
 }

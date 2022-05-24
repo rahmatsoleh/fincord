@@ -1,0 +1,98 @@
+@use '../root.scss' as root;
+
+section{
+  
+  header.title{
+    display: flex;
+    background-color: root.$primary;
+    min-height: 80px;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    color: root.$white;
+  }
+
+  article{
+    padding: 2rem 20%;
+    margin: 2rem 0;  
+
+    .data{
+        margin-top: 15px;
+
+        .main-photos{
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+
+            .left{
+                margin: .5rem;
+                width: 80px;
+                height: 80px;
+                background-color: #f8f8f8;
+                border-radius: 50%;
+                object-fit: cover;
+                object-position: center;
+                overflow: hidden;
+        
+                svg {
+                  width: 100%;
+                  height: 100%;
+                }
+            }
+        }
+
+        input[type=text], input[type=password], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            box-sizing: border-box;
+            box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
+            
+            &:focus {
+                box-shadow:  inset 1px 1px 2px #BABECC, inset -1px -1px 2px #fff;
+            }
+        }  
+    }
+        
+    input[type=submit] {
+        width: 100%;
+        background-color: root.$primary;
+        display: inline-block;
+        color: white;
+        font-size: 16px;
+        padding: 10px 20px;
+        font-weight: bolder;
+        margin: 28px 0 8px;
+        border: none;
+        border-radius: 4px;
+        border: 1px solid root.$primary;
+        cursor: pointer;
+    } 
+        
+    input[type=submit]:hover {
+        background-color: root.$white;
+        color: root.$primary;
+        border: 1px solid root.$primary;
+    } 
+        
+  }
+}
+
+@media screen and (max-width: 800px) {
+    section{
+      article{
+        padding: 2rem 10%;
+
+        .data{
+    
+            .main-photos{
+                flex-direction: column;
+            }
+        }
+      }
+    }
+  }

@@ -1,0 +1,89 @@
+@use '../root.scss' as root;
+
+section.main{
+  
+  header{
+    display: flex;
+    background-color: root.$primary;
+    min-height: 300px;
+    justify-content: center;
+    align-items: center;
+
+    .profile{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .images {
+        margin: .5em;
+        width: 80px;
+        height: 80px;
+        background-color: #f8f8f8;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+        overflow: hidden;
+
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      h1{
+        margin: .1em;
+        font-size: 18px;
+        font-weight: bold;
+        color: root.$white;
+        text-transform: uppercase;
+      }
+
+      p{
+        font-size: 14px;
+        color: root.$white;
+        font-family: Verdana, Tahoma, sans-serif;
+      }
+      
+      button{
+        margin: 1em .5em;
+        padding: .4em 1em;
+        background: root.$dark-primary;
+        border-radius: 2px;
+        font-size: 12px;
+        color: root.$white;
+        border: none;
+      }
+    }
+  }
+
+  article{
+    padding: 2em 20%;
+    margin: 2em 0 5em;
+
+    .card{
+      margin-top: 15px;
+
+      .header{
+        font-size: 12px;
+        padding: .3em 0;
+      }
+
+      .detail{
+        padding: .7em 1em;
+        font-weight: normal;
+        font-size: 16px;
+        border: 2px solid #f4f4f4;
+        overflow: auto;
+        box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  section.main{
+    article{
+      padding: 2em 10%;
+    }
+  }
+}

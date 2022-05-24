@@ -12,22 +12,22 @@ class RegistrationContainer extends HTMLElement {
           <h1>Create an account</h1>
             
           <form action="">
-            <label for="email"><b>Email</b></label>
+            <label for="email">Email</label>
             <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
-            <label for="fullname"><b>Full Name</b></label>
+            <label for="fullname">Full Name</label>
             <input type="text" placeholder="Enter Full Name" name="fullname" id="fullname" required>
 
-            <label for="address"><b>Address</b></label>
+            <label for="address">Address</label>
             <input type="text" placeholder="Enter Address" name="address" id="address" required>
 
-            <label for="phone"><b>Phone</b></label>
+            <label for="phone">Phone</label>
             <input type="text" placeholder="Enter Phone" name="phone" id="phone" required>
         
-            <label for="psw"><b>Password</b></label>
+            <label for="psw">Password</label>
             <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
         
-            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <label for="psw-repeat">Repeat Password</label>
             <input type="password" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
             
             <input type="submit" value="Register">

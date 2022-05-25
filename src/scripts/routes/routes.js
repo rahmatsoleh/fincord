@@ -8,6 +8,7 @@ import LaporanPage from '../views/pages/laporan';
 import TransaksiPage from '../views/pages/transaksi';
 import RencanaPage from '../views/pages/rencana';
 import TagihanPage from '../views/pages/tagihan';
+import Budget from '../views/pages/halaman-budget';
 import Notifications from '../views/pages/notifications';
 
 const routes = {
@@ -17,6 +18,7 @@ const routes = {
   '/profile': Profile,
   '/edit-profile': editProfile,
   '/beranda': BerandaPage,
+  '/budget': Budget,
   '/laporan': LaporanPage,
   '/transaksi': TransaksiPage,
   '/rencana': RencanaPage,

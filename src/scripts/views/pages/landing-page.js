@@ -1,4 +1,5 @@
 import pageRender from '../../utils/page-render';
+import '../component/target-landing';
 
 const LandingPage = {
   async render() {

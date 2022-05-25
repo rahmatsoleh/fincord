@@ -1,0 +1,41 @@
+@use "../root.scss" as root;
+
+.card-target {
+    box-sizing: border-box;
+    margin: 20px 0;
+
+    &__header {
+        width: 100%;
+        background-color: root.$scondary-1;
+        padding: 1.5em;
+    }
+
+    &__body {
+        width: 100%;
+        padding: 1.5em;
+        background-color: root.$scondary-3;
+    }
+
+    &__inner-container {
+        width: 100%;
+        padding: 1.5em 1.5em 0 1.5em;
+    }
+
+    // input progress class
+    &__bg-progress {
+        background-color: root.$scondary-2;
+        width: 100%;
+    }
+
+    &__progress {
+        width: 100%;
+        height: 20px;
+        background-color: root.$primary;
+        margin-bottom: 1em;
+    }
+
+    &__populated {
+        display: flex;
+        justify-content: space-between;
+    }
+}

@@ -6,6 +6,7 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
   font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -27,6 +28,40 @@ main {
 
 header-element.app {
   display: none;
+}
+
+.btn {
+  border-radius: 0;
+  border: none;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background-color: $primary;
+  color: white;
+}
+
+.my-1 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.mb-1 {
+  margin-bottom: 1em;
+}
+
+.mt-1 {
+  margin-top: 1em;
+}
+
+.mt-2 {
+  margin-top: 2em;
+}
+
+.mb-2 {
+  margin-bottom: 2em;
 }
 
 @media screen and (min-width: 1024px) {

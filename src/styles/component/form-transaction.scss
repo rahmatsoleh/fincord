@@ -1,0 +1,77 @@
+@use '../root.scss' as root;
+
+.trans-main-form {
+  padding: 0 .5em;
+
+  button {
+    background-color: root.$primary;
+    color: #fff;
+    margin: 1em auto;
+    display: block;
+    width: 90%;
+    padding: 10px 1em;
+    font-size: 1.5em;
+    font-weight: 500;
+    text-transform: uppercase;
+    border: none;
+    box-shadow: 0 4px 5px rgba(0,0,0,.2);
+    border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #005c8d;
+    }
+  }
+
+  .form-control {
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 12px;
+
+    .form-icon {
+      font-size: 2em;
+      color: root.$primary;
+    }
+
+    .form-input {
+      width: 100%;
+      label {
+        font-size: 1.2em;
+      }
+
+      input,
+      select {
+        border: none;
+        font-size: 1.3em;
+        padding: 5px;
+        width: 100%;
+        height: 44px;
+        box-sizing: border-box;
+        outline: none;
+      }
+    }
+
+    a {
+      font-size: 2em;
+      text-decoration: none;
+      color: root.$primary;
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      text-align: center;
+      display: block;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .trans-main-form {
+    button {
+      width: fit-content;
+      margin-right: 1em;
+      right: 0;
+    }
+  }
+}

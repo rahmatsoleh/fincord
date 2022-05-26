@@ -10,6 +10,7 @@ import RencanaPage from '../views/pages/rencana';
 import TagihanPage from '../views/pages/tagihan';
 import Budget from '../views/pages/halaman-budget';
 import Notifications from '../views/pages/notifications';
+import Category from '../views/pages/category';
 
 const routes = {
   '/': LandingPage,
@@ -20,10 +21,11 @@ const routes = {
   '/beranda': BerandaPage,
   '/budget': Budget,
   '/laporan': LaporanPage,
-  '/transaksi': TransaksiPage,
+  '/transaksi/:id': TransaksiPage,
   '/rencana': RencanaPage,
   '/tagihan': TagihanPage,
   '/notifikasi': Notifications,
+  '/category/:id': Category,
 };
 
 export default routes;

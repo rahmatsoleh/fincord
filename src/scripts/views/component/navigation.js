@@ -21,7 +21,7 @@ class Navigiation extends HTMLElement {
           </a>
         </li>
         <li class="transaksi">
-          <a href="#/transaksi">
+          <a href="#/transaksi/in">
             <span><i class="fa-solid fa-circle-plus"></i></span>
             <span>Transaksi</span>
           </a>

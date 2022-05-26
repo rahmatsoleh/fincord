@@ -1,0 +1,55 @@
+@use '../root.scss' as root;
+
+article.transaction {
+
+  .transaction-header {
+    background-color: root.$primary;
+    color: #fff;
+    padding: 1.5em .5em;
+    border-radius: 0 0 20px 20px;
+
+    h2 {
+      text-transform: uppercase;
+      font-size: 1.5em;
+    }
+  }
+
+  .transaction-main {
+    margin: 1em auto 3em;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    width: 90%;
+    padding: 1em .5em;
+    box-sizing: border-box;
+    border-radius: 7px;
+
+    .transaction-main-nav {
+      display: flex;
+      justify-content: space-evenly;
+      margin-bottom: 1em;
+
+      a {
+        font-size: 1.1em;
+        font-weight: 400;
+        color: #bbb;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        min-height: 44px;
+        line-height: 44px;
+      }
+
+      .active {
+        color: root.$primary;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  article.transaction {
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    padding-bottom: 2em;
+  }
+}

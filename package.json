@@ -39,6 +39,7 @@
   "dependencies": {
     "@dicebear/avatars": "^4.10.2",
     "@dicebear/pixel-art": "^4.10.2",
+    "apexcharts": "^3.35.3",
     "idb": "^7.0.1",
     "progressbar.js": "^1.1.0",
     "regenerator-runtime": "^0.13.9",

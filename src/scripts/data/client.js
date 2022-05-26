@@ -23,7 +23,67 @@ const idbStorage = {
             {
               id: 'jhgafsdhgvasdktygafsdghasd',
               count: 5000000,
-              date: '12 Mei 2022',
+              date: '2022-05-01',
+              desc: '',
+            },
+          ],
+        },
+        {
+          id: 'kuyfaksuyfghjvasd',
+          created_at: '2022-05-12T12:00:00-06:30',
+          updated_at: '2022-05-12T12:00:00-06:30',
+          title: 'Pemberian',
+          data: [
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 1000000,
+              date: '2022-05-01',
+              desc: '',
+            },
+          ],
+        },
+        {
+          id: 'kuyfaksuyfghjvasd',
+          created_at: '2022-05-12T12:00:00-06:30',
+          updated_at: '2022-05-12T12:00:00-06:30',
+          title: 'Deviden Investasi',
+          data: [
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 100000,
+              date: '2022-05-16',
+              desc: '',
+            },
+          ],
+        },
+        {
+          id: 'kuyfaksuyfghjvasd',
+          created_at: '2022-05-12T12:00:00-06:30',
+          updated_at: '2022-05-12T12:00:00-06:30',
+          title: 'Freelancer',
+          data: [
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 500000,
+              date: '2022-05-03',
+              desc: '',
+            },
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 300000,
+              date: '2022-05-07',
+              desc: '',
+            },
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 700000,
+              date: '2022-05-15',
+              desc: '',
+            },
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 800000,
+              date: '2022-05-27',
               desc: '',
             },
           ],
@@ -43,8 +103,77 @@ const idbStorage = {
           data: [
             {
               id: 'jhgafsdhgvasdktygafsdghasd',
-              count: 5000000,
-              date: '12 Mei 2022',
+              count: 500000,
+              date: '2022-05-12',
+              desc: '',
+            },
+          ],
+        },
+        {
+          id: 'kuyfaksuyfghjvasd',
+          created_at: '2022-05-12T12:00:00-06:30',
+          updated_at: '2022-05-12T12:00:00-06:30',
+          title: 'Nonton',
+          limited: 500000,
+          data: [
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 100000,
+              date: '2022-05-12',
+              desc: '',
+            },
+          ],
+        },
+        {
+          id: 'kuyfaksuyfghjvasd',
+          created_at: '2022-05-12T12:00:00-06:30',
+          updated_at: '2022-05-12T12:00:00-06:30',
+          title: 'Fitness',
+          limited: 1000000,
+          data: [
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 100000,
+              date: '2022-05-17',
+              desc: '',
+            },
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 290000,
+              date: '2022-05-20',
+              desc: '',
+            },
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 175000,
+              date: '2022-05-25',
+              desc: '',
+            },
+          ],
+        },
+        {
+          id: 'kuyfaksuyfghjvasd',
+          created_at: '2022-05-12T12:00:00-06:30',
+          updated_at: '2022-05-12T12:00:00-06:30',
+          title: 'Makan dan Minum',
+          limited: 1000000,
+          data: [
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 50000,
+              date: '2022-05-12',
+              desc: '',
+            },
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 20000,
+              date: '2022-05-12',
+              desc: '',
+            },
+            {
+              id: 'jhgafsdhgvasdktygafsdghasd',
+              count: 100000,
+              date: '2022-05-17',
               desc: '',
             },
           ],

@@ -20,7 +20,7 @@ const routes = {
   '/edit-profile': editProfile,
   '/beranda': BerandaPage,
   '/budget': Budget,
-  '/laporan': LaporanPage,
+  '/laporan/:id/:verb': LaporanPage,
   '/transaksi/:id': TransaksiPage,
   '/rencana': RencanaPage,
   '/tagihan': TagihanPage,

@@ -1,10 +1,12 @@
-const pageRender = (navbar, page) => {
+const pageRender = async (navbar, page) => {
+  // For Hide and Show Header element
   document.querySelector('.header-element').classList.remove('app');
   document.querySelector('main').classList.remove('app');
   document.querySelector('.footer-element').classList.remove('app');
   document.querySelector('header nav').classList.remove('app');
   document.querySelector('header-element').classList.remove('app');
 
+  // For activated navigation menu
   if (page) {
     document.querySelector('.header-element').classList.add(page);
     document.querySelector('main').classList.add(page);

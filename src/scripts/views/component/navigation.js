@@ -15,7 +15,7 @@ class Navigiation extends HTMLElement {
           </a>
         </li>
         <li class="laporan">
-          <a href="#/laporan">
+          <a href="#/laporan/${new Date().getMonth() + 1}/${new Date().getFullYear()}">
             <span><i class="fa-solid fa-square-poll-vertical"></i></span>
             <span>Laporan</span>
           </a>

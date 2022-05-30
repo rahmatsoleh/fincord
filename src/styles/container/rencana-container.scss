@@ -1,0 +1,35 @@
+@use '../root.scss' as root;
+
+article.plans {
+  .plans-header {
+    background-color: root.$primary;
+    padding: 1.5em 1.5em 1.5em;
+    border-radius: 0 0 30px 30px;
+
+    h2 {
+      color: #fff;
+      text-transform: uppercase;
+    }
+  }
+
+  .add-form {
+    padding: 1em;
+
+    button:first-child {
+      padding: .5em;
+      border: 2px solid root.$primary;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 4px 5px rgba(0,0,0,.2);
+      color: root.$primary;
+      font-size: 1.2em;
+
+      &:hover {
+        cursor: pointer;
+        background-color: root.$primary;
+        color: #fff;
+        transition: .2s;
+      }
+    }
+  }
+}

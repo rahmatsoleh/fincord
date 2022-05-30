@@ -4,14 +4,15 @@
     align-items: center;
     display: flex;
     flex-direction: row;
-    padding: 20%;
+    padding: 10% 20%;
     justify-content: center;
     
     .left{
         min-height: 40vh;
-        width: 100%;
+        width: 80%;
         background-color: root.$primary;
         align-items: center;
+        border-radius: 15px 0 0 15px;
         display: flex;
         flex-direction: column;
         padding: 10%;
@@ -40,6 +41,7 @@
 
             h1{
                 padding:10px;
+                font-size: 18px;
                 text-align:center;
                 color: root.$primary;
                 text-transform: uppercase;
@@ -113,6 +115,7 @@
         padding: 0;
         flex-direction: column;
         .left{
+            width: 100%;
             padding: 20% 0;
 
             h1{

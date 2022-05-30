@@ -3,7 +3,8 @@
 .main-login{
     align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    padding: 20%;
     justify-content: center;
     
     .left{
@@ -13,7 +14,7 @@
         align-items: center;
         display: flex;
         flex-direction: column;
-        padding: 5%;
+        padding: 10%;
 
         img{
             height: 150px;
@@ -31,9 +32,18 @@
         min-height: 50vh;
         display: flex;
         justify-content: center;
+        align-items: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
         form{
             width: 70%;
+
+            h1{
+                padding:10px;
+                text-align:center;
+                color: root.$primary;
+                text-transform: uppercase;
+            }
 
             input[type=text], input[type=password], select {
                 width: 100%;
@@ -42,8 +52,9 @@
                 display: inline-block;
                 border: none;
                 outline: none;
-                font-size: 18px;
+                font-size: 16px;
                 box-sizing: border-box;
+                border-left: 3px solid root.$primary;
                 box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
                 
                 &:focus {
@@ -56,7 +67,7 @@
                 background-color: root.$primary;
                 display: inline-block;
                 color: white;
-                font-size: 18px;
+                font-size: 16px;
                 padding: 10px 20px;
                 font-weight: bolder;
                 margin: 28px 0 8px;
@@ -95,12 +106,18 @@
     }
 }
 
-@media screen and (max-width: 700px) {
-    .left{
-        padding: 10% 0;
+@media screen and (max-width: 800px) {
+    
+    .main-login{
+        display: flex;
+        padding: 0;
+        flex-direction: column;
+        .left{
+            padding: 20% 0;
 
-        h1{
-            font-size: 24px;
+            h1{
+                font-size: 24px;
+            }
         }
     }
 }

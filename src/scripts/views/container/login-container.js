@@ -8,9 +8,12 @@ class LoginContainer extends HTMLElement {
   render() {
     this.innerHTML = `
       <div class="main-login">
-        <div class="card">
-            <h1>Log in to your account</h1>
-              
+        <div class="left">
+          <h1>Log in to your Account</h1>
+          <img alt="fincord" src="fincord.png"/>
+          <h2>FINCORD<h2/>
+        </div>
+        <div class="right">              
             <form action="">
               <input type="text" id="username" name="username" placeholder="Username" required>
 

@@ -2,91 +2,105 @@
 
 .main-login{
     align-items: center;
-    border: 10px;
-    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     
-    .card{
-        box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
-        border-radius: 8px;
-        width: 300px;
-        height: auto;
-        padding: 2rem 3rem;
+    .left{
+        min-height: 40vh;
+        width: 100%;
+        background-color: root.$primary;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding: 5%;
 
-        h1 {
-            text-align: center;
-            font-size: 20px;
-            padding: 1rem 0 2rem;
-            color: root.$primary;
+        img{
+            height: 150px;
+        }
+
+        h1, h2{
+            padding: 10px 0;
+            color: root.$white;
             text-transform: uppercase;
         }
-        
-        input[type=text], input[type=password], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            box-sizing: border-box;
-            box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
-            
-            &:focus {
-                box-shadow:  inset 1px 1px 2px #BABECC, inset -1px -1px 2px #fff;
+    }
+
+    .right{
+        padding: 6% 20px;
+        min-height: 50vh;
+        display: flex;
+        justify-content: center;
+
+        form{
+            width: 70%;
+
+            input[type=text], input[type=password], select {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: none;
+                outline: none;
+                font-size: 18px;
+                box-sizing: border-box;
+                box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
+                
+                &:focus {
+                    box-shadow:  inset 1px 1px 2px #BABECC, inset -1px -1px 2px #fff;
+                }
             }
-        }
-        
-        input[type=submit] {
-            width: 100%;
-            background-color: root.$primary;
-            display: inline-block;
-            color: white;
-            font-size: 16px;
-            padding: 10px 20px;
-            font-weight: bolder;
-            margin: 28px 0 8px;
-            border: none;
-            border-radius: 4px;
-            border: 1px solid root.$primary;
-            cursor: pointer;
-        }
-        
-        input[type=submit]:hover {
-            background-color: root.$white;
-            color: root.$primary;
-            border: 1px solid root.$primary;
-        }
-
-        p{
-            font-family: sans-serif;      
-            font-size: 14px;          
-            font-weight: lighter
-        }
-
-        a{
-            text-align: center;
-            font-family: sans-serif;  
-            text-decoration: none;
-            color: root.$primary;
-        }
-
-        a:hover{
-            font-family: sans-serif;  
-            text-decoration: underline;
-            color: root.$primary;
-        }
-        
+            
+            input[type=submit] {
+                width: 100%;
+                background-color: root.$primary;
+                display: inline-block;
+                color: white;
+                font-size: 18px;
+                padding: 10px 20px;
+                font-weight: bolder;
+                margin: 28px 0 8px;
+                border: none;
+                border-radius: 4px;
+                border: 1px solid root.$primary;
+                cursor: pointer;
+            }
+            
+            input[type=submit]:hover {
+                background-color: root.$white;
+                color: root.$primary;
+                border: 1px solid root.$primary;
+            }
+    
+            p{
+                font-family: sans-serif;
+                padding: 16px 0;
+                display: inline-block;    
+                font-weight: lighter
+            }
+    
+            a{
+                text-align: center;
+                font-family: sans-serif;  
+                text-decoration: none;
+                color: root.$primary;
+            }
+    
+            a:hover{
+                font-family: sans-serif;  
+                text-decoration: underline;
+                color: root.$primary;
+            }
+        }        
     }
 }
 
-@media screen and (max-width: 800px) {
-.main-login{
-    height: 80vh;
-  }
+@media screen and (max-width: 700px) {
+    .left{
+        padding: 10% 0;
 
-  .main-login .card{
-      margin: 0 2rem;
-  }
+        h1{
+            font-size: 24px;
+        }
+    }
 }

@@ -16,9 +16,9 @@ const RencanaPage = {
       const { value: formValues } = await Swal.fire({
         title: 'Tambahkan Rencana',
         html:
-          '<input type="text" id="name-plan" class="swal2-input">'
-          + '<input type="number" id="nominal-plan" class="swal2-input">'
-          + '<input type="date" id="date-plan" class="swal2-input">',
+          '<input type="text" id="name-plan" class="swal2-input" placeholder="Masukan nama target">'
+          + '<input type="number" id="nominal-plan" class="swal2-input" placeholder="Rp. 0">'
+          + '<input type="date" id="date-plan" class="swal2-input" placeholder="Tanggal pencapaian">',
         focusConfirm: false,
         showCancelButton: true,
         confirmButtonText: 'Simpan',

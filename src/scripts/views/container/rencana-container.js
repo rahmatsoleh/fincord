@@ -1,4 +1,5 @@
 import '../../../styles/container/rencana-container.scss';
+import '../component/list-plans';
 
 class RecanaContainer extends HTMLElement {
   connectedCallback() {
@@ -13,6 +14,9 @@ class RecanaContainer extends HTMLElement {
         </section>
         <section class="add-form">
           <button id="add-plans"><i class="fa-solid fa-plus"></i> Tambahkan Impian</button>
+        </section>
+        <section>
+          <list-plans></list-plans>
         </section>
       </article>
     `;

@@ -1,0 +1,99 @@
+@use '../root.scss' as root;
+
+div.plan-items {
+  padding: 1em 1em 1.5em;
+  border-top: 10px solid root.$primary;
+  border-radius: 20px 20px 10px 10px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 5px rgba(0,0,0, .2);
+  margin-bottom: 1.5em;
+
+  .plan-items-header {
+    margin-bottom: 1em;
+    h3 {
+      text-transform: uppercase;
+      color: root.$dark-primary;
+    }
+    .temp-bar {
+      position: relative;
+    }
+  }
+
+  .plan-items-main {
+    .detail {
+      p:first-child {
+        font-weight: bold;
+        color: root.$dark-primary;
+      }
+
+      p:last-child {
+        font-style: italic;
+        font-weight: 600;
+        color: root.$primary;
+        margin-top: 10px;
+      }
+    }
+
+    .nominal {
+      margin-top: 1em;
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        tr {
+          td {
+            padding: 3px 0;
+          }
+        }
+      }
+    }
+  }
+
+  .plan-items-footer {
+    margin-top: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    div:first-child {
+      button {
+        padding: .5em;
+        border-radius: 5px;
+        background-color: root.$primary;
+        color: root.$white;
+        box-shadow: 0 4px 5px rgba(0,0,0, .2);
+        border: 2px solid root.$primary;
+        font-size: 1.2em;
+        font-weight: bold;
+
+        &:hover {
+          cursor: pointer;
+          background-color: root.$white;
+          color: root.$primary;
+          transition: .2s;
+        }
+      }
+    }
+
+    div:last-child {
+      button {
+        font-size: 1.5em;
+        padding: .3em .4em;
+        color: root.$primary;
+        border: 2px solid root.$primary;
+        border-radius: 5px;
+        box-shadow: 0 4px 5px rgba(0,0,0, .2);
+        font-size: bold;
+        background-color: root.$white;
+        margin: 0 3px;
+
+        &:hover {
+          cursor: pointer;
+          background-color: root.$primary;
+          color: root.$white;
+          transition: .2s;
+        }
+      }
+    }
+  }
+}

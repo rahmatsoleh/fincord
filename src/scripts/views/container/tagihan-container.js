@@ -11,6 +11,12 @@ class TagihanContainer extends HTMLElement {
             <h1 class='title'>Daftar Tagihan</h1>
             <button class='add-reminder'>Tambahkan Pengingat</button>
         </section>
+        <section class='modal'>
+            <h1 class='heading'>Pembayaran Wifi</h1>
+            <input type='text' name='nominal-tagihan' placeholder='Ex. 250.000' class='input-nominal' />
+            <button class='button-save'>Simpan</button>
+            <button class='button-cancel'>Batal</button>
+        </section>
         <section class='wrapper-content'>
         <div class='content-tagihan'>
             <div>
@@ -64,5 +70,18 @@ class TagihanContainer extends HTMLElement {
     `;
   }
 }
+
+// modif this \ not working
+const buttonPay = document.querySelectorAll('.pay-button');
+const cancelButton = document.querySelectorAll('.button-cancel');
+const modals = document.querySelectorAll('.modal');
+
+buttonPay.onclick = function () {
+  modals.style.display = 'block';
+};
+
+cancelButton.onclick = function () {
+  modals.style.display = 'none';
+};
 
 customElements.define('tagihan-container', TagihanContainer);

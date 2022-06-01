@@ -1,0 +1,89 @@
+@use '../root.scss' as root;
+// navigation bar
+.navbar-tagihan {
+    width: 100%;
+    padding: 24px 64px;
+    background-color: root.$primary;
+    .title {
+        font-weight: bold;
+        color: root.$white;
+    }
+    .add-reminder {
+        margin-top: 16px;
+        padding: 8px 12px;
+        border: none;
+        font-weight: 500;
+        border-radius: 6px;
+        background-color: root.$white;
+        color: root.$primary;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+// content tagihan
+.wrapper-content {
+    padding: 24px 64px;
+    height: fit-content;
+    width: 100%;
+    background-color: root.$white;
+    .content-tagihan {
+        width: 100%;
+        border-radius: 12px;
+        border: 1px solid #BBB;
+        padding: 40px;
+        margin: 12px 0;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 600;
+        color: root.$primary;
+    }
+    .subheading,
+    .remaining {
+        color: root.$dark;
+    }
+    .action {
+        margin-top: 16px;
+        grid-gap: 4px;
+    }
+    .subheading {
+        font-size: 32px;
+        margin-top: 12px;
+    }
+    .edit-button {
+        background-color: rgb(16, 177, 16);
+        color: root.$white;
+        width: 50%;
+    }
+    .delete-button {
+        background-color: rgb(224, 20, 20);
+        color: root.$white;
+        width: 50%;
+    }
+    .remaining {
+        margin-top: 16px;
+        font-size: 16px;
+        margin-top: 20px;
+        font-weight: 400;
+        padding: 8px 16px;
+        border: 1px solid #BBB;
+        border-radius: 30px;
+    }
+    .total-count {
+        color: root.$dark;
+        font-weight: 600;
+        padding: 32px 0;
+        font-size: 36px;
+    }
+    .pay-button {
+        padding: 16px 32px;
+        border: none;
+        border-radius: 6px;
+        background-color: root.$primary;
+        color: root.$white;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

@@ -1,9 +1,10 @@
 import pageRender from '../../utils/page-render';
+import '../container/tagihan-container';
 
 const TagihanPage = {
   async render() {
     pageRender('tagihan', 'app');
-    return '<h1>Halaman Tagihan</h1>';
+    return '<tagihan-container></tagihan-container>';
   },
 
   async afterRender() {

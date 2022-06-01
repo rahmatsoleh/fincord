@@ -2,93 +2,161 @@
 
 .main-registration{
     align-items: center;
-    border: 10px;
-    min-height: 80vh;
     display: flex;
+    flex-direction: row-reverse;
+    padding: 10% 20%;
     justify-content: center;
-    padding: 6rem 0;
     
-    .card{
-        box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.65);
-        border-radius: 8px;
-        width: 300px;
-        height: auto;
-        padding: 2rem 3rem;
+    .left{
+        min-height: 70vh;
+        width: 120%;
+        border-radius: 0 15px 15px 0;
+        background-color: root.$primary;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        padding: 10%;
+        justify-content: center;
 
-        h1 {
-            text-align: center;
-            font-size: 20px;
-            padding: 1rem 0 2rem;
-            color: root.$primary;
+        img{
+            height: 150px;
+        }
+
+        h2{
+            padding: 10px 0;
+            font-size: 20px;  
+            color: root.$white;
             text-transform: uppercase;
         }
-        
-        input[type=text], input[type=password], select {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            box-sizing: border-box;
-            box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
-            
-            &:focus {
-                box-shadow:  inset 1px 1px 2px #BABECC, inset -1px -1px 2px #fff;
-            }
+    
+        p{
+            font-family: sans-serif;
+            display: inline-block;  
+            font-size: 15px;  
+            text-align: center;
+            font-weight: lighter;
+            text-transform: none;
         }
-        
-        input[type=submit] {
-            width: 100%;
+
+        button{
+            padding: 10px;
             background-color: root.$primary;
+            color: root.$white;
+            text-align: center;
+            margin: 10px 0;
             display: inline-block;
-            color: white;
-            font-size: 16px;
-            padding: 10px 20px;
+            position: relative;
+            border: 1px solid root.$white;
+            width: 150px;
+            left: 20%;
             font-weight: bolder;
-            margin: 28px 0 8px;
-            border: none;
-            border-radius: 4px;
-            border: 1px solid root.$primary;
-            cursor: pointer;
+            border-radius: 10px;
         }
-        
-        input[type=submit]:hover {
+
+        button:hover{
             background-color: root.$white;
             color: root.$primary;
-            border: 1px solid root.$primary;
         }
+    }
 
-        p{
-            font-family: sans-serif;      
-            font-size: 14px;          
-            font-weight: lighter
-        }
+    .right{
+        padding: 6% 20px;
+        min-height: 80vh;
+        width: 130%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 
-        a{
-            text-align: center;
-            font-family: sans-serif;  
-            text-decoration: none;
-            color: root.$primary;
-        }
+        form{
+            width: 90%;
 
-        a:hover{
-            font-family: sans-serif;  
-            text-decoration: underline;
-            color: root.$primary;
-        }
-        
+            h1{
+                padding:10px;
+                font-size: 18px;
+                text-align:center;
+                color: root.$primary;
+                text-transform: uppercase;
+            }
+
+            input[type=text], input[type=password], select {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: none;
+                outline: none;
+                font-size: 16px;
+                box-sizing: border-box;
+                border-left: 3px solid root.$primary;
+                box-shadow:  inset 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
+                
+                &:focus {
+                    box-shadow:  inset 1px 1px 2px #BABECC, inset -1px -1px 2px #fff;
+                }
+            }
+            
+            input[type=submit] {
+                width: 100%;
+                background-color: root.$primary;
+                display: inline-block;
+                color: white;
+                font-size: 16px;
+                padding: 10px 20px;
+                font-weight: bolder;
+                margin: 28px 0 8px;
+                border: none;
+                border-radius: 4px;
+                border: 1px solid root.$primary;
+                cursor: pointer;
+            }
+            
+            input[type=submit]:hover {
+                background-color: root.$white;
+                color: root.$primary;
+                border: 1px solid root.$primary;
+            }
+
+            button{                
+                background-color: root.$white;
+                color: root.$primary;
+                border: 1px solid root.$primary;
+            }
+    
+            a{
+                text-align: center;
+                font-family: sans-serif;  
+                text-decoration: none;
+                color: root.$primary;
+            }
+    
+            a:hover{
+                font-family: sans-serif;  
+                text-decoration: underline;
+                color: root.$primary;
+            }
+        }        
     }
 }
 
 @media screen and (max-width: 800px) {
-.main-registration{
-    height: auto;
-    padding: 3rem 0;
-  }
+    
+    .main-registration{
+        display: flex;
+        padding: 0;
+        flex-direction: column;
+        .left{
+            width: 100%;
+            min-height: 15vh;
+            border-radius: 0;
 
-  .main-registration .card{
-      margin: 0 2rem;
-  }
+            h2, p, button{
+                display: none;
+            }
+        }
+        .right{
+            width: 80%;
+            margin: 10%;
+        }
+    }
 }

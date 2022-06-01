@@ -22,6 +22,12 @@
     }
 }
 
+.heading {
+    font-size: 24px;
+    font-weight: 600;
+    color: root.$primary;
+}
+
 // content tagihan
 .wrapper-content {
     padding: 24px 64px;
@@ -82,6 +88,107 @@
         border-radius: 6px;
         background-color: root.$primary;
         color: root.$white;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+// Modal Container
+.modal {
+    width: 100%;
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: root.$white;
+    border: 1px solid #BBB;
+    padding: 56px 48px;
+    // change this
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 20%;
+    top: 20%;
+    .input-nominal {
+        padding: 16px 12px;
+        border: 1px solid #BBB;
+        border-radius: 8px;
+        margin-top: 16px;
+        width: 100%;
+    }
+    .button-save,
+    .button-cancel {
+        padding: 16px 20px;
+        width: 30%;
+        font-weight: 500;
+        border-radius: 6px;
+        margin-top: 16px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .button-save {
+        background-color: root.$primary;
+        color: root.$white;
+        border: none;
+    }
+    .button-cancel {
+        background-color: transparent;
+        color: root.$primary;
+        border: 1px solid root.$primary;
+        margin-left: 12px;
+    }
+}
+
+// Tambah Tagihan Container
+.form-tambah {
+    width: 100%;
+    max-width: 500px;
+    margin: 32px auto;
+    border: 1px solid #BBB;
+    border-radius: 12px;
+    padding: 16px;
+    .form-group {
+        padding: 16px;
+        margin-bottom: 2px;
+        .label {
+            font-size: 16px;
+            font-weight: normal;
+            margin-bottom: 12px;
+        }
+        input {
+            padding: 16px 12px;
+            border: 1px solid #BBB;
+            border-radius: 12px;
+            width: 100%;
+        }
+    }
+    .check {
+        padding-bottom: 16px;
+    }
+    .reminder {
+        margin: 12px 16px;
+        .label-reminder {
+            font-size: 16px;
+            font-weight: normal;
+            padding-top: 16px;
+            padding-left: 12px;
+        }
+        .input-reminder {
+            padding: 16px 12px;
+            border: 1px solid #BBB;
+            border-radius: 12px;
+            width: 130px;
+        }
+    }
+    .simpan {
+        padding: 16px 20px;
+        border: none;
+        width: 100%;
+        background-color: root.$primary;
+        color: root.$white;
+        font-weight: 500;
+        border-radius: 6px;
+        margin-top: 16px;
         &:hover {
             cursor: pointer;
         }

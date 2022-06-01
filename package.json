@@ -43,6 +43,7 @@
     "idb": "^7.0.1",
     "progressbar.js": "^1.1.0",
     "regenerator-runtime": "^0.13.9",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.4.17"
   }
 }

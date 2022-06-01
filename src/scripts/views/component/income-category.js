@@ -1,25 +1,9 @@
-const kategori = [
-  {
-    id: '1111',
-    title: 'Gaji Pokok',
-  },
-  {
-    id: '2222',
-    title: 'Tunjangan',
-  },
-  {
-    id: '3333',
-    title: 'Bonus',
-  },
-  {
-    id: '4444',
-    title: 'Freelancer',
-  },
-];
+import IncomeCategoryIdb from '../../data/idb/income-category-idb';
 
 class IncomeCategory extends HTMLElement {
   connectedCallback() {
     this.render();
+    this.renderCategory();
   }
 
   render() {
@@ -27,7 +11,7 @@ class IncomeCategory extends HTMLElement {
       <div>
         <button class="add-category">Tambah Kategori</button>
         <div class="category-item">
-          <ul>${this.getCategory(kategori)}</ul>
+          <ul></ul>
         </div>
         <div class="category-modal">
           <div class="container">
@@ -61,7 +45,8 @@ class IncomeCategory extends HTMLElement {
     });
   }
 
-  getCategory(data) {
+  async renderCategory() {
+    const data = await IncomeCategoryIdb.getAllData();
     let result = '';
 
     data.forEach((element) => {
@@ -69,14 +54,14 @@ class IncomeCategory extends HTMLElement {
         <li>
           <p>${element.title}</p>
           <div>
-            <button data-id="${element.id}"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button data-id="${element.id}"><i class="fa-solid fa-trash-can"></i></button>
+            <button data-id="${element._id}"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button data-id="${element._id}"><i class="fa-solid fa-trash-can"></i></button>
           </div>
         </li>
       `;
     });
 
-    return result;
+    document.querySelector('.category-item ul').innerHTML = result;
   }
 }
 

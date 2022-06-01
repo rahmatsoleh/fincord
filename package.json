@@ -41,6 +41,7 @@
     "@dicebear/pixel-art": "^4.10.2",
     "apexcharts": "^3.35.3",
     "idb": "^7.0.1",
+    "nanoid": "^3.3.4",
     "progressbar.js": "^1.1.0",
     "regenerator-runtime": "^0.13.9",
     "sweetalert": "^2.1.2",

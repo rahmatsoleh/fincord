@@ -1,0 +1,267 @@
+@use '../root.scss' as root;
+
+html {
+  scroll-behavior: smooth;
+
+    .hero{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+
+        .container{
+            display: flex;
+            padding: 20px 10%;
+            min-height: 90vh;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+
+            .left{
+                display: flex;
+                width: 50%;
+                flex-direction: column;
+
+                h1{                
+                    font-size: 2.2rem;
+                    margin: 20px 0;
+                    color: #333;
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+
+                    span{
+                        color: root.$primary;
+                    }
+                }
+
+                .desc{
+                    font-size: 20px;
+                    text-align: justify;
+                    letter-spacing: 1.5px;
+                }
+
+                .btn{
+                    margin: 50px 10% 10px 10%;
+                    background: #0077b6;  /* fallback for old browsers */
+                    background: -webkit-linear-gradient(to top, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+                    background: linear-gradient(to top, #1CB5E0, #0077b6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                    font-weight: bolder;
+                    display: inline-block;
+                    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+                    a{
+                        text-decoration: none;
+                        color: root.$white;
+                        display: inline-block;
+                        font-size: 18px;
+                    }
+                }
+
+                .text-align-center{
+                    text-align: center;
+                    font-size: 13px;
+                    text-transform: uppercase;
+                    letter-spacing: .5px;
+                }
+            }
+
+            .right{
+                width: 50%;
+
+                .img{
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+
+                    img{
+                        height: 250px;
+                        animation: y 3s linear infinite;
+                        box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+                    }
+                    
+                    @keyframes y{
+                        0%, 100%{
+                            transform: translateY(0rem);
+                        }
+                        30%{
+                            transform: translateY(-1.5rem);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .features{
+        box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+        background-color: #f3f3f3;
+
+        .header{
+            padding: 5% 10%;
+            text-align: center ;
+
+            h1{
+                font-size: 32px;
+                color: #333;
+                text-transform: uppercase;
+                padding: 20px;
+            }
+
+            p{
+                font-size: 18px;
+            }
+        }
+
+        .f-1{
+            display: flex;
+            flex-direction: row-reverse;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .f-2{
+            display: flex;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container{
+            padding: 20px 10%;
+            min-height: 70vh;
+
+            .left{
+                display: flex;
+                width: 60%;
+                flex-direction: column;
+
+                h2{
+                    color: #333;
+                    line-height: 3rem;
+                }
+
+                p{
+                    line-height: 1.5rem;
+                    font-size: 18px;
+                }
+            }
+
+            .right{
+                width: 40%;
+
+                .img{
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+
+                    img{
+                        height: 250px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        
+        .hero{
+            .container{
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 1rem;
+
+            .left{
+                width: 100%;
+
+                h1{
+                    font-size: 1.3rem;
+                }
+            }
+
+            .right{
+                width: 100%;
+                margin: 10% 0 0;
+                padding: 30px;
+                width: 100%;
+
+                .img{
+                    img{
+                        height: 150px;
+                    }
+                }
+            }
+        }
+    }
+
+    
+
+    .features{
+
+        .header{
+
+            h1{
+                font-size: 26px;
+                color: #333;
+                text-transform: uppercase;
+                padding: 20px;
+            }
+
+            p{
+                font-size: 18px;
+            }
+        }
+
+        .f-1{
+            display: flex;
+            flex-direction: column-reverse;
+            align-content: center;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .f-2{
+            display: flex;
+            flex-direction: column-reverse;
+            align-content: center;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .container{
+
+            .left{
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+
+                h2{
+                    color: #333;
+                    line-height: 3rem;
+                }
+
+                p{
+                    line-height: 1.5rem;
+                    font-size: 18px;
+                }
+            }
+
+            .right{
+                width: 100%;
+
+                .img{
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+
+                    img{
+                        height: 250px;
+                    }
+                }
+            }
+        }
+    }
+}
+}

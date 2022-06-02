@@ -1,29 +1,9 @@
-const kategori = [
-  {
-    id: '1111',
-    title: 'Hiburan',
-    limit: 1000000,
-  },
-  {
-    id: '2222',
-    title: 'Transportasi',
-    limit: 1500000,
-  },
-  {
-    id: '3333',
-    title: 'Makan dan Minum',
-    limit: 1000000,
-  },
-  {
-    id: '4444',
-    title: 'Investasi',
-    limit: 10000000,
-  },
-];
+import ExpenseCategoryIdb from '../../data/idb/expense-category-idb';
 
 class ExpenseCategory extends HTMLElement {
   connectedCallback() {
     this.render();
+    this.renderCategory();
   }
 
   render() {
@@ -31,7 +11,7 @@ class ExpenseCategory extends HTMLElement {
       <div>
         <button class="add-category">Tambah Kategori</button>
         <div class="category-item">
-          <ul>${this.getCategory(kategori)}</ul>
+          <ul></ul>
         </div>
         <div class="category-modal">
           <div class="container">
@@ -69,22 +49,24 @@ class ExpenseCategory extends HTMLElement {
     });
   }
 
-  getCategory(data) {
+  async renderCategory() {
+    const dataFromIdb = await ExpenseCategoryIdb.getAllData();
+
     let result = '';
 
-    data.forEach((element) => {
+    dataFromIdb.forEach((element) => {
       result += `
         <li>
           <p>${element.title}</p>
           <div>
-            <button data-id="${element.id}"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button data-id="${element.id}"><i class="fa-solid fa-trash-can"></i></button>
+            <button data-id="${element._id}"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button data-id="${element._id}"><i class="fa-solid fa-trash-can"></i></button>
           </div>
         </li>
       `;
     });
 
-    return result;
+    document.querySelector('.category-item ul').innerHTML = result;
   }
 }
 

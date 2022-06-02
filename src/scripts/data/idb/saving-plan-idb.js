@@ -2,31 +2,31 @@ import FincordAPI from '../fincord-api';
 import BaseIdb from './base-idb';
 
 const idDB = {
-  DATABASE_NAME: 'income-category',
+  DATABASE_NAME: 'saving-category',
   DATABASE_VERSION: 1,
-  OBJECT_STORE: 'income-category',
+  OBJECT_STORE: 'saving-category',
 };
 
-class IncomeCategoryIdb extends BaseIdb {
-  // Melihat seluruh data kategori pemasukan
+class SavingPlanIdb extends BaseIdb {
+  // Melihat seluruh data kategori saving
   static async getAllData() {
     const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
-    const dataIncome = dataFromApi.data.transaksi.pemasukan.data;
+    const dataSaving = dataFromApi.data.saving_plan.data;
 
     const dataFromIdb = await super.getDataDB(idDB);
 
     if (dataFromIdb.length === 0) {
-      dataIncome.forEach(async (item) => {
-        const categoryData = {
+      dataSaving.forEach(async (item) => {
+        const savingName = {
           _id: item._id,
-          created_at: item.created_at,
-          updated_at: item.updated_at,
           title: item.title,
+          nominal: item.nominal,
+          dateline: item.dateline,
         };
 
-        await super.putDataDB(idDB, categoryData);
+        await super.putDataDB(idDB, savingName);
       });
     }
 
@@ -35,8 +35,10 @@ class IncomeCategoryIdb extends BaseIdb {
     // output
     /**
     [
-      {_id: 'msk1',
-        created_at: '2022-05-12T12:00:00-06:30', updated_at: '2022-05-12T12:00:00-06:30', title: 'Gaji'
+      { _id: 'msk1',
+        title: 'Beli PC',
+        nominal: 12000000,
+        dateLine: '2022-08-20'
       }
     ]
     */
@@ -46,12 +48,11 @@ class IncomeCategoryIdb extends BaseIdb {
   static async putData(category) {
     // Data yang harus diterima category
     /**
-     * {
-     *  _id,
-     *  created_at,
-     *  updated_at,
-     *  title,
-     * }
+     * { _id: 'msk1',
+          title: 'Beli PC',
+          nominal: 12000000,
+          dateLine: '2022-08-20'
+        }
      */
 
     if (!category.hasOwnProperty('_id')) {
@@ -67,4 +68,4 @@ class IncomeCategoryIdb extends BaseIdb {
   }
 }
 
-export default IncomeCategoryIdb;
+export default SavingPlanIdb;

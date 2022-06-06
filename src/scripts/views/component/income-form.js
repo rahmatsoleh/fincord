@@ -1,29 +1,12 @@
+/* eslint-disable no-nested-ternary */
 import '../../../styles/component/form-transaction.scss';
-
-const kategori = [
-  {
-    name: 'Gaji Pokok',
-  },
-  {
-    name: 'Bonus',
-  },
-  {
-    name: 'Tunjangan',
-  },
-  {
-    name: 'Pemberian',
-  },
-  {
-    name: 'Investasi',
-  },
-  {
-    name: 'Freelance',
-  },
-];
+import IncomeCategoryIdb from '../../data/idb/income-category-idb';
 
 class IncomeForm extends HTMLElement {
   connectedCallback() {
     this.render();
+    this.getCategory();
+    this.inputNumber();
   }
 
   render() {
@@ -34,16 +17,16 @@ class IncomeForm extends HTMLElement {
             <i class="fa-solid fa-wallet"></i>
           </div>
           <div class="form-input">
-            <label for="nominal">Jumlah</label><input type="number" id="nominal" placeholder="Rp. ">
+            <label for="nominal">Jumlah</label><input type="text" id="nominal" placeholder="Rp. ">
           </div>
         </div>
         <div class="form-control">
           <div class="form-icon">
-            <i class="fa-solid fa-wallet"></i>
+            <i class="fa-solid fa-angles-down"></i>
           </div>
           <div class="form-input">
             <label for="category">Kategori</label>
-            <select id="category">${this.getCategory(kategori)}</select>
+            <select id="category" class="category"></select>
           </div>
           <div>
             <a href="#/category/in" title="Kelola Kategori"><i class="fa-solid fa-gear"></i></a>
@@ -51,7 +34,7 @@ class IncomeForm extends HTMLElement {
         </div>
         <div class="form-control">
           <div class="form-icon">
-            <i class="fa-solid fa-wallet"></i>
+            <i class="fa-solid fa-calendar-days"></i>
           </div>
           <div class="form-input">
             <label for="date">Tanggal</label><input type="date" id="date">
@@ -59,7 +42,7 @@ class IncomeForm extends HTMLElement {
         </div>
         <div class="form-control">
           <div class="form-icon">
-            <i class="fa-solid fa-wallet"></i>
+            <i class="fa-solid fa-clipboard"></i>
           </div>
           <div class="form-input">
             <label for="desc">Catatan</label><input type="text" id="desc" placeholder="(Opsional)">
@@ -70,16 +53,43 @@ class IncomeForm extends HTMLElement {
     `;
   }
 
-  getCategory(data) {
+  async getCategory() {
+    const dataCategory = await IncomeCategoryIdb.getAllData();
     let result = '';
 
-    data.forEach((item) => {
+    dataCategory.forEach((item) => {
       result += `
-        <option value="${item.name}">${item.name}</option>
+        <option value="${item._id}">${item.title}</option>
       `;
     });
 
-    return result;
+    const inputCategory = document.querySelector('#category');
+
+    if (inputCategory) inputCategory.innerHTML = result;
+  }
+
+  inputNumber() {
+    const inputNumber = document.querySelector('#nominal');
+
+    function getFormat(numb, prefix) {
+      const numberString = numb.replace(/[^,\d]/g, '').toString();
+      const split = numberString.split(',');
+      const splitLength = split[0].length % 3;
+      let formatRupiah = split[0].substr(0, splitLength);
+      const toThousand = split[0].substr(splitLength).match(/\d{3}/gi);
+
+      if (toThousand) {
+        const separator = splitLength ? '.' : '';
+        formatRupiah += separator + toThousand.join('.');
+      }
+
+      formatRupiah = split[1] !== undefined ? `${formatRupiah}, ${split[1]}` : formatRupiah;
+      return prefix === undefined ? formatRupiah : (formatRupiah ? `Rp. ${formatRupiah}` : '');
+    }
+
+    inputNumber.addEventListener('keyup', () => {
+      inputNumber.value = getFormat(inputNumber.value, 'Rp. ');
+    });
   }
 }
 

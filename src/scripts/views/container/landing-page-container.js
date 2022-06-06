@@ -64,17 +64,6 @@ class landingContainer extends HTMLElement {
           </div>
         </div>
       </section>
-
-      // <section class="exclusive">
-      //   <div class="header">
-      //     <h1>Selamat Datang di Fincord</h1>
-      //     <p>Nulla in elit vel felis consequat posuere et et felis. Aenean id lobortis magna. In molestie sollicitudin turpis, facilisis vestibulum nulla sollicitudin id. Proin consectetur scelerisque nulla vitae pulvinar. </p>
-      //   </div>
-
-      //   <div class="container">
-          
-      //   </div>
-      // </section>
     `;
   }
 }

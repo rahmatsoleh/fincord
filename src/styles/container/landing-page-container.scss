@@ -72,9 +72,9 @@ html {
                     height: 100%;
 
                     img{
-                        height: 250px;
+                        height: 270px;
                         animation: y 3s linear infinite;
-                        box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+                        // box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
                     }
                     
                     @keyframes y{

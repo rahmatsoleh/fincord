@@ -17,7 +17,7 @@ class landingContainer extends HTMLElement {
           </div>
           <div class="right">
             <div class="img">
-              <img src="fincord.png" alt="gambar aplikasi fincord">
+              <img src="app.png" alt="gambar aplikasi fincord">
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@ class landingContainer extends HTMLElement {
         <div class="container f-1">
           <div class="left">
             <h2>Bahkan orang awam pun dapat menggunakannya</h2>
-            <p>Desain tampilan aplikasi keuangan ini yang didesain sederhana sehingga pengguna dapat mudah memahami setiap fitur di dalamnya.</p>
+            <p>Desain tampilan aplikasi keuangan ini yang didesain sederhana sehingga pengguna dapat dengan mudah memahami setiap fitur di dalamnya.</p>
           </div>
           <div class="right">
             <div class="img">
@@ -42,8 +42,8 @@ class landingContainer extends HTMLElement {
 
         <div class="container f-2">
           <div class="left">
-            <h2>Lihat laporan keuangan</h2>
-            <p>Mudah untuk melihat pemasukan dan pengeluaran pada setiap periode karena dilengkapi dengan grafik.</p>
+            <h2>Lacak uang sederhana</h2>
+            <p>Catat transaksi harian dengan cepat dan masukkan ke dalam kategori yang jelas. Lihat pemasukan dan pengeluaran pada setiap periode karena dilengkapi dengan grafik.</p>
           </div>
           <div class="right">
             <div class="img">
@@ -55,13 +55,24 @@ class landingContainer extends HTMLElement {
         <div class="container f-1">
           <div class="left">
             <h2>Target kedepannya</h2>
-            <p>Buat rencana keuangan agar cepat dapat barang impianmu diakhir bulan.</p>
+            <p>Buat rencana keuangan agar impianmu dapat terwujud diakhir bulan.</p>
           </div>
           <div class="right">
             <div class="img">
               <img src="plan.png" alt="gambar aplikasi fincord">
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="exclusive">
+        <div class="header">
+          <h1>Selamat Datang di Fincord</h1>
+          <p>Nulla in elit vel felis consequat posuere et et felis. Aenean id lobortis magna. In molestie sollicitudin turpis, facilisis vestibulum nulla sollicitudin id. Proin consectetur scelerisque nulla vitae pulvinar. </p>
+        </div>
+
+        <div class="container">
+          
         </div>
       </section>
     `;

@@ -1,4 +1,4 @@
-// import Swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import pageRender from '../../utils/page-render';
 import '../container/rencana-container';
 

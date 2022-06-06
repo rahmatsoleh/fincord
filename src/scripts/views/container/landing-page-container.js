@@ -25,41 +25,41 @@ class landingContainer extends HTMLElement {
       <section class="features"  id="mainY">
         <div class="header">
           <h1>Selamat Datang di Fincord</h1>
-          <p>Nulla in elit vel felis consequat posuere et et felis. Aenean id lobortis magna. In molestie sollicitudin turpis, facilisis vestibulum nulla sollicitudin id. Proin consectetur scelerisque nulla vitae pulvinar. </p>
+          <p>Perkenalkan di bawah ini merupakan beberapa hal tentang aplikasi keuangan Fincord</p>
         </div>
 
         <div class="container f-1">
           <div class="left">
-            <h2>Pembukuan</h2>
-            <p>Donec volutpat ultricies leo sed volutpat. Phasellus interdum lacus sit amet laoreet consequat. Phasellus ac placerat neque, vel vulputate nisl. Sed tincidunt molestie massa at ornare. Nulla facilisi.</p>
+            <h2>Bahkan orang awam pun dapat menggunakannya</h2>
+            <p>Desain tampilan aplikasi keuangan ini yang didesain sederhana sehingga pengguna dapat mudah memahami setiap fitur di dalamnya.</p>
           </div>
           <div class="right">
             <div class="img">
-              <img src="fincord.png" alt="gambar aplikasi fincord">
+              <img src="beranda.png" alt="gambar beranda aplikasi fincord">
             </div>
           </div>
         </div>
 
         <div class="container f-2">
           <div class="left">
-            <h2>Prencanaan</h2>
-            <p>Fusce dictum urna vel massa luctus sagittis ut sed magna. Donec feugiat tortor iaculis, maximus nibh quis, lobortis sapien. Nullam in massa nec felis dignissim sagittis eget a lorem. Cras at aliquet massa. Nam posuere nunc mauris. Suspendisse potenti.</p>
+            <h2>Lihat laporan keuangan</h2>
+            <p>Mudah untuk melihat pemasukan dan pengeluaran pada setiap periode karena dilengkapi dengan grafik.</p>
           </div>
           <div class="right">
             <div class="img">
-              <img src="fincord.png" alt="gambar aplikasi fincord">
+              <img src="report.png" alt="gambar aplikasi fincord">
             </div>
           </div>
         </div>
         
         <div class="container f-1">
           <div class="left">
-            <h2>Pengingat</h2>
-            <p>Aliquam dignissim semper nibh, vitae dictum leo elementum vel. Ut sed eleifend nisi. Aliquam erat volutpat. Aenean id libero eget nunc blandit finibus vel at libero.</p>
+            <h2>Target kedepannya</h2>
+            <p>Buat rencana keuangan agar cepat dapat barang impianmu diakhir bulan.</p>
           </div>
           <div class="right">
             <div class="img">
-              <img src="fincord.png" alt="gambar aplikasi fincord">
+              <img src="plan.png" alt="gambar aplikasi fincord">
             </div>
           </div>
         </div>

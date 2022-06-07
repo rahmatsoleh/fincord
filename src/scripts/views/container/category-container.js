@@ -21,7 +21,6 @@ class CategoryContainer extends HTMLElement {
           </div>
         </section>
         <section class="category-main">
-          <income-category></income-category>
         </section>
       </article>
     `;

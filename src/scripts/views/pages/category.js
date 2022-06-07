@@ -1,6 +1,10 @@
+import Swal from 'sweetalert2';
 import pageRender from '../../utils/page-render';
 import UrlParser from '../../routes/url-parser';
 import '../container/category-container';
+import getNumberFromString from '../../utils/getNumberFromString';
+import IncomeCategoryIdb from '../../data/idb/income-category-idb';
+import ExpenseCategoryIdb from '../../data/idb/expense-category-idb';
 
 const Category = {
   async render() {
@@ -19,7 +23,40 @@ const Category = {
       if (element.dataset.nav === url) element.classList.add('active');
     });
 
-    url === 'in' ? listCategory.innerHTML = '<income-category></income-category>' : listCategory.innerHTML = '<expense-category></expense-category>';
+    if (url === 'in') listCategory.innerHTML = '<income-category></income-category>';
+
+    if (url === 'out') listCategory.innerHTML = '<expense-category></expense-category>';
+
+    // Menambahkan Kategori baru dan mengubah
+    const formModal = document.querySelector('.category-modal form');
+    formModal.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = formModal.querySelector('input#id-category').value;
+      const name = formModal.querySelector('input#category-name').value;
+      const created = formModal.querySelector('input#created').value;
+
+      if (url === 'in') {
+        const result = {
+          _id: id,
+          created_at: created,
+          updated_at: new Date().toISOString(),
+          title: name,
+        };
+        await IncomeCategoryIdb.putData(result).then(() => Swal.fire('Success', `${result.title} berhasil disimpan`, 'success')).then(() => window.location.reload());
+      }
+
+      if (url === 'out') {
+        const limit = getNumberFromString(formModal.querySelector('input#limit').value);
+        const result = {
+          _id: id,
+          created_at: created,
+          updated_at: new Date().toISOString(),
+          title: name,
+          limited: limit,
+        };
+        await ExpenseCategoryIdb.putData(result).then(() => Swal.fire('Success', `${result.title} berhasil disimpan`, 'success')).then(() => window.location.reload());
+      }
+    });
   },
 };
 

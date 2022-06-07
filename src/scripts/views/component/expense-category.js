@@ -1,9 +1,13 @@
+/* eslint-disable no-nested-ternary */
+import { nanoid } from 'nanoid';
+import Swal from 'sweetalert2';
 import ExpenseCategoryIdb from '../../data/idb/expense-category-idb';
 
 class ExpenseCategory extends HTMLElement {
   connectedCallback() {
     this.render();
     this.renderCategory();
+    this.inputNumber();
   }
 
   render() {
@@ -17,14 +21,15 @@ class ExpenseCategory extends HTMLElement {
           <div class="container">
             <h2>Tambah Kategori</h2>
             <form>
-              <input type="hidden" value="">
+              <input type="hidden" value="" id="created">
+              <input type="hidden" value="" id="id-category">
               <div class="form-control">
-                <label for="categori-name">Nama Kategori</label>
+                <label for="category-name">Nama Kategori</label>
                 <input type="text" id="category-name" required>
               </div>
               <div class="form-control">
                 <label for="limit">Batas Maksimum</label>
-                <input type="number" id="limit" required>
+                <input type="text" id="limit" required>
               </div>
               <div class="button-control">
                 <button type="reset" class="reset">Batal</button>
@@ -39,9 +44,13 @@ class ExpenseCategory extends HTMLElement {
     const addCategory = document.querySelector('.category-main .add-category');
     const resetButton = document.querySelector('.button-control .reset');
     const modalForm = document.querySelector('.category-modal');
+    const idInput = document.querySelector('.category-modal #id-category');
+    const created = document.querySelector('.category-modal #created');
 
     addCategory.addEventListener('click', () => {
       modalForm.classList.add('active');
+      idInput.value = nanoid(16);
+      created.value = new Date().toISOString();
     });
 
     resetButton.addEventListener('click', () => {
@@ -59,14 +68,93 @@ class ExpenseCategory extends HTMLElement {
         <li>
           <p>${element.title}</p>
           <div>
-            <button data-id="${element._id}"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button data-id="${element._id}"><i class="fa-solid fa-trash-can"></i></button>
+          <button data-id="${element._id}" data-created="${element.created_at}" data-name="${element.title}"  data-limit="${element.limited}" class="update"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button data-id="${element._id}" data-name="${element.title}" class="delete"><i class="fa-solid fa-trash-can"></i></button>
           </div>
         </li>
       `;
     });
 
     document.querySelector('.category-item ul').innerHTML = result;
+
+    // Untuk Menghapus Data
+    const buttonDeleteItems = document.querySelectorAll('.category-item .delete');
+
+    buttonDeleteItems.forEach((element) => {
+      element.addEventListener('click', () => {
+        const { id, name } = element.dataset;
+
+        Swal.fire({
+          title: `Apakah anda yakin ingin menghapus kategori ${name} ?`,
+          text: 'Data yang sudah dihapus tidak bisa dikembalikan.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#aaa',
+          cancelButtonText: 'Batal',
+          confirmButtonText: 'Hapus',
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            await ExpenseCategoryIdb.deleteData(id).then(() => {
+              Swal.fire(
+                'Berhasil',
+                `Data ${name} berhasil terhapus`,
+                'success',
+              ).then(() => window.location.reload());
+            });
+          }
+        });
+      });
+    });
+
+    // Untuk edit kategori
+    const buttonUpdateItems = document.querySelectorAll('button.update');
+
+    buttonUpdateItems.forEach((element) => {
+      element.addEventListener('click', () => {
+        window.scrollTo({ top: 0 });
+        const {
+          id, created, name, limit,
+        } = element.dataset;
+        const inputCreated = document.querySelector('input#created');
+        const inputId = document.querySelector('input#id-category');
+        const inputName = document.querySelector('input#category-name');
+        const inputLimit = document.querySelector('input#limit');
+
+        inputCreated.value = created;
+        inputId.value = id;
+        inputName.value = name;
+        inputLimit.value = this.getFormatNumber(limit, 'Rp. ');
+
+        // Agar modal form muncul
+        const modalForm = document.querySelector('.category-modal');
+        modalForm.classList.add('active');
+      });
+    });
+  }
+
+  inputNumber() {
+    const inputNumber = document.querySelector('#limit');
+
+    inputNumber.addEventListener('keyup', () => {
+      inputNumber.value = this.getFormatNumber(inputNumber.value, 'Rp. ');
+    });
+  }
+
+  getFormatNumber(numb, prefix) {
+    const numberString = numb.replace(/[^,\d]/g, '').toString();
+    const split = numberString.split(',');
+    const splitLength = split[0].length % 3;
+    let formatRupiah = split[0].substr(0, splitLength);
+    const toThousand = split[0].substr(splitLength).match(/\d{3}/gi);
+
+    if (toThousand) {
+      const separator = splitLength ? '.' : '';
+      formatRupiah += separator + toThousand.join('.');
+    }
+
+    formatRupiah = split[1] !== undefined ? `${formatRupiah}, ${split[1]}` : formatRupiah;
+    return prefix === undefined ? formatRupiah : (formatRupiah ? `Rp. ${formatRupiah}` : '');
   }
 }
 

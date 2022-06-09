@@ -2,9 +2,9 @@ import FincordAPI from '../fincord-api';
 import BaseIdb from './base-idb';
 
 const idDB = {
-  DATABASE_NAME: 'saving-category',
+  DATABASE_NAME: 'saving-plan',
   DATABASE_VERSION: 1,
-  OBJECT_STORE: 'saving-category',
+  OBJECT_STORE: 'saving-plan',
 };
 
 class SavingPlanIdb extends BaseIdb {
@@ -31,35 +31,15 @@ class SavingPlanIdb extends BaseIdb {
     }
 
     return dataFromIdb;
-
-    // output
-    /**
-    [
-      { _id: 'msk1',
-        title: 'Beli PC',
-        nominal: 12000000,
-        dateLine: '2022-08-20'
-      }
-    ]
-    */
   }
 
   // Menambahkan dan Mengubah data
-  static async putData(category) {
-    // Data yang harus diterima category
-    /**
-     * { _id: 'msk1',
-          title: 'Beli PC',
-          nominal: 12000000,
-          dateLine: '2022-08-20'
-        }
-     */
-
-    if (!category.hasOwnProperty('_id')) {
+  static async putData(plan) {
+    if (!plan.hasOwnProperty('_id')) {
       return;
     }
 
-    return super.putDataDB(idDB, category);
+    return super.putDataDB(idDB, plan);
   }
 
   // Menghapus kategori pemasukan

@@ -1,6 +1,9 @@
+/* eslint-disable import/order */
 import Swal from 'sweetalert2';
 import pageRender from '../../utils/page-render';
 import '../container/rencana-container';
+import { nanoid } from 'nanoid';
+import SavingPlanIdb from '../../data/idb/saving-plan-idb';
 
 const RencanaPage = {
   async render() {
@@ -28,8 +31,16 @@ const RencanaPage = {
           date: document.getElementById('date-plan').value,
         }),
       });
+      const result = {
+        _id: nanoid(16),
+        title: formValues.name,
+        nominal: formValues.nominal,
+        dateline: formValues.date,
+      };
 
-      console.log(formValues);
+      const hasil = await SavingPlanIdb.putData(result);
+      Swal.fire('Tersimpan', `Tabungan ${result.dateline} ${result.title} berhasil disimpan`, 'success').then(() => window.location.reload());
+      console.log(hasil);
     });
   },
 };

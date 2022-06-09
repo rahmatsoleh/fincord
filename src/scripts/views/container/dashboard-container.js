@@ -9,7 +9,7 @@ class DashboardContainer extends HTMLElement {
     this.render();
   }
 
-  render() {
+  async render() {
     this.innerHTML = `
       <article class="dashboard">
         <section class="dashboard-header">

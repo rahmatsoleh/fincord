@@ -12,7 +12,7 @@ class landingContainer extends HTMLElement {
           <div class="left">
             <h1>Kelola pengeluaranmu & buat rencana keuangan <span>masa depanmu</span></h1>
             <p class="desc">Fitur-fitur menakjubkan yang dapat membantu mengelola keuangan dengan baik</p>
-            <button class="btn"><a href="#mainY">Mulai</a></button>
+            <button class="btn"><a href="#/login">Mulai</a></button>
             <p class="text-align-center">Lihat fitur-fitur kami</p>
           </div>
           <div class="right">
@@ -22,7 +22,7 @@ class landingContainer extends HTMLElement {
           </div>
         </div>
       </section>
-      <section class="features"  id="mainY">
+      <section class="features">
         <div class="header">
           <h1>Selamat Datang di Fincord</h1>
           <p>Perkenalkan di bawah ini merupakan beberapa hal tentang aplikasi keuangan Fincord</p>
@@ -42,7 +42,7 @@ class landingContainer extends HTMLElement {
 
         <div class="container f-2">
           <div class="left">
-            <h2>Lacak uang sederhana</h2>
+            <h2>Pelacak uang sederhana</h2>
             <p>Catat transaksi harian dengan cepat dan masukkan ke dalam kategori yang jelas. Lihat pemasukan dan pengeluaran pada setiap periode karena dilengkapi dengan grafik.</p>
           </div>
           <div class="right">

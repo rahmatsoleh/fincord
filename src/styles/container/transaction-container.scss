@@ -4,9 +4,10 @@ article.transaction {
 
   .transaction-header {
     background-color: root.$primary;
-    color: #fff;
-    padding: 1.5em .5em;
-    border-radius: 0 0 20px 20px;
+    text-align: center;
+    color: root.$white;
+    padding: 1.5em 1.5em 1.5em;
+    border-radius: 0 0 30px 30px;
 
     h2 {
       text-transform: uppercase;

@@ -1,22 +1,27 @@
 @use '../root.scss' as root;
 // navigation bar
 .navbar-tagihan {
+    display: flex;
     width: auto;
+    gap: 1em;
     padding: 24px 64px;
-    background-color: root.$primary;
+    background-color: #0077b6;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0 0 30px 30px;
     .title {
         font-weight: bold;
         color: root.$white;
         text-transform: uppercase;
     }
     .add-reminder {
-        margin-top: 16px;
-        padding: 8px 12px;
-        border: none;
-        font-weight: 500;
-        border-radius: 6px;
-        background-color: root.$white;
-        color: root.$primary;
+        padding: 0.5em;
+        border: 2px solid #0077b6;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 4px 5px rgb(0 0 0 / 20%);
+        color: #0077b6;
+        font-size: 1.2em;
         &:hover {
             cursor: pointer;
         }
@@ -32,11 +37,14 @@
 // content tagihan
 .wrapper-content {
     padding: 24px 64px;
-    height: fit-content;
-    width: 100%;
-    background-color: root.$white;
+    display: flex;
+    width: auto;
+    background-color: #fff;
+    margin-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
     .content-tagihan {
-        width: 100%;
+        width: 80%;
         border-radius: 12px;
         border: 1px solid #BBB;
         padding: 40px;

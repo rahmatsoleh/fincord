@@ -1,12 +1,13 @@
 @use '../root.scss' as root;
 // navigation bar
 .navbar-tagihan {
-    width: 100%;
+    width: auto;
     padding: 24px 64px;
     background-color: root.$primary;
     .title {
         font-weight: bold;
         color: root.$white;
+        text-transform: uppercase;
     }
     .add-reminder {
         margin-top: 16px;
@@ -141,8 +142,7 @@
 
 // Tambah Tagihan Container
 .form-tambah {
-    width: 100%;
-    max-width: 500px;
+    width: 80%;
     margin: 32px auto;
     border: 1px solid #BBB;
     border-radius: 12px;
@@ -151,15 +151,19 @@
         padding: 16px;
         margin-bottom: 2px;
         .label {
-            font-size: 16px;
+            font-size: 1.2em;
             font-weight: normal;
             margin-bottom: 12px;
         }
         input {
-            padding: 16px 12px;
             border: 1px solid #BBB;
             border-radius: 12px;
+            font-size: 1.3em;
+            padding: 20px;
             width: 100%;
+            height: 44px;
+            box-sizing: border-box;
+            outline: none;
         }
     }
     .check {
@@ -168,7 +172,7 @@
     .reminder {
         margin: 12px 16px;
         .label-reminder {
-            font-size: 16px;
+            font-size: 1.2em;
             font-weight: normal;
             padding-top: 16px;
             padding-left: 12px;
@@ -177,18 +181,23 @@
             padding: 16px 12px;
             border: 1px solid #BBB;
             border-radius: 12px;
-            width: 130px;
+            font-size: 1.2em;
+            width: 100px;
         }
     }
     .simpan {
-        padding: 16px 20px;
-        border: none;
-        width: 100%;
-        background-color: root.$primary;
-        color: root.$white;
+        background-color: #0077b6;
+        color: #fff;
+        margin: 1em auto;
+        display: block;
+        width: 90%;
+        padding: 10px 1em;
+        font-size: 1.5em;
         font-weight: 500;
-        border-radius: 6px;
-        margin-top: 16px;
+        text-transform: uppercase;
+        border: none;
+        box-shadow: 0 4px 5px rgb(0 0 0 / 20%);
+        border-radius: 5px;
         &:hover {
             cursor: pointer;
         }

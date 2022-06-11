@@ -6,13 +6,14 @@ class PlanItems extends HTMLElement {
   connectedCallback() {
     this._id = this.dataset.id;
     this._name = this.dataset.name;
-    this._nominal = this.dataset.nominal;
+    this._nominal = parseInt(this.dataset.nominal, 10);
     this._dateline = this.dataset.dateline;
     this._sum = this.dataset.sum;
     this.render();
   }
 
   render() {
+    console.log(this._nominal);
     this.innerHTML = `
       <div class="plan-items">
         <div class="plan-items-header">

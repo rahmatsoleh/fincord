@@ -10,6 +10,7 @@ const TagihanPage = {
   async afterRender() {
     console.log('Halaman Tagihan');
   },
+
 };
 
 export default TagihanPage;

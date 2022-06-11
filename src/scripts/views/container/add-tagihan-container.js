@@ -1,8 +1,12 @@
 import '../../../styles/container/tagihan-container.scss';
+import { nanoid } from 'nanoid';
+import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
+import UrlParser from '../../routes/url-parser';
 
-class TambahTagihanContainer extends HTMLElement {
+class AddTagihanContainer extends HTMLElement {
   connectedCallback() {
     this.render();
+    this.afterRender();
   }
 
   render() {
@@ -38,7 +42,7 @@ class TambahTagihanContainer extends HTMLElement {
             </div>
 
             <div class='flex items-center reminder'>
-                <input type='number' class='input-reminder' name='reminder' placeholder='ex. 18.00' />
+                <input type='time' class='input-reminder' name='reminder' placeholder='ex. 18.00' />
                 <p class='label-reminder'>Pukul waktu penagihan</p>
             </div>
 
@@ -48,6 +52,39 @@ class TambahTagihanContainer extends HTMLElement {
         </section>
     `;
   }
+
+  async afterRender() {
+    let id;
+    const input = this.querySelectorAll('input');
+    if (UrlParser.parseActiveWithoutCombiner().id) {
+      const data = await TagihanItemIdb.getAllData();
+      const dataTagihan = data.find((item) => item._id.toLowerCase() == UrlParser.parseActiveWithoutCombiner().id);
+      // console.log(dataTagihan);
+      id = dataTagihan._id;
+      input[0].value = dataTagihan.name;
+      input[1].value = dataTagihan.payment;
+      input[2].value = dataTagihan.date;
+      if (dataTagihan.remember) {
+        input[3].checked = true;
+      }
+      input[4].value = dataTagihan.rememberBefore;
+      input[5].value = dataTagihan.rememberTime;
+    }
+    const button = this.querySelector('button');
+    button.onclick = async function () {
+      const result = {
+        _id: id || nanoid(),
+        name: input[0].value,
+        payment: input[1].value,
+        date: input[2].value,
+        remember: input[3].checked,
+        rememberBefore: input[4].value,
+        rememberTime: input[5].value,
+
+      };
+      const hasil = await TagihanItemIdb.putData(result).then(() => window.location.href = '#/tagihan');
+    };
+  }
 }
 
-customElements.define('tambah-tagihan-container', TambahTagihanContainer);
+customElements.define('add-tagihan-container', AddTagihanContainer);

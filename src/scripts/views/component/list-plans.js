@@ -47,9 +47,14 @@ class ListPlans extends HTMLElement {
     let card = '';
 
     dataImpian.forEach((item) => {
+      if (item.data) {
+        item.sum = item.data.reduce((a, b) => a + b.save);
+      } else {
+        item.sum = 0;
+      }
       card += `
       <plan-items
-          data-id="${item.id}"
+          data-id="${item._id}"
           data-name="${item.title}"
           data-nominal="${item.nominal}"
           data-dateline="${item.dateline}"

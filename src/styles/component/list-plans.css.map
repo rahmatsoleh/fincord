@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,GAAG,AAAA,WAAW,CAAC;EACb,UAAU,EAAE,GAAG;EACf,cAAc,EAAE,GAAG;CACpB",
+    "sources": [
+        "list-plans.scss"
+    ],
+    "names": [],
+    "file": "list-plans.css"
+}

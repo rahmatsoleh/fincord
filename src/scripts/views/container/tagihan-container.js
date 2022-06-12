@@ -1,8 +1,14 @@
 import '../../../styles/container/tagihan-container.scss';
+import TagihanHistory from '../../data/idb/tagihan-history-idb';
+import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
+import '../items/tagihan-item';
+import { nanoid } from 'nanoid';
 
 class TagihanContainer extends HTMLElement {
   connectedCallback() {
     this.render();
+    this.afterRender();
+    this.renderList();
   }
 
   render() {
@@ -18,70 +24,81 @@ class TagihanContainer extends HTMLElement {
             <button class='button-cancel'>Batal</button>
         </section>
         <section class='wrapper-content'>
-        <div class='content-tagihan'>
-            <div>
-                <h3 class='title-content'>Pembayaran WiFi</h3>
-                <h3 class='total-count'>Rp. 250.000</h3>
-                <button class='pay-button'>Bayar Sekarang</button>
-            </div>
-            <div>
-                <h4 class='heading'>Maksimal Pembayaran</h4>
-                <h4 class='subheading'>20 Juni</h4>
-                <p class='remaining'>5 Hari Lagi</p>
-                <div class='flex items-center action'>
-                    <button class='button edit-button'>
-                        <span class="icon">
-                        <i class="fa-solid mr-1 fa-edit"></i>
-                        </span>
-                    Edit</button>
-                    <button class='button delete-button'>
-                        <span class="icon">
-                        <i class="fa-solid mr-1 fa-trash"></i>
-                        </span>
-                    Hapus</button>
-                </div>
-            </div>
-        </div>
-        <div class='content-tagihan'>
-            <div>
-                <h3 class='title-content'>Pembayaran WiFi</h3>
-                <h3 class='total-count'>Rp. 870.000</h3>
-                <button class='pay-button'>Bayar Sekarang</button>
-            </div>
-            <div>
-                <h4 class='heading'>Maksimal Pembayaran</h4>
-                <h4 class='subheading'>28 Oktober</h4>
-                <p class='remaining'>27 Hari Lagi</p>
-                <div class='flex items-center action'>
-                    <button class='button edit-button'>
-                        <span class="icon">
-                        <i class="fa-solid mr-1 fa-edit"></i>
-                        </span>
-                    Edit</button>
-                    <button class='button delete-button'>
-                        <span class="icon">
-                        <i class="fa-solid mr-1 fa-trash"></i>
-                        </span>
-                    Hapus</button>
-                </div>
-            </div>
-        </div>
+        
         </section>
     `;
   }
+
+  async renderList() {
+    const dataTagihan = await TagihanItemIdb.getAllData();
+    const content = document.querySelectorAll('.wrapper-content')[0];
+    let card = '';
+
+    dataTagihan.forEach((item) => {
+      card += `
+      <tagihan-item
+          data-id="${item._id}"
+          data-name="${item.name}"
+          data-payment="${item.payment}"
+          data-date="${item.date}"
+          data-remember="${item.remember}"
+          data-remember_before="${item.rememberBefore}"
+          data-remember_time="${item.rememberTime}"
+      ></tagihan-item>
+      `;
+    });
+
+    content.innerHTML = card;
+    const buttonPay = document.querySelectorAll('.pay-button');
+    const buttonEdit = document.querySelectorAll('.edit-button');
+    const buttonDelete = document.querySelectorAll('.delete-button');
+    const buttonSave = document.querySelectorAll('.button-save')[0];
+    const cancelButton = document.querySelectorAll('.button-cancel')[0];
+    const modals = document.querySelectorAll('.modal')[0];
+    let id;
+    buttonPay.forEach((el) => el.onclick = function () {
+      id = el.dataset.id;
+      modals.style.display = 'block';
+      modals.style.visibility = 'visible';
+    });
+    buttonDelete.forEach((el) => el.onclick = function () {
+      id = el.dataset.id;
+      TagihanItemIdb.deleteData(id).then(() => { window.location.reload(); });
+    });
+    buttonEdit.forEach((el) => el.onclick = function () {
+      id = el.dataset.id;
+      window.location.href = `#/edit-tagihan/${id}`;
+    });
+
+    buttonSave.onclick = async function () {
+      const nominal = modals.querySelector('input').value;
+      const result = {
+        _id: nanoid(16),
+        date: new Date(),
+        idTagihan: id,
+        nominal,
+      };
+
+      const hasil = await TagihanHistory.putData(result).then(() => window.location.reload());
+      modals.style.display = 'none';
+      modals.style.visibility = 'hidden';
+    };
+
+    cancelButton.onclick = function () {
+      modals.style.display = 'none';
+      modals.style.visibility = 'hidden';
+    };
+  }
+
+  async afterRender() {
+    // modif this \ not working
+    const buttonReminder = document.querySelectorAll('.add-reminder')[0];
+
+    // const modals = document.querySelectorAll('.modal')[0];
+    buttonReminder.addEventListener('click', async () => {
+      window.location.href = '#/add-tagihan';
+    });
+  }
 }
-
-// modif this \ not working
-const buttonPay = document.querySelectorAll('.pay-button');
-const cancelButton = document.querySelectorAll('.button-cancel');
-const modals = document.querySelectorAll('.modal');
-
-buttonPay.onclick = function () {
-  modals.style.display = 'block';
-};
-
-cancelButton.onclick = function () {
-  modals.style.display = 'none';
-};
 
 customElements.define('tagihan-container', TagihanContainer);

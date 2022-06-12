@@ -1,0 +1,28 @@
+.swal2-modal {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.swal2-modal .swal2-html-container {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0 1em;
+}
+
+.swal2-modal .swal2-html-container input.swal2-input {
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+}
+
+.swal2-modal .swal2-actions button.swal2-styled {
+  padding: .7em 1em;
+  font-size: 1.2em;
+}
+/*# sourceMappingURL=sweet-alert2.css.map */

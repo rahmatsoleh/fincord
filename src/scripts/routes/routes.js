@@ -11,7 +11,7 @@ import TagihanPage from '../views/pages/tagihan';
 import Budget from '../views/pages/halaman-budget';
 import Notifications from '../views/pages/notifications';
 import Category from '../views/pages/category';
-import TambahTagihanPage from '../views/pages/tambah-tagihan';
+import AddTagihanPage from '../views/pages/add-tagihan';
 
 const routes = {
   '/': LandingPage,
@@ -25,7 +25,8 @@ const routes = {
   '/transaksi/:id': TransaksiPage,
   '/rencana': RencanaPage,
   '/tagihan': TagihanPage,
-  '/tambah-tagihan': TambahTagihanPage,
+  '/add-tagihan': AddTagihanPage,
+  '/edit-tagihan/:id': AddTagihanPage,
   '/notifikasi': Notifications,
   '/category/:id': Category,
 };

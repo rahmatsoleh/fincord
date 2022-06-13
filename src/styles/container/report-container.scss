@@ -18,20 +18,25 @@ article.report {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     gap: 10px;
+    width: 100%;
 
-    a {
+    button {
       border: 2px solid root.$primary;
       text-decoration: none;
-      padding: .5em 1em;
       border-radius: 5px;
       box-shadow: 0 4px 5px rgba(0,0,0,.2);
       font-size: 1.2em;
+      width: 130px;
+      text-align: center;
+      height: 44px;
+      line-height: 44px;
     }
 
-    a:hover,
+    button:hover,
     .active {
+      cursor: pointer;
       background-color: root.$primary;
       color: #fff;
       transition: .2s;
@@ -50,6 +55,7 @@ article.report {
       // border: 2px solid root.$primary;
       border: none;
       border-radius: 5px;
+      width: 135px;
     }
 
     #chart {

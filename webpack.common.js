@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -40,6 +41,9 @@ module.exports = {
           // },
         },
       ],
+    }),
+    new MomentLocalesPlugin({
+      localesToKeep: ['es-us', 'ru'],
     }),
   ],
 };

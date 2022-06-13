@@ -44,11 +44,11 @@ class PlanItems extends HTMLElement {
         </div>
         <div class="plan-items-footer">
           <div>
-            <button aria-label="Alokasikan">Alokasikan</button>
+            <button aria-label="Alokasikan" class="alokasi">Alokasikan</button>
           </div>
           <div>
-            <button aria-label="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button aria-label="Hapus"><i class="fa-solid fa-trash-can"></i></button>
+            <button aria-label="Edit" class="update-button"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button aria-label="Hapus" class="delete-button"><i class="fa-solid fa-trash-can"></i></button>
           </div>
         </div>
       </div>

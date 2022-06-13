@@ -1,5 +1,6 @@
 import '../items/plan-items';
 import '../../../styles/component/list-plans.scss';
+import Swal from 'sweetalert2';
 import SavingPlanIdb from '../../data/idb/saving-plan-idb';
 
 // const rencana = [
@@ -44,7 +45,7 @@ class ListPlans extends HTMLElement {
     const dataImpian = await SavingPlanIdb.getAllData();
     const tempList = this.querySelector('.list-plans');
 
-    let card = '';
+    let result = '';
 
     dataImpian.forEach((item) => {
       if (item.data) {
@@ -52,7 +53,7 @@ class ListPlans extends HTMLElement {
       } else {
         item.sum = 0;
       }
-      card += `
+      result += `
       <plan-items
           data-id="${item._id}"
           data-name="${item.title}"
@@ -63,7 +64,21 @@ class ListPlans extends HTMLElement {
       `;
     });
 
-    tempList.innerHTML = card;
+    tempList.innerHTML = result;
+    let id;
+    // Hapus
+    const buttonDelete = document.querySelectorAll('.delete-button');
+    buttonDelete.forEach((item) => item.onclick = () => {
+      // id = item.dataset.id;
+      SavingPlanIdb.deleteData(id).then(() => { window.location.reload(); });
+    });
+
+    // Alokasi
+    const buttonAlokasi = document.querySelectorAll('.alokasi');
+    buttonAlokasi.forEach((item) => {
+      item.addEventListener('click', () => {
+      });
+    });
   }
 }
 

@@ -12,91 +12,38 @@ class ReportContainer extends HTMLElement {
           <h2>Laporan</h2>
         </section>
         <section class="report-nav">
-          <a href="" data-nav="day" class="active">Harian</a>
-          <a href="" data-nav="month">Bulanan</a>
-          <a href="" data-nav="year">Tahunan</a>
+          <button data-nav="week" class="active">Mingguan</button>
+          <button data-nav="month">Bulanan</button>
+          <button data-nav="year">Tahunan</button>
         </section>
         <section class="report-grafik">
           <select>
-            <option value="1">Januari</option>
-            <option value="2">Februari</option>
-            <option value="3">Maret</option>
-            <option value="4">April</option>
-            <option value="5">Mei</option>
-            <option value="6">Juni</option>
-            <option value="7">Juli</option>
-            <option value="8">Agustus</option>
-            <option value="9">September</option>
-            <option value="10">Oktober</option>
-            <option value="11">November</option>
-            <option value="12">Desember</option>
           </select>
           <div id="chart"></div>
           <div class="report-grafik-sum">
             <div>
               <h3>Pemasukan</h3>
-              <p>Rp. 10.000.000</p>
+              <p id="income"></p>
             </div>
             <div>
               <h3>Pengeluaran</h3>
-              <p>Rp. 5.400.000</p>
+              <p id="expense"></p>
             </div>
             <div>
               <h3>Sisa Saldo</h3>
-              <p>Rp. 4.600.000</p>
+              <p id="remain"></p>
             </div>
           </div>
         </section>
         <section class="report-history">
           <h3>Riwayat Transaksi</h3>
           <div class="report-history-nav">
-            <button class="active">Semua</button>
-            <button>Masuk</button>
-            <button>Keluar</button>
+            <button class="active" data-nav="all">Semua</button>
+            <button data-nav="in">Masuk</button>
+            <button data-nav="out">Keluar</button>
           </div>
           <div class="report-history-list">
-            <ul>
-              <li>
-                <div class="main-list">
-                  <p>Masuk</p>
-                  <h4>Gaji Pokok</h4>
-                  <p>Rp. 5.000.000</p>
-                </div>
-                <div class="badge-list">
-                  <p>12 Mei 2022</p>
-                </div>
-              </li>
-              <li class="out">
-                <div class="main-list">
-                  <p>Keluar</p>
-                  <h4>Transportasi</h4>
-                  <p>Rp. 100.000</p>
-                </div>
-                <div class="badge-list">
-                  <p>12 Mei 2022</p>
-                </div>
-              </li>
-              <li class="out">
-                <div class="main-list">
-                  <p>Keluar</p>
-                  <h4>Transportasi</h4>
-                  <p>Rp. 100.000</p>
-                </div>
-                <div class="badge-list">
-                  <p>12 Mei 2022</p>
-                </div>
-              </li>
-              <li>
-                <div class="main-list">
-                  <p>Masuk</p>
-                  <h4>Gaji Pokok</h4>
-                  <p>Rp. 5.000.000</p>
-                </div>
-                <div class="badge-list">
-                  <p>12 Mei 2022</p>
-                </div>
-              </li>
-            </ul>
+            <ul></ul>
           </div>
         </section>
       </article>

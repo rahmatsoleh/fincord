@@ -1,5 +1,10 @@
 import pageRender from '../../utils/page-render';
 import '../container/dashboard-container';
+import IncomeTransactionIdb from '../../data/idb/income-transactions';
+import ExpenseTransactionIdb from '../../data/idb/expense-transaction-idb';
+import { commaSeparateNumber } from '../../utils/number';
+import renderCategoryElement from '../../utils/dashboard/render-category';
+import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
 
 const BerandaPage = {
   async render() {
@@ -8,7 +13,26 @@ const BerandaPage = {
   },
 
   async afterRender() {
-    console.log('Halaman Beranda');
+    // Variable component
+    const currentElement = document.querySelector('#current');
+    const incomeElement = document.querySelector('#income');
+    const expenseElement = document.querySelector('#expense');
+    const billDashboardElement = document.querySelector('bill-dashboard');
+
+    // Variable Data
+    const incomeTransaction = await IncomeTransactionIdb.getAllData();
+    const expenseTransaction = await ExpenseTransactionIdb.getAllData();
+    const sumIncome = incomeTransaction.reduce((accumulator, array) => accumulator + array.count, 0);
+    const sumExpense = expenseTransaction.reduce((accumulator, array) => accumulator + array.count, 0);
+    const dataBills = await TagihanItemIdb.getAllData();
+
+    currentElement.textContent = `Rp. ${commaSeparateNumber(sumIncome - sumExpense)}`;
+    incomeElement.textContent = `Rp. ${commaSeparateNumber(sumIncome)}`;
+    expenseElement.textContent = `Rp. ${commaSeparateNumber(sumExpense)}`;
+
+    renderCategoryElement(expenseTransaction);
+
+    billDashboardElement.props = dataBills;
   },
 };
 

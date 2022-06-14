@@ -10,7 +10,7 @@ class SaldoDashboard extends HTMLElement {
       <div class="balance-dashboard">
         <div class="balance-dashboard-main">
           <p>Sisa saldo anda</p>
-          <h2>Rp. 2.503.500,-</h2>
+          <h2 id="current">Rp. 0</h2>
         </div>
         <div class="balance-trans">
           <div class="trans-item">
@@ -19,7 +19,7 @@ class SaldoDashboard extends HTMLElement {
             </div>
             <div>
               <p>Pemasukan</p>
-              <h3>Rp. 5.000.000</h3>
+              <h3 id="income">Rp. 0</h3>
             </div>
           </div>
           <div class="trans-item">
@@ -28,7 +28,7 @@ class SaldoDashboard extends HTMLElement {
             </div>
             <div>
               <p>Pengeluaran</p>
-              <h3>Rp. 2.496.600</h3>
+              <h3 id="expense">Rp. 0</h3>
             </div>
           </div>
         </div>

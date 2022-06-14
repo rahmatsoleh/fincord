@@ -1,8 +1,8 @@
+import { nanoid } from 'nanoid';
 import '../../../styles/container/tagihan-container.scss';
 import TagihanHistory from '../../data/idb/tagihan-history-idb';
 import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
 import '../items/tagihan-item';
-import { nanoid } from 'nanoid';
 
 class TagihanContainer extends HTMLElement {
   connectedCallback() {

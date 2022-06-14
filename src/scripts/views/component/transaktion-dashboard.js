@@ -30,9 +30,20 @@ const transaksi = [
 ];
 
 class TransaktionDashboard extends HTMLElement {
+  constructor() {
+    super();
+    this._transaksi = [];
+  }
+
+  set props(value) {
+    this._transaksi = value;
+    const listTransaktion = document.querySelector('.dashboard-expend div');
+    listTransaktion.innerHTML = cardExpends(this._transaksi);
+    this.renderProgressBar();
+  }
+
   connectedCallback() {
     this.render();
-    this.renderProgressBar();
   }
 
   render() {
@@ -40,14 +51,13 @@ class TransaktionDashboard extends HTMLElement {
       <div class="dashboard-expend">
         <p class="title">Pengeluaran bulan ini</p>
         <div>
-          ${cardExpends(transaksi)}
         </div>
       </div>
     `;
   }
 
   renderProgressBar() {
-    progressIndicator(transaksi);
+    progressIndicator(this._transaksi);
   }
 }
 

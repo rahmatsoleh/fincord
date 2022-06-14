@@ -13,12 +13,12 @@ class DashboardContainer extends HTMLElement {
     this.innerHTML = `
       <article class="dashboard">
         <section class="dashboard-header">
-          <div class="profile">
+          <a href="/#/profile" class="profile">
             <div class="profile-images">
               ${getProfileByName('Ilyas')}
             </div>
             <p>Halo Ilyas</p>
-          </div>
+          </a>
           <a href="#/notifikasi" aria-label="notification">
             <span class="icon">
               <i class="fa-solid fa-bell"></i>

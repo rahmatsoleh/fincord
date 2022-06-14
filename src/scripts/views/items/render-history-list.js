@@ -1,11 +1,11 @@
 import moment from 'moment';
 
-const renderHistoryList = (dataTransaction) => {
+const renderHistoryList = async (dataTransaction) => {
   const navButton = document.querySelectorAll('.report-history-nav button');
   const placeHistoryList = document.querySelector('.report-history-list ul');
   let listElement = '';
 
-  dataTransaction.forEach((item) => {
+  await dataTransaction.forEach((item) => {
     listElement += `
       <li class="${item.tag === 'out' ? 'out' : ''}">
         <div class="main-list">

@@ -18,7 +18,7 @@ class PlanItems extends HTMLElement {
       <div class="plan-items">
         <div class="plan-items-header">
           <h3>${this._name}</h3>
-          <div id="${this._id}" class="temp-bar"></div>
+          <div id="plan-${this._id}" class="temp-bar"></div>
         </div>
         <div class="plan-items-main">
           <div class="detail">
@@ -117,7 +117,7 @@ class PlanItems extends HTMLElement {
   }
 
   progressBar(id, present) {
-    const bar = new ProgressBar.Line(document.querySelector(`#${id}`), {
+    const bar = new ProgressBar.Line(document.querySelector(`#plan-${id}`), {
       strokeWidth: 4,
       easing: 'easeInOut',
       duration: 1400,

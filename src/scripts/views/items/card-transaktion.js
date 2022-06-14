@@ -1,4 +1,5 @@
 import '../../../styles/items/card-transaktion.scss';
+import { commaSeparateNumber } from '../../utils/number';
 
 const cardExpends = (dataTrans) => {
   let cards = '';
@@ -14,15 +15,15 @@ const cardExpends = (dataTrans) => {
           <table>
             <tr>
               <td class="key">Batas Pengeluaran</td>
-              <td class="value">Rp. ${item.max}</td>
+              <td class="value">Rp. ${commaSeparateNumber(item.max)}</td>
             </tr>
             <tr>
               <td class="key">Pengeluaran</td>
-              <td class="value">Rp. ${item.use}</td>
+              <td class="value">Rp. ${commaSeparateNumber(item.use)}</td>
             </tr>
             <tr>
               <th class="key">Sisa budget</th>
-              <th class="value">Rp. ${item.max - item.use}</th>
+              <th class="value">Rp. ${commaSeparateNumber(item.max - item.use)}</th>
             </tr>
           </table>
         </div>

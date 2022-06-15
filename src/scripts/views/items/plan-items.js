@@ -47,8 +47,8 @@ class PlanItems extends HTMLElement {
             <button aria-label="Alokasikan" class="alokasi">Alokasikan</button>
           </div>
           <div>
-            <button aria-label="Edit" class="update-button"><i class="fa-solid fa-pen-to-square"></i></button>
-            <button aria-label="Hapus" class="delete-button"><i class="fa-solid fa-trash-can"></i></button>
+            <button aria-label="Edit" class="update-button" data-id="${this._id}"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button aria-label="Hapus" class="delete-button" data-id="${this._id}"><i class="fa-solid fa-trash-can"></i></button>
           </div>
         </div>
       </div>

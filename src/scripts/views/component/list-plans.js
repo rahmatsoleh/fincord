@@ -65,12 +65,34 @@ class ListPlans extends HTMLElement {
     });
 
     tempList.innerHTML = result;
-    let id;
+    // let id;
     // Hapus
     const buttonDelete = document.querySelectorAll('.delete-button');
     buttonDelete.forEach((item) => item.onclick = () => {
-      // id = item.dataset.id;
-      SavingPlanIdb.deleteData(id).then(() => { window.location.reload(); });
+      const { id } = item.dataset;
+      // SavingPlanIdb.deleteData(id).then(() => { window.location.reload(); });
+
+      /** resolve */
+      Swal.fire({
+        title: 'Apakah anda yakin ?',
+        text: 'Data yang dihapus tidak bisa dikembalikan.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Hapus',
+        cancelButtonText: 'Batal',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await SavingPlanIdb.deleteData(id).then(() => {
+            Swal.fire(
+              'Success',
+              'Data berhasil terhapus',
+              'success',
+            ).then(() => window.location.reload());
+          });
+        }
+      });
     });
 
     // Alokasi

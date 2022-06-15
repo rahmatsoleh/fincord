@@ -10,6 +10,7 @@ const idDB = {
 class NotificationsIdb extends BaseIdb {
   // Melihat seluruh data Notifications
   static async getAllData() {
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
     const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
@@ -33,6 +34,7 @@ class NotificationsIdb extends BaseIdb {
       });
     }
 
+    document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;
 
     // output
@@ -52,6 +54,7 @@ class NotificationsIdb extends BaseIdb {
 
   // Menambahkan dan Mengubah data
   static async putData(notif) {
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
     // Data yang harus diterima notif
     /**
      * {  _id: ,
@@ -68,12 +71,17 @@ class NotificationsIdb extends BaseIdb {
       return;
     }
 
-    return super.putDataDB(idDB, notif);
+    const result = await super.putDataDB(idDB, notif);
+    document.querySelector('.loading-wrapper').classList.add('d-none');
+    return result;
   }
 
   // Menghapus kategori notif
   static async deleteData(id) {
-    return super.deleteDataDB(idDB, id);
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
+    const result = await super.deleteDataDB(idDB, id);
+    document.querySelector('.loading-wrapper').classList.add('d-none');
+    return result;
   }
 }
 

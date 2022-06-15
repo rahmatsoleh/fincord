@@ -10,6 +10,7 @@ const idDB = {
 class SavingTransactionIdb extends BaseIdb {
   // Melihat seluruh data transaction saving
   static async getAllData() {
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
     const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
@@ -34,6 +35,7 @@ class SavingTransactionIdb extends BaseIdb {
       });
     }
 
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
     return dataFromIdb;
     // output
     /**
@@ -49,6 +51,7 @@ class SavingTransactionIdb extends BaseIdb {
 
   // Menambahkan dan Mengubah data
   static async putData(savings) {
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
     // Data yang harus diterima savings
     /**
      * {  _id: 'asdfghj',
@@ -62,12 +65,17 @@ class SavingTransactionIdb extends BaseIdb {
       return;
     }
 
-    return super.putDataDB(idDB, savings);
+    const result = await super.putDataDB(idDB, savings);
+    document.querySelector('.loading-wrapper').classList.add('d-none');
+    return result;
   }
 
   // Menghapus kategori pengeluaran
   static async deleteData(id) {
-    return super.deleteDataDB(idDB, id);
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
+    const result = await super.deleteDataDB(idDB, id);
+    document.querySelector('.loading-wrapper').classList.add('d-none');
+    return result;
   }
 }
 

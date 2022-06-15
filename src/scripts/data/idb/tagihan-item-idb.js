@@ -10,6 +10,7 @@ const idDB = {
 class TagihanItemIdb extends BaseIdb {
   // Melihat seluruh data kategori saving
   static async getAllData() {
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
     const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
@@ -33,21 +34,28 @@ class TagihanItemIdb extends BaseIdb {
       });
     }
 
+    document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;
   }
 
   // Menambahkan dan Mengubah data
   static async putData(plan) {
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
     if (!plan.hasOwnProperty('_id')) {
       return;
     }
 
-    return super.putDataDB(idDB, plan);
+    const result = await super.putDataDB(idDB, plan);
+    document.querySelector('.loading-wrapper').classList.add('d-none');
+    return result;
   }
 
   // Menghapus kategori pemasukan
   static async deleteData(id) {
-    return super.deleteDataDB(idDB, id);
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
+    const result = await super.deleteDataDB(idDB, id);
+    document.querySelector('.loading-wrapper').classList.add('d-none');
+    return result;
   }
 }
 

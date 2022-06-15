@@ -243,7 +243,7 @@ const LaporanPage = {
 
     navBarMenu.forEach((element) => {
       element.addEventListener('click', () => {
-        chart.destroy();
+        if (!element.parentElement.classList.contains('active')) chart.destroy();
       });
     });
   },

@@ -1,4 +1,5 @@
 import '../../../styles/container/login-container.scss';
+import login from '../../utils/login';
 
 class LoginContainer extends HTMLElement {
   connectedCallback() {
@@ -13,7 +14,7 @@ class LoginContainer extends HTMLElement {
             <h2>FINCORD<h2/>
           </div>
           <div class="right">       
-              <form action="">    
+              <form id="login" action="javascript:void(0)">
                 <div class="title"><h1>Masuk<h1/></div>
                 <input type="text" id="username" name="username" placeholder="Username" required>
 

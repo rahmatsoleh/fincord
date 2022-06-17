@@ -1,5 +1,6 @@
 import pageRender from '../../utils/page-render';
 import '../container/login-container';
+import login from '../../utils/login';
 
 const LoginPage = {
   async render() {
@@ -9,6 +10,7 @@ const LoginPage = {
 
   async afterRender() {
     console.log('Halaman Login Page');
+    login();
   },
 };
 

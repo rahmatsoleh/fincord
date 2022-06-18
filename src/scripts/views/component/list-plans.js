@@ -1,6 +1,9 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import '../items/plan-items';
 import '../../../styles/component/list-plans.scss';
 import Swal from 'sweetalert2';
+import { nanoid } from 'nanoid';
 import SavingPlanIdb from '../../data/idb/saving-plan-idb';
 
 // const rencana = [
@@ -65,12 +68,10 @@ class ListPlans extends HTMLElement {
     });
 
     tempList.innerHTML = result;
-    // let id;
     // Hapus
     const buttonDelete = document.querySelectorAll('.delete-button');
     buttonDelete.forEach((item) => item.onclick = () => {
       const { id } = item.dataset;
-      // SavingPlanIdb.deleteData(id).then(() => { window.location.reload(); });
 
       /** resolve */
       Swal.fire({
@@ -97,9 +98,40 @@ class ListPlans extends HTMLElement {
 
     // Alokasi
     const buttonAlokasi = document.querySelectorAll('.alokasi');
-    buttonAlokasi.forEach((item) => {
-      item.addEventListener('click', () => {
+    buttonAlokasi.forEach((item) => item.onclick = () => {
+    });
+
+    // Edit
+    const buttonUpdate = document.querySelectorAll('.update-button');
+    buttonUpdate.forEach((item) => item.onclick = async () => {
+      const {
+        id, name, nominal, dateline,
+      } = item.dataset;
+      const { value: formValues } = await Swal.fire({
+        title: 'Tambahkan Rencana',
+        html:
+          `<input type="text" id="name-plan" class="swal2-input" placeholder="${name}">`
+          + `<input type="number" id="nominal-plan" class="swal2-input" placeholder="Rp. ${nominal}">`
+          + `<input type="date" id="date-plan" class="swal2-input" placeholder="${dateline}">`,
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: 'Simpan',
+        preConfirm: () => ({
+          title: document.getElementById('name-plan').value,
+          nominal: document.getElementById('nominal-plan').value,
+          date: document.getElementById('date-plan').value,
+        }),
       });
+      const result = {
+        _id: id,
+        title: formValues.title,
+        nominal: formValues.nominal,
+        dateline: formValues.date,
+      };
+
+      const hasil = await SavingPlanIdb.putData(result);
+      Swal.fire('Tersimpan', `Tabungan ${result.dateline} ${result.title} berhasil diupdate`, 'success').then(() => window.location.reload());
+      console.log(hasil);
     });
   }
 }

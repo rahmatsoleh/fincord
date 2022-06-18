@@ -28,9 +28,7 @@ const login = () => {
       return response.json();
     }).then((data) => {
       if (!data.error) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('username', data.username);
-        localStorage.setItem('user_id', data.user_id);
+        localStorage.setItem('data', JSON.stringify(data.data));
         // redirect('/#/beranda');
         window.location.href = '/#/beranda';
       } else {

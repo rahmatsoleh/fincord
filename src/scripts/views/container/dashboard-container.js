@@ -7,6 +7,7 @@ import '../component/bill-dashboard';
 class DashboardContainer extends HTMLElement {
   connectedCallback() {
     this.render();
+    this.name = localStorage.getItem('name');
   }
 
   async render() {

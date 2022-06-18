@@ -2,229 +2,237 @@
 
 // navigation bar
 .navbar-tagihan {
-    padding: 1.5em 1.5em 1.5em 1.5em;
-    background-color: root.$primary;
+  padding: 1.5em 1.5em 1.5em 1.5em;
+  background-color: root.$primary;
 
-    .title {
-        font-weight: bold;
-        color: root.$white;
+  .title {
+    font-weight: bold;
+    color: root.$white;
+  }
+
+  .add-reminder {
+    margin-top: 16px;
+    padding: 14px 12px;
+    border: none;
+    font-weight: 500;
+    border-radius: 6px;
+    background-color: root.$white;
+    color: root.$primary;
+
+    &:hover {
+      cursor: pointer;
     }
-
-    .add-reminder {
-        margin-top: 16px;
-        padding: 8px 12px;
-        border: none;
-        font-weight: 500;
-        border-radius: 6px;
-        background-color: root.$white;
-        color: root.$primary;
-
-        &:hover {
-            cursor: pointer;
-        }
-    }
+  }
 }
 
 .heading {
-    font-size: 24px;
-    font-weight: 600;
-    color: root.$primary;
+  font-size: 24px;
+  font-weight: 600;
+  color: root.$primary;
 }
 
 // content tagihan
 .wrapper-content {
-    padding: 1em;
-    height: fit-content;
-    // width: 100%;
-    background-color: root.$white;
+  padding: 1em;
+  height: fit-content;
+  // width: 100%;
+  background-color: root.$white;
 
-    .content-tagihan {
-        border-radius: 12px;
-        border: 1px solid #BBB;
-        padding: 40px;
-        margin: 12px 0;
-        display: flex;
-        justify-content: space-between;
-        font-weight: 600;
-        color: root.$primary;
+  .content-tagihan {
+    border-radius: 12px;
+    border: 1px solid #bbb;
+    padding: 40px;
+    margin: 12px 0;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    color: root.$primary;
 
-        .title-content {
-            font-size: 30pt;
-            font-weight: 600;
-            color: root.$primary;
-        }
+    .title-content {
+      font-size: 30pt;
+      font-weight: 600;
+      color: root.$primary;
     }
+  }
 
-    .subheading,
-    .remaining {
-        color: root.$dark;
+  .subheading,
+  .remaining {
+    color: root.$dark;
+  }
+
+  .action {
+    margin-top: 16px;
+    grid-gap: 4px;
+  }
+
+  .subheading {
+    font-size: 32px;
+    margin-top: 12px;
+  }
+
+  .edit-button {
+    background-color: rgb(16, 177, 16);
+    color: root.$white;
+    width: 50%;
+    padding: 20px;
+  }
+
+  .delete-button {
+    background-color: rgb(224, 20, 20);
+    color: root.$white;
+    width: 50%;
+    padding:20px;
+  }
+
+  .remaining {
+    margin-top: 16px;
+    font-size: 16px;
+    margin-top: 20px;
+    font-weight: 400;
+    padding: 8px 16px;
+    border: 1px solid #bbb;
+    border-radius: 30px;
+  }
+
+  .total-count {
+    color: root.$dark;
+    font-weight: 600;
+    padding: 32px 0;
+    font-size: 36px;
+  }
+
+  .pay-button {
+    padding: 16px 32px;
+    border: none;
+    border-radius: 6px;
+    background-color: root.$primary;
+    color: root.$white;
+
+    &:hover {
+      cursor: pointer;
     }
+  }
+}
 
-    .action {
-        margin-top: 16px;
-        grid-gap: 4px;
-    }
-
-    .subheading {
-        font-size: 32px;
-        margin-top: 12px;
-    }
-
-    .edit-button {
-        background-color: rgb(16, 177, 16);
-        color: root.$white;
-        width: 50%;
-    }
-
-    .delete-button {
-        background-color: rgb(224, 20, 20);
-        color: root.$white;
-        width: 50%;
-    }
-
-    .remaining {
-        margin-top: 16px;
-        font-size: 16px;
-        margin-top: 20px;
-        font-weight: 400;
-        padding: 8px 16px;
-        border: 1px solid #BBB;
-        border-radius: 30px;
-    }
-
-    .total-count {
-        color: root.$dark;
-        font-weight: 600;
-        padding: 32px 0;
-        font-size: 36px;
-    }
-
-    .pay-button {
-        padding: 16px 32px;
-        border: none;
-        border-radius: 6px;
-        background-color: root.$primary;
-        color: root.$white;
-
-        &:hover {
-            cursor: pointer;
-        }
-    }
+@media screen and (max-width: 768px) {
+  .modal {
+    width: auto !important;
+    margin: 12px 12px !important;
+  }
 }
 
 // Modal Container
 .modal {
+  width: 100%;
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: root.$white;
+  border: 1px solid #bbb;
+  padding: 56px 48px;
+  // change this
+  visibility: hidden;
+  display: block;
+  left: 0;
+  right: 0;
+  position: fixed;
+  z-index: 1;
+  top: 20%;
+
+  .input-nominal {
+    padding: 16px 12px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    margin-top: 16px;
     width: 100%;
-    max-width: 800px;
-    margin: 50px auto;
-    background-color: root.$white;
-    border: 1px solid #BBB;
-    padding: 56px 48px;
-    // change this
-    visibility: hidden;
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 20%;
-    top: 20%;
+  }
 
-    .input-nominal {
-        padding: 16px 12px;
-        border: 1px solid #BBB;
-        border-radius: 8px;
-        margin-top: 16px;
-        width: 100%;
+  .button-save,
+  .button-cancel {
+    padding: 16px 20px;
+    width: 30%;
+    font-weight: 500;
+    border-radius: 6px;
+    margin-top: 16px;
+
+    &:hover {
+      cursor: pointer;
     }
+  }
 
-    .button-save,
-    .button-cancel {
-        padding: 16px 20px;
-        width: 30%;
-        font-weight: 500;
-        border-radius: 6px;
-        margin-top: 16px;
+  .button-save {
+    background-color: root.$primary;
+    color: root.$white;
+    border: none;
+  }
 
-        &:hover {
-            cursor: pointer;
-        }
-    }
-
-    .button-save {
-        background-color: root.$primary;
-        color: root.$white;
-        border: none;
-    }
-
-    .button-cancel {
-        background-color: transparent;
-        color: root.$primary;
-        border: 1px solid root.$primary;
-        margin-left: 12px;
-    }
+  .button-cancel {
+    background-color: transparent;
+    color: root.$primary;
+    border: 1px solid root.$primary;
+    margin-left: 12px;
+  }
 }
 
 // Tambah Tagihan Container
 .form-tambah {
-    width: 100%;
-    max-width: 500px;
-    margin: 32px auto;
-    border: 1px solid #BBB;
-    border-radius: 12px;
+  margin: 32px 12px;
+  border: 1px solid #bbb;
+  border-radius: 12px;
+  padding: 16px;
+
+  .form-group {
     padding: 16px;
+    margin-bottom: 2px;
 
-    .form-group {
-        padding: 16px;
-        margin-bottom: 2px;
-
-        .label {
-            font-size: 12pt;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        input {
-            padding: 16px 12px;
-            border: 1px solid #BBB;
-            border-radius: 12px;
-            width: 100%;
-        }
+    .label {
+      font-size: 12pt;
+      font-weight: 600;
+      margin-bottom: 12px;
     }
 
-    .check {
-        padding-bottom: 16px;
+    input {
+      padding: 16px 12px;
+      border: 1px solid #bbb;
+      border-radius: 12px;
+      width: 100%;
+    }
+  }
+
+  .check {
+    padding-bottom: 16px;
+  }
+
+  .reminder {
+    margin: 12px 16px;
+
+    .label-reminder {
+      font-size: 16px;
+      font-weight: normal;
+      padding-top: 16px;
+      padding-left: 12px;
     }
 
-    .reminder {
-        margin: 12px 16px;
-
-        .label-reminder {
-            font-size: 16px;
-            font-weight: normal;
-            padding-top: 16px;
-            padding-left: 12px;
-        }
-
-        .input-reminder {
-            padding: 16px 12px;
-            border: 1px solid #BBB;
-            border-radius: 12px;
-            width: 130px;
-        }
+    .input-reminder {
+      padding: 16px 12px;
+      border: 1px solid #bbb;
+      border-radius: 12px;
+      width: 130px;
     }
+  }
 
-    .simpan {
-        padding: 16px 20px;
-        border: none;
-        width: 100%;
-        background-color: root.$primary;
-        color: root.$white;
-        border-radius: 6px;
-        margin-top: 16px;
-        font-size: medium;
-        font-weight: normal;
+  .simpan {
+    padding: 16px 20px;
+    border: none;
+    width: 100%;
+    background-color: root.$primary;
+    color: root.$white;
+    border-radius: 6px;
+    margin-top: 16px;
+    font-size: medium;
+    font-weight: normal;
 
-        &:hover {
-            cursor: pointer;
-        }
+    &:hover {
+      cursor: pointer;
     }
+  }
 }

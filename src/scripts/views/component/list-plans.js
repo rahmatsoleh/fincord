@@ -1,5 +1,9 @@
+/* eslint-disable guard-for-in */
+/* eslint-disable no-restricted-syntax */
 import '../items/plan-items';
 import '../../../styles/component/list-plans.scss';
+import Swal from 'sweetalert2';
+import { nanoid } from 'nanoid';
 import SavingPlanIdb from '../../data/idb/saving-plan-idb';
 
 // const rencana = [
@@ -44,7 +48,7 @@ class ListPlans extends HTMLElement {
     const dataImpian = await SavingPlanIdb.getAllData();
     const tempList = this.querySelector('.list-plans');
 
-    let card = '';
+    let result = '';
 
     dataImpian.forEach((item) => {
       if (item.data) {
@@ -52,7 +56,7 @@ class ListPlans extends HTMLElement {
       } else {
         item.sum = 0;
       }
-      card += `
+      result += `
       <plan-items
           data-id="${item._id}"
           data-name="${item.title}"
@@ -63,7 +67,72 @@ class ListPlans extends HTMLElement {
       `;
     });
 
-    tempList.innerHTML = card;
+    tempList.innerHTML = result;
+    // Hapus
+    const buttonDelete = document.querySelectorAll('.delete-button');
+    buttonDelete.forEach((item) => item.onclick = () => {
+      const { id } = item.dataset;
+
+      /** resolve */
+      Swal.fire({
+        title: 'Apakah anda yakin ?',
+        text: 'Data yang dihapus tidak bisa dikembalikan.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Hapus',
+        cancelButtonText: 'Batal',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await SavingPlanIdb.deleteData(id).then(() => {
+            Swal.fire(
+              'Success',
+              'Data berhasil terhapus',
+              'success',
+            ).then(() => window.location.reload());
+          });
+        }
+      });
+    });
+
+    // Alokasi
+    const buttonAlokasi = document.querySelectorAll('.alokasi');
+    buttonAlokasi.forEach((item) => item.onclick = () => {
+    });
+
+    // Edit
+    const buttonUpdate = document.querySelectorAll('.update-button');
+    buttonUpdate.forEach((item) => item.onclick = async () => {
+      const {
+        id, name, nominal, dateline,
+      } = item.dataset;
+      const { value: formValues } = await Swal.fire({
+        title: 'Tambahkan Rencana',
+        html:
+          `<input type="text" id="name-plan" class="swal2-input" placeholder="${name}">`
+          + `<input type="number" id="nominal-plan" class="swal2-input" placeholder="Rp. ${nominal}">`
+          + `<input type="date" id="date-plan" class="swal2-input" placeholder="${dateline}">`,
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: 'Simpan',
+        preConfirm: () => ({
+          title: document.getElementById('name-plan').value,
+          nominal: document.getElementById('nominal-plan').value,
+          date: document.getElementById('date-plan').value,
+        }),
+      });
+      const result = {
+        _id: id,
+        title: formValues.title,
+        nominal: formValues.nominal,
+        dateline: formValues.date,
+      };
+
+      const hasil = await SavingPlanIdb.putData(result);
+      Swal.fire('Tersimpan', `Tabungan ${result.dateline} ${result.title} berhasil diupdate`, 'success').then(() => window.location.reload());
+      console.log(hasil);
+    });
   }
 }
 

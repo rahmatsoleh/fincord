@@ -7,18 +7,19 @@ import '../component/bill-dashboard';
 class DashboardContainer extends HTMLElement {
   connectedCallback() {
     this.render();
+    this.name = localStorage.getItem('name');
   }
 
   async render() {
     this.innerHTML = `
       <article class="dashboard">
         <section class="dashboard-header">
-          <div class="profile">
+          <a href="/#/profile" class="profile">
             <div class="profile-images">
               ${getProfileByName('Ilyas')}
             </div>
             <p>Halo Ilyas</p>
-          </div>
+          </a>
           <a href="#/notifikasi" aria-label="notification">
             <span class="icon">
               <i class="fa-solid fa-bell"></i>

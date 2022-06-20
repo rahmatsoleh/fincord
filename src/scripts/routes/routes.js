@@ -12,11 +12,13 @@ import Budget from '../views/pages/halaman-budget';
 import Notifications from '../views/pages/notifications';
 import Category from '../views/pages/category';
 import AddTagihanPage from '../views/pages/add-tagihan';
+import logout from '../utils/logout';
 
 const routes = {
   '/': LandingPage,
   '/login': LoginPage,
   '/registration': Registration,
+  '/logout': logout(),
   '/profile': Profile,
   '/edit-profile': editProfile,
   '/beranda': BerandaPage,
@@ -30,5 +32,18 @@ const routes = {
   '/notifikasi': Notifications,
   '/category/:id': Category,
 };
+
+// get token from localStorage data
+
+if (localStorage.getItem('data')) {
+  // const data = JSON.parse(localStorage.getItem('data'));
+  // const { token } = data.token;
+  // console.log(data.token);
+  // add element to routes
+  routes['/logout'] = {
+    logout,
+  };
+}
+console.log(routes);
 
 export default routes;

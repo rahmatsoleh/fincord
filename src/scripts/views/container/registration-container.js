@@ -15,10 +15,13 @@ class RegistrationContainer extends HTMLElement {
         </div>
 
         <div class="right">             
-        <form action="">
+        <form action="javascript:void(0)" id="registration">
           <div class="title"><h1>Daftar Akun<h1/></div>
           <label for="email">Email</label>
           <input type="text" placeholder="Email" name="email" id="email" required>
+
+          <label for="username">Username</label>
+          <input type="text" placeholder="Nama Lengkap" name="username" id="username" required>
 
           <label for="fullname">Nama Lengkap</label>
           <input type="text" placeholder="Nama Lengkap" name="fullname" id="fullname" required>

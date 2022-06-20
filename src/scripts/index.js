@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-free/js/all';
 import './views/component/navigation';
 import './views/component/header-element';
 import './views/component/footer-element';
+import './views/component/loading-bar';
 import App from './views/app';
 
 const app = new App();

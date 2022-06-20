@@ -40,7 +40,6 @@ const RencanaPage = {
 
       const hasil = await SavingPlanIdb.putData(result);
       Swal.fire('Tersimpan', `Tabungan ${result.dateline} ${result.title} berhasil disimpan`, 'success').then(() => window.location.reload());
-      console.log(hasil);
     });
   },
 };

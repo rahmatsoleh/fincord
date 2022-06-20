@@ -35,15 +35,15 @@ const routes = {
 
 // get token from localStorage data
 
-if (localStorage.getItem('data')) {
-  // const data = JSON.parse(localStorage.getItem('data'));
-  // const { token } = data.token;
-  // console.log(data.token);
-  // add element to routes
-  routes['/logout'] = {
-    logout,
-  };
-}
-console.log(routes);
+// if (localStorage.getItem('data')) {
+// const data = JSON.parse(localStorage.getItem('data'));
+// const { token } = data.token;
+// console.log(data.token);
+// add element to routes
+//   routes['/logout'] = {
+//     logout,
+//   };
+// }
+// console.log(routes);
 
 export default routes;

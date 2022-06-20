@@ -14,23 +14,23 @@ const BerandaPage = {
 
   async afterRender() {
     // request all data from api
-    const dataAll = await new Promise((resolve, reject) => {
-      // fetch(`http://localhost:3000/api/getalldata?id=${JSON.parse(localStorage.getItem('data')).id}`);
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', `http://localhost:3000/api/getalldata?id=${JSON.parse(localStorage.getItem('data')).id}`);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.setRequestHeader('x-token', JSON.parse(localStorage.getItem('data')).token);
-      xhr.send();
-      xhr.onload = () => {
-        if (xhr.status === 200) {
-          resolve(JSON.parse(xhr.responseText));
-        } else {
-          reject(xhr.status);
-        }
-      };
-    }).catch((err) => {
-      console.log(err);
-    });
+    // const dataAll = await new Promise((resolve, reject) => {
+    // fetch(`http://localhost:3000/api/getalldata?id=${JSON.parse(localStorage.getItem('data')).id}`);
+    //   const xhr = new XMLHttpRequest();
+    //   xhr.open('GET', `http://localhost:3000/api/getalldata?id=${JSON.parse(localStorage.getItem('data')).id}`);
+    //   xhr.setRequestHeader('Content-Type', 'application/json');
+    //   xhr.setRequestHeader('x-token', JSON.parse(localStorage.getItem('data')).token);
+    //   xhr.send();
+    //   xhr.onload = () => {
+    //     if (xhr.status === 200) {
+    //       resolve(JSON.parse(xhr.responseText));
+    //     } else {
+    //       reject(xhr.status);
+    //     }
+    //   };
+    // }).catch((err) => {
+    //   console.log(err);
+    // });
 
     // {{ save data to idb }}
 

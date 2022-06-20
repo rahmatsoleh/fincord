@@ -13,7 +13,6 @@ class PlanItems extends HTMLElement {
   }
 
   render() {
-    console.log(this._nominal);
     this.innerHTML = `
       <div class="plan-items">
         <div class="plan-items-header">
@@ -47,7 +46,7 @@ class PlanItems extends HTMLElement {
             <button aria-label="Alokasikan" class="alokasi">Alokasikan</button>
           </div>
           <div>
-            <button aria-label="Edit" class="update-button" data-id="${this._id}"><i class="fa-solid fa-pen-to-square"></i></button>
+            <button aria-label="Edit" class="update-button" data-id="${this._id}" data-name="${this._name}" data-nominal="${this._nominal}" data-dateline="${this._dateline}"><i class="fa-solid fa-pen-to-square"></i></button>
             <button aria-label="Hapus" class="delete-button" data-id="${this._id}"><i class="fa-solid fa-trash-can"></i></button>
           </div>
         </div>

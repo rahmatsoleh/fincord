@@ -1,5 +1,6 @@
 import '../../../styles/container/tagihan-container.scss';
 import { nanoid } from 'nanoid';
+import Swal from 'sweetalert2';
 import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
 import UrlParser from '../../routes/url-parser';
 
@@ -58,7 +59,10 @@ class AddTagihanContainer extends HTMLElement {
     const input = this.querySelectorAll('input');
     if (UrlParser.parseActiveWithoutCombiner().id) {
       const data = await TagihanItemIdb.getAllData();
-      const dataTagihan = data.find((item) => item._id.toLowerCase() == UrlParser.parseActiveWithoutCombiner().id);
+      const dataTagihan = data.find(
+        (item) =>
+          item._id.toLowerCase() == UrlParser.parseActiveWithoutCombiner().id
+      );
       // console.log(dataTagihan);
       id = dataTagihan._id;
       input[0].value = dataTagihan.name;
@@ -80,9 +84,16 @@ class AddTagihanContainer extends HTMLElement {
         remember: input[3].checked,
         rememberBefore: input[4].value,
         rememberTime: input[5].value,
-
       };
-      const hasil = await TagihanItemIdb.putData(result).then(() => window.location.href = '#/tagihan');
+      const hasil = await TagihanItemIdb.putData(result).then(() => {
+        Swal.fire({
+          title: 'Berhasil!',
+          text: 'Aksi Berhasil',
+          icon: 'success',
+        }).then(() => {
+          window.location.href = '#/tagihan';
+        });
+      });
     };
   }
 }

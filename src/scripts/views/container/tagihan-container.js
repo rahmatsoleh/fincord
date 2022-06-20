@@ -3,6 +3,7 @@ import '../../../styles/container/tagihan-container.scss';
 import TagihanHistory from '../../data/idb/tagihan-history-idb';
 import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
 import '../items/tagihan-item';
+import Swal from 'sweetalert2';
 
 class TagihanContainer extends HTMLElement {
   connectedCallback() {
@@ -34,8 +35,14 @@ class TagihanContainer extends HTMLElement {
     const content = document.querySelectorAll('.wrapper-content')[0];
     let card = '';
 
-    dataTagihan.forEach((item) => {
-      card += `
+    dataTagihan
+      .sort(
+        (a, b) =>
+          parseInt(this.reminder(b.date, b.rememberBefore)) -
+          parseInt(this.reminder(a.date, a.rememberBefore))
+      )
+      .forEach((item) => {
+        card += `
       <tagihan-item
           data-id="${item._id}"
           data-name="${item.name}"
@@ -46,7 +53,7 @@ class TagihanContainer extends HTMLElement {
           data-remember_time="${item.rememberTime}"
       ></tagihan-item>
       `;
-    });
+      });
 
     content.innerHTML = card;
     const buttonPay = document.querySelectorAll('.pay-button');
@@ -56,19 +63,36 @@ class TagihanContainer extends HTMLElement {
     const cancelButton = document.querySelectorAll('.button-cancel')[0];
     const modals = document.querySelectorAll('.modal')[0];
     let id;
-    buttonPay.forEach((el) => el.onclick = function () {
-      id = el.dataset.id;
-      modals.style.display = 'block';
-      modals.style.visibility = 'visible';
-    });
-    buttonDelete.forEach((el) => el.onclick = function () {
-      id = el.dataset.id;
-      TagihanItemIdb.deleteData(id).then(() => { window.location.reload(); });
-    });
-    buttonEdit.forEach((el) => el.onclick = function () {
-      id = el.dataset.id;
-      window.location.href = `#/edit-tagihan/${id}`;
-    });
+    buttonPay.forEach(
+      (el) =>
+        (el.onclick = function () {
+          id = el.dataset.id;
+          modals.style.display = 'block';
+          modals.style.visibility = 'visible';
+        })
+    );
+    buttonDelete.forEach(
+      (el) =>
+        (el.onclick = function () {
+          id = el.dataset.id;
+          TagihanItemIdb.deleteData(id).then(() => {
+            Swal.fire({
+              title: 'Berhasil!',
+              text: 'Data berhasil dihapus',
+              icon: 'success',
+            }).then(() => {
+              window.location.reload();
+            });
+          });
+        })
+    );
+    buttonEdit.forEach(
+      (el) =>
+        (el.onclick = function () {
+          id = el.dataset.id;
+          window.location.href = `#/edit-tagihan/${id}`;
+        })
+    );
 
     buttonSave.onclick = async function () {
       const nominal = modals.querySelector('input').value;
@@ -79,7 +103,15 @@ class TagihanContainer extends HTMLElement {
         nominal,
       };
 
-      const hasil = await TagihanHistory.putData(result).then(() => window.location.reload());
+      const hasil = await TagihanHistory.putData(result).then(() =>
+      Swal.fire({
+        title: 'Berhasil!',
+        text: 'Aksi Berhasil',
+        icon: 'success',
+      }).then(() => {
+        window.location.href = '#/tagihan';
+      })
+      );
       modals.style.display = 'none';
       modals.style.visibility = 'hidden';
     };
@@ -98,6 +130,15 @@ class TagihanContainer extends HTMLElement {
     buttonReminder.addEventListener('click', async () => {
       window.location.href = '#/add-tagihan';
     });
+  }
+
+  reminder(date, rememberBefore) {
+    const dateNow = new Date();
+    const endDate = new Date(date);
+    const differentTime = dateNow.getTime() - endDate.getTime();
+    const differentOfDay = Math.ceil(differentTime / (24 * 3600 * 1000));
+    const reminder = Math.ceil(differentOfDay - rememberBefore);
+    return reminder;
   }
 }
 

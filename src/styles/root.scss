@@ -4,14 +4,14 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import 'lib/sweet-alert2.scss';
 
 * {
-    font-family: 'Roboto', sans-serif;
-    padding: 0;
-    margin: 0;
-    //     box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+  //     box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 $dark-primary: #03045e;
@@ -23,120 +23,119 @@ $white: #fff;
 $dark: #000;
 
 main {
-    min-height: 90vh;
-    // background-color: $scondary-2;
-    // margin-top: 10px;
-    position: relative;
-
+  min-height: 90vh;
+  // background-color: $scondary-2;
+  // margin-top: 10px;
+  position: relative;
 }
 
 header-element.app {
-    display: none;
+  display: none;
 }
 
 .btn {
-    border-radius: 0;
-    border: none;
-    padding: 0.5em 1em;
-    font-size: 1em;
-    border-radius: 10px;
+  border-radius: 0;
+  border: none;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border-radius: 10px;
 }
 
 .btn-primary {
-    background-color: $primary;
-    color: white;
+  background-color: $primary;
+  color: white;
 }
 
 .my-1 {
-    margin-top: 1em;
-    margin-bottom: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .mb-1 {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 .mt-1 {
-    margin-top: 1em;
+  margin-top: 1em;
 }
 
 .mt-2 {
-    margin-top: 2em;
+  margin-top: 2em;
 }
 
 .mb-2 {
-    margin-bottom: 2em;
+  margin-bottom: 2em;
 }
 
 .ml-1 {
-    margin-left: 4px;
+  margin-left: 4px;
 }
 
 .ml-2 {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 
 .mr-1 {
-    margin-right: 4px;
+  margin-right: 4px;
 }
 
 .mr-2 {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .items-center {
-    align-items: cemter;
+  align-items: cemter;
 }
 
 .justify-between {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .button {
-    padding: 8px 12px;
-    border: none;
-    font-weight: 500;
-    border-radius: 6px;
+  padding: 8px 12px;
+  border: none;
+  font-weight: 500;
+  border-radius: 6px;
 
-    &:hover {
-        cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 @media screen and (min-width: 1024px) {
-    main.app {
-        margin-top: 5.5em;
-        margin-left: 6em;
-        padding: 1em;
-    }
+  main.app {
+    margin-top: 5.5em;
+    margin-left: 6em;
+    padding: 1em;
+  }
 
-    header-element.app {
-        display: block;
-    }
+  header-element.app {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .wrapper-content {
-        padding: 12px 16px;
-    }
+  .wrapper-content {
+    padding: 12px 16px;
+  }
 
-    .content-tagihan {
-        flex-direction: column;
-    }
+  .content-tagihan {
+    flex-direction: column;
+  }
 
-    .button {
-        padding: 12px 12px;
-    }
+  .button {
+    padding: 12px 12px;
+  }
 
-    .pay-button {
-        margin-bottom: 24px;
-    }
+  .pay-button {
+    margin-bottom: 24px;
+  }
 
-    .form-tambah {
-        max-width: 400px;
-    }
+  .form-tambah {
+    max-width: 100%;
+  }
 }

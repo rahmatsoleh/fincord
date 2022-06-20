@@ -19,13 +19,20 @@ class TagihanItem extends HTMLElement {
       <div class='content-tagihan'>
             <div>
                 <h3 class='title-content'>${this.name}</h3>
-                <h3 class='total-count'>Rp. ${commaSeparateNumber(this.payment)}</h3>
-                <button class='pay-button' data-id="${this._id}">Bayar Sekarang</button>
+                <h3 class='total-count'>Rp. ${commaSeparateNumber(
+                  this.payment
+                )}</h3>
+                <button class='pay-button' data-id="${
+                  this._id
+                }">Bayar Sekarang</button>
             </div>
             <div>
                 <h4 class='heading'>Maksimal Pembayaran</h4>
                 <h4 class='subheading'>${this.fullDate(this.date)}</h4>
-                <p class='remaining'>${this.reminder(this.date, this.rememberBefore)} Hari Lagi</p>
+                <p class='remaining'>${this.reminder(
+                  this.date,
+                  this.rememberBefore
+                )} Hari Lagi</p>
                 <div class='flex items-center action'>
                     <button class='button edit-button'  data-id="${this._id}">
                         <span class="icon">

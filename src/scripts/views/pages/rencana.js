@@ -31,15 +31,18 @@ const RencanaPage = {
           date: document.getElementById('date-plan').value,
         }),
       });
-      const result = {
-        _id: nanoid(16),
-        title: formValues.name,
-        nominal: formValues.nominal,
-        dateline: formValues.date,
-      };
 
-      const hasil = await SavingPlanIdb.putData(result);
-      Swal.fire('Tersimpan', `Tabungan ${result.dateline} ${result.title} berhasil disimpan`, 'success').then(() => window.location.reload());
+      if (formValues) {
+        const result = {
+          _id: nanoid(16),
+          title: formValues.name,
+          nominal: formValues.nominal,
+          dateline: formValues.date,
+        };
+
+        await SavingPlanIdb.putData(result);
+        Swal.fire('Tersimpan', `Tabungan ${result.dateline} ${result.title} berhasil disimpan`, 'success').then(() => window.location.reload());
+      }
     });
   },
 };

@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable radix */
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
@@ -5,7 +6,9 @@ import '../items/plan-items';
 import '../../../styles/component/list-plans.scss';
 import Swal from 'sweetalert2';
 import { nanoid } from 'nanoid';
+import moment from 'moment';
 import SavingPlanIdb from '../../data/idb/saving-plan-idb';
+import SavingTransactionIdb from '../../data/idb/saving-transaction-idb';
 
 class ListPlans extends HTMLElement {
   connectedCallback() {
@@ -24,22 +27,36 @@ class ListPlans extends HTMLElement {
   async renderList() {
     const dataImpian = await SavingPlanIdb.getAllData();
     const tempList = this.querySelector('.list-plans');
+    const sumCollectionPlan = await SavingTransactionIdb.getAllData();
+
+    const sumCollectionTransaction = [];
+    sumCollectionPlan.reduce((res, value) => {
+      if (!res[value.idFK]) {
+        res[value.idFK] = { idFK: value.idFK, save: 0 };
+        sumCollectionTransaction.push(res[value.idFK]);
+      }
+      res[value.idFK].save += value.save;
+      return res;
+    }, {});
 
     let result = '';
 
+    dataImpian.sort((a, b) => moment(a.dateline, 'YYYY-MM-DD').isBefore(moment(b.dateline, 'YYYY-MM-DD')) ? -1 : 1);
+
     dataImpian.forEach((item) => {
-      if (item.data) {
-        item.sum = item.data.reduce((a, b) => a + b.save);
-      } else {
-        item.sum = 0;
-      }
+      let sum = 0;
+
+      sumCollectionTransaction.forEach((savePlan) => {
+        if (savePlan.idFK == item._id) sum = savePlan.save;
+      });
+
       result += `
       <plan-items
           data-id="${item._id}"
           data-name="${item.title}"
           data-nominal="${item.nominal}"
           data-dateline="${item.dateline}"
-          data-sum="${item.sum}"
+          data-sum="${sum}"
       ></plan-items>
       `;
     });
@@ -75,7 +92,39 @@ class ListPlans extends HTMLElement {
 
     // Alokasi
     const buttonAlokasi = document.querySelectorAll('.alokasi');
-    buttonAlokasi.forEach((item) => item.onclick = () => {
+    buttonAlokasi.forEach((item) => item.onclick = async () => {
+      const id = `save-${nanoid(16)}`;
+      const { fk, name } = item.dataset;
+      const dateNow = moment().format('YYYY-MM-DD');
+
+      const { value: saveMoney } = await Swal.fire({
+        title: 'Alokasikan Dana',
+        input: 'number',
+        inputLabel: `Uang untuk ${name}`,
+        inputPlaceholder: 'Rp. 0',
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return 'Masukan uang anda terlebih dahulu !';
+          }
+        },
+      });
+
+      if (saveMoney) {
+        const result = {
+          _id: id,
+          date: dateNow,
+          save: parseInt(saveMoney),
+          idFK: fk,
+        };
+
+        await SavingTransactionIdb.putData(result);
+        Swal.fire(
+          'Success',
+          'Uang anda berhasil disimpan',
+          'success',
+        ).then(() => window.location.reload());
+      }
     });
 
     // Edit

@@ -43,7 +43,7 @@ class PlanItems extends HTMLElement {
         </div>
         <div class="plan-items-footer">
           <div>
-            <button aria-label="Alokasikan" class="alokasi">Alokasikan</button>
+            <button aria-label="Alokasikan" class="alokasi" data-name="${this._name}" data-fk="${this._id}">Alokasikan</button>
           </div>
           <div>
             <button aria-label="Edit" class="update-button" data-id="${this._id}" data-name="${this._name}" data-nominal="${this._nominal}" data-dateline="${this._dateline}"><i class="fa-solid fa-pen-to-square"></i></button>

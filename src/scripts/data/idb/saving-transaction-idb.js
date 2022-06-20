@@ -35,7 +35,7 @@ class SavingTransactionIdb extends BaseIdb {
       });
     }
 
-    document.querySelector('.loading-wrapper').classList.remove('d-none');
+    document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;
     // output
     /**

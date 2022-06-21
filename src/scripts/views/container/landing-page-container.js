@@ -7,63 +7,119 @@ class landingContainer extends HTMLElement {
 
   render() {
     this.innerHTML = `
-      <section class="hero">
-        <div class="container">
-          <div class="left">
-            <h1>Kelola pengeluaranmu & buat rencana keuangan <span>masa depanmu</span></h1>
-            <p class="desc">Fitur-fitur menakjubkan yang dapat membantu mengelola keuangan dengan baik</p>
-            <button class="btn"><a href="#/login">Mulai</a></button>
-            <p class="text-align-center">Lihat fitur-fitur kami</p>
-          </div>
-          <div class="right">
-            <div class="img">
-              <img src="app.png" alt="gambar aplikasi fincord">
-            </div>
-          </div>
+    <section class="home">       
+        <div class="content">
+            <h3>Lorem Ipsum</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima labore similique eos harum atque omnis ex consectetur, assumenda sunt ad facilis illum quaerat doloremque. Aut eveniet culpa enim suscipit ullam!</p>
+            <button><a href="/#/login">Mulai</a></button>
         </div>
-      </section>
-      <section class="features">
-        <div class="header">
-          <h1>Selamat Datang di Fincord</h1>
-          <p>Perkenalkan di bawah ini merupakan beberapa hal tentang aplikasi keuangan Fincord</p>
-        </div>
+            
+        <!---<div class="image">
+            <img src="app-home.png" alt="">
+        </div> ---!>
 
-        <div class="container f-1">
-          <div class="left">
-            <h2>Bahkan orang awam pun dapat menggunakannya</h2>
-            <p>Desain tampilan aplikasi keuangan ini yang didesain sederhana sehingga pengguna dapat dengan mudah memahami setiap fitur di dalamnya.</p>
-          </div>
-          <div class="right">
-            <div class="img">
-              <img src="beranda.png" alt="gambar beranda aplikasi fincord">
-            </div>
-          </div>
-        </div>
+    </section>    
+    
 
-        <div class="container f-2">
-          <div class="left">
-            <h2>Pelacak uang sederhana</h2>
-            <p>Catat transaksi harian dengan cepat dan masukkan ke dalam kategori yang jelas. Lihat pemasukan dan pengeluaran pada setiap periode karena dilengkapi dengan grafik.</p>
-          </div>
-          <div class="right">
-            <div class="img">
-              <img src="report.png" alt="gambar aplikasi fincord">
-            </div>
-          </div>
+    <section class="about">
+    
+        <h1 class="heading">Lorem ipsum</h1>
+    
+    <div class="row">
+            
+        <div class="image">
+            <img src="app.png" alt="">
+        </div>    
+    
+        <div class="content">
+            <h3>Take a Look Around our App</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus labore perspiciatis iusto debitis, explicabo neque earum accusamus adipisci eius, nobis laboriosam, autem modi porro quisquam saepe assumenda fuga quod ipsa!</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit rerum excepturi alias quas voluptatibus provident voluptatum sapiente quos enim praesentium?</p>
         </div>
-        
-        <div class="container f-1">
-          <div class="left">
-            <h2>Target kedepannya</h2>
-            <p>Buat rencana keuangan agar impianmu dapat terwujud diakhir bulan.</p>
-          </div>
-          <div class="right">
-            <div class="img">
-              <img src="plan.png" alt="gambar aplikasi fincord">
+    
+    </div>
+    
+    </section>    
+      
+    <section class="usage">
+    
+        <h1 class="heading">Lorem ipsum</h1>
+    
+        <div class="row">
+    
+            <div class="box-container">
+                <div class="box">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <h3>minimum progress</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem dolor nihil dicta eveniet quam nam explicabo, natus labore quia cupiditate.</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                    <h3>active time</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem dolor nihil dicta eveniet quam nam explicabo, natus labore quia cupiditate.</p>
+                </div>
             </div>
-          </div>
+    
+            <img src="beranda.png" alt="">
+    
+            <div class="box-container">
+                <div class="box">
+                    <i class="fa-solid fa-coins"></i>
+                    <h3>maximum progress</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem dolor nihil dicta eveniet quam nam explicabo, natus labore quia cupiditate.</p>
+                </div>
+                <div class="box">
+                    <i class="fa-solid fa-receipt"></i>
+                    <h3>calories burned</h3>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem dolor nihil dicta eveniet quam nam explicabo, natus labore quia cupiditate.</p>
+                </div>
+            </div>
+    
         </div>
-      </section>
+    
+    </section>    
+    
+    
+    <section class="features">
+    
+        <h1 class="heading">Lorem ipsum</h1>
+    
+        <div class="box-container">
+    
+            <div class="box">
+                <i class="fa-solid fa-window-restore"></i>
+                <h3>Lorem ipsum dolor</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque enim ad neque. Voluptatem alias beatae accusamus laudantium nisi assumenda libero.</p>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-sack-dollar"></i>
+                <h3>Lorem ipsum dolor</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque enim ad neque. Voluptatem alias beatae accusamus laudantium nisi assumenda libero.</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-globe"></i>
+                <h3>Lorem ipsum dolor</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque enim ad neque. Voluptatem alias beatae accusamus laudantium nisi assumenda libero.</p>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-chart-line"></i>
+                <h3>Lorem ipsum dolor</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque enim ad neque. Voluptatem alias beatae accusamus laudantium nisi assumenda libero.</p>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-money-bill-trend-up"></i>
+                <h3>Lorem ipsum dolor</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque enim ad neque. Voluptatem alias beatae accusamus laudantium nisi assumenda libero.</p>
+            </div>
+            <div class="box">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+                <h3>Lorem ipsum dolor</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque enim ad neque. Voluptatem alias beatae accusamus laudantium nisi assumenda libero.</p>
+            </div>
+    
+        </div>
+    
+    </section>    
     `;
   }
 }

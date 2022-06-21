@@ -26,8 +26,7 @@ class TagihanItemIdb extends BaseIdb {
           payment: item.payment,
           date: item.date,
           remember: item.remember,
-          rememberBefore: item.remember_before,
-          rememberTime: item.rememberTime,
+          paid: false,
         };
 
         await super.putDataDB(idDB, tagihanItem);

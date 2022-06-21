@@ -1,5 +1,8 @@
+/* eslint-disable radix */
 import '../../../styles/container/tagihan-container.scss';
-import ProgressBar from 'progressbar.js';
+import Swal from 'sweetalert2';
+import moment from 'moment';
+import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
 import { commaSeparateNumber } from '../../utils/number';
 
 class TagihanItem extends HTMLElement {
@@ -9,30 +12,23 @@ class TagihanItem extends HTMLElement {
     this.payment = this.dataset.payment;
     this.date = this.dataset.date;
     this.remember = this.dataset.remember;
-    this.rememberBefore = parseInt(this.dataset.remember_before, 10);
-    this.rememberTime = this.dataset.remember_time;
+    this.paid = this.dataset.paid;
     this.render();
+    this.afterRender();
   }
 
   render() {
     this.innerHTML = `
       <div class='content-tagihan'>
-            <div>
-                <h3 class='title-content'>${this.name}</h3>
-                <h3 class='total-count'>Rp. ${commaSeparateNumber(
-                  this.payment
-                )}</h3>
-                <button class='pay-button' data-id="${
-                  this._id
-                }">Bayar Sekarang</button>
-            </div>
+        <div>
+            <h3 class='title-content'>${this.name}</h3>
+            <h3 class='total-count'>Rp. ${commaSeparateNumber(this.payment)}</h3>
+            <button class='pay-button' data-id="${this._id}">Bayar Sekarang</button>
+        </div>
             <div>
                 <h4 class='heading'>Maksimal Pembayaran</h4>
                 <h4 class='subheading'>${this.fullDate(this.date)}</h4>
-                <p class='remaining'>${this.reminder(
-                  this.date,
-                  this.rememberBefore
-                )} Hari Lagi</p>
+                <p class='remaining'>${this.reminder(this.paid, this.date)}</p>
                 <div class='flex items-center action'>
                     <button class='button edit-button'  data-id="${this._id}">
                         <span class="icon">
@@ -98,24 +94,93 @@ class TagihanItem extends HTMLElement {
     return `${dateTime[2]} ${month} ${new Date().getFullYear()}`;
   }
 
-  reminder(date, rememberBefore) {
-    const dateNow = new Date();
-    const endDate = new Date(date);
-    const differentTime = dateNow.getTime() - endDate.getTime();
-    const differentOfDay = Math.ceil(differentTime / (24 * 3600 * 1000));
-    const reminder = Math.ceil(differentOfDay - rememberBefore);
-    return reminder;
+  reminder(paid, date) {
+    const paidBool = paid === 'true';
+    const dateNow = moment().startOf('day');
+    const datePay = moment(date, 'YYYY-MM-DD');
+    const differentOfDay = moment.duration(datePay.diff(dateNow)).asDays();
+
+    if (paidBool) return 'Lunas';
+
+    if (differentOfDay < 0) return `Terlambat ${Math.abs(differentOfDay)} Hari`;
+
+    if (differentOfDay > 0) return `${differentOfDay} Hari lagi`;
+
+    return 'Hari ini';
   }
 
-  range(date, nominal) {
-    const dateNow = new Date();
-    const endDate = new Date(date);
+  afterRender() {
+    const payButton = this.querySelector('button.pay-button');
 
-    const differentTime = endDate.getTime() - dateNow.getTime();
+    payButton.addEventListener('click', async () => {
+      const paid = this.paid === 'true';
+      const payment = parseInt(this.payment);
+      const remember = this.remember === 'true';
+      const date = remember ? moment(this.date, 'YYYY-MM-DD').add(1, 'M').format('YYYY-MM-DD') : this.date;
 
-    const differentOfDay = Math.ceil(differentTime / (24 * 3600 * 1000));
+      if (paid) {
+        Swal.fire(`${this.name} sudah lunas.`);
+        return;
+      }
 
-    return commaSeparateNumber(Math.ceil(nominal / differentOfDay));
+      const { value: payBill } = await Swal.fire({
+        title: `Bayar tagihan ${this.name}`,
+        input: 'number',
+        inputValue: parseInt(this.payment),
+        inputLabel: 'Bayarkan tagihan anda sesuai nominal',
+        showCancelButton: true,
+        cancelButtonText: 'Nggak jadi',
+        confirmButtonText: 'Bayarkan',
+        inputValidator: (value) => {
+          if (!value) {
+            return 'You need to write something!';
+          }
+        },
+      });
+
+      if (!payBill) return;
+
+      const pay = parseInt(payBill);
+
+      if (pay < payment) {
+        Swal.fire({
+          title: 'Uppss',
+          icon: 'warning',
+          text: `Pastikan anda membayar ${this.name} sebesar Rp. ${commaSeparateNumber(payment)}`,
+        });
+        return;
+      }
+
+      Swal.fire({
+        title: 'Apakah anda sudah yakin ?',
+        icon: 'question',
+        text: `Anda akan membayar tagihan ${this.name} sebesar Rp. ${commaSeparateNumber(payment)}`,
+        showCancelButton: true,
+        cancelButtonText: 'Nggak Jadi',
+        confirmButtonText: 'Bayarkan',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          const dataItem = {
+            _id: this._id,
+            name: this.name,
+            payment,
+            date,
+            remember,
+            paid: !remember,
+          };
+
+          await TagihanItemIdb.putData(dataItem);
+
+          const text = pay > payment ? `Tagihan ${this.name} telah dilunasi. Pembayaran lebih Rp. ${commaSeparateNumber(pay - payment)}` : `Tagihan ${this.name} telah dilunasi`;
+
+          Swal.fire({
+            title: 'Lunas',
+            icon: 'success',
+            text,
+          }).then(() => window.location.reload());
+        }
+      });
+    });
   }
 }
 

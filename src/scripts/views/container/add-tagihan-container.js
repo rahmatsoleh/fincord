@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import '../../../styles/container/tagihan-container.scss';
 import { nanoid } from 'nanoid';
 import Swal from 'sweetalert2';
@@ -13,7 +14,7 @@ class AddTagihanContainer extends HTMLElement {
   render() {
     this.innerHTML = `
         <section class='navbar-tagihan'>
-            <h1 class='title'>Tambah Tagihan</h1>
+            <h2 class='title'>Tambah Tagihan</h2>
         </section>
         <section class='form-tambah'>
         
@@ -24,7 +25,7 @@ class AddTagihanContainer extends HTMLElement {
 
             <div class='form-group'>
                 <p class='label'>Jumlah Tagihan</p>
-                <input type='text' name='jumlah-tagihan' placeholder='Jumlah Tagihan ( ex. Rp. 100.000 )' />
+                <input type='text' name='jumlah-tagihan' placeholder='Rp' />
             </div>
 
             <div class='form-group'>
@@ -36,17 +37,6 @@ class AddTagihanContainer extends HTMLElement {
                 <input type="checkbox" id="reminder" name="reminder" value="remind">
                 <label for="reminder" class='ml-2'>Ingatkan setiap bulan</label><br>
             </div>
-
-            <div class='flex items-center reminder'>
-                <input type='number' class='input-reminder' name='reminder' placeholder='10' />
-                <p class='label-reminder'>Hari sebelum penagihan</p>
-            </div>
-
-            <div class='flex items-center reminder'>
-                <input type='time' class='input-reminder' name='reminder' placeholder='ex. 18.00' />
-                <p class='label-reminder'>Pukul waktu penagihan</p>
-            </div>
-
             <div style="margin: 12px 16px">
                 <button class='button simpan'>Simpan</button>
             </div>
@@ -58,12 +48,13 @@ class AddTagihanContainer extends HTMLElement {
     let id;
     const input = this.querySelectorAll('input');
     if (UrlParser.parseActiveWithoutCombiner().id) {
+      const headerTitle = document.querySelector('h2.title');
+      headerTitle.textContent = 'Edit Tagihan';
       const data = await TagihanItemIdb.getAllData();
       const dataTagihan = data.find(
-        (item) =>
-          item._id.toLowerCase() == UrlParser.parseActiveWithoutCombiner().id
+        (item) => item._id.toLowerCase() == UrlParser.parseActiveWithoutCombiner().id,
       );
-      // console.log(dataTagihan);
+
       id = dataTagihan._id;
       input[0].value = dataTagihan.name;
       input[1].value = dataTagihan.payment;
@@ -71,28 +62,39 @@ class AddTagihanContainer extends HTMLElement {
       if (dataTagihan.remember) {
         input[3].checked = true;
       }
-      input[4].value = dataTagihan.rememberBefore;
-      input[5].value = dataTagihan.rememberTime;
     }
     const button = this.querySelector('button');
-    button.onclick = async function () {
-      const result = {
-        _id: id || nanoid(),
+    button.onclick = async () => {
+      const dataForm = {
+        _id: id || nanoid(16),
         name: input[0].value,
         payment: input[1].value,
         date: input[2].value,
         remember: input[3].checked,
-        rememberBefore: input[4].value,
-        rememberTime: input[5].value,
+        paid: false,
       };
-      const hasil = await TagihanItemIdb.putData(result).then(() => {
-        Swal.fire({
-          title: 'Berhasil!',
-          text: 'Aksi Berhasil',
-          icon: 'success',
-        }).then(() => {
-          window.location.href = '#/tagihan';
-        });
+
+      Swal.fire({
+        title: 'Ingin menyimpan ?',
+        text: `Anda akan menyimpan pengingat ${dataForm.name}`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya Simpan',
+        cancelButtonText: 'Nggak jadi',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await TagihanItemIdb.putData(dataForm).then(() => {
+            Swal.fire({
+              title: 'Berhasil!',
+              text: 'Aksi Berhasil',
+              icon: 'success',
+            }).then(() => {
+              window.location.href = '#/tagihan';
+            });
+          });
+        }
       });
     };
   }

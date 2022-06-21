@@ -7,9 +7,8 @@ const TagihanPage = {
     return '<tagihan-container></tagihan-container>';
   },
 
-  async afterRender() {
-    console.log('Halaman Tagihan');
-  },
+  // eslint-disable-next-line no-empty-function
+  async afterRender() {},
 
 };
 

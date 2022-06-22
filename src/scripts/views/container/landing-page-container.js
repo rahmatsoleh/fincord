@@ -7,16 +7,17 @@ class landingContainer extends HTMLElement {
 
   render() {
     this.innerHTML = `
-    <section class="home">       
+    <section class="home"> 
+            
+        <!-- <div class="image">
+            <img src="homeapp.png" alt="">
+        </div> --!>
+
         <div class="content">
             <h3>Lorem Ipsum</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima labore similique eos harum atque omnis ex consectetur, assumenda sunt ad facilis illum quaerat doloremque. Aut eveniet culpa enim suscipit ullam!</p>
             <button><a href="/#/login">Mulai</a></button>
         </div>
-            
-        <!---<div class="image">
-            <img src="app-home.png" alt="">
-        </div> ---!>
 
     </section>    
     

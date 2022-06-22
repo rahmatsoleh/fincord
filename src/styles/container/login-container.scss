@@ -70,7 +70,7 @@
                 display: inline-block;
                 color: white;
                 font-size: 16px;
-                padding: 10px 20px;
+                padding: 12px 20px;
                 font-weight: bolder;
                 margin: 28px 0 8px;
                 border: none;
@@ -79,10 +79,42 @@
                 cursor: pointer;
             }
             
+            button {
+                width: 100%;
+                background-color: root.$white;
+                display: inline-block;
+                margin: 5px 0 8px;
+                border: none;
+                border-radius: 4px;
+                border: 1px solid root.$primary;
+                cursor: pointer;
+
+                a{
+                    width: 100%;
+                    padding: 12px 20px;
+                    display: inline-block;
+                    color: root.$primary;
+                    font-size: 16px;
+                    font-weight: bolder;
+                    text-decoration: none;
+                }
+            }
+            
             input[type=submit]:hover {
+                width: 100%;
                 background-color: root.$white;
                 color: root.$primary;
                 border: 1px solid root.$primary;
+            }
+            
+            button:hover {
+                background-color: #e0e0e0;
+                border: 1px solid root.$white;
+
+                a{
+                    color: root.$white;
+                    text-decoration: none;
+                }
             }
     
             p{
@@ -108,7 +140,7 @@
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 996px) {
     
     .main-login{
         display: flex;

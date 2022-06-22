@@ -39,9 +39,7 @@
         }
 
         button{
-            padding: 10px;
             background-color: root.$primary;
-            color: root.$white;
             text-align: center;
             margin: 10px 0;
             display: inline-block;
@@ -51,6 +49,13 @@
             left: 20%;
             font-weight: bolder;
             border-radius: 10px;
+
+            a{
+                width: 100%;
+                padding: 14px;
+                display: inline-block;
+                color: root.$white;
+            }
         }
 
         button:hover{
@@ -102,7 +107,7 @@
                 display: inline-block;
                 color: white;
                 font-size: 16px;
-                padding: 10px 20px;
+                padding: 12px 20px;
                 font-weight: bolder;
                 margin: 28px 0 8px;
                 border: none;
@@ -139,7 +144,7 @@
     }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 996px) {
     
     .main-registration{
         display: flex;

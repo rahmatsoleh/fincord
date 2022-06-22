@@ -11,7 +11,7 @@ class RegistrationContainer extends HTMLElement {
         <div class="left">
           <h2>Datang Kembali<h2/>
           <p>Silahkan terhubung kembali dengan akun yang sudah ada</p>
-          <a href="/#/login"><button>Masuk</button></a>
+          <button><a href="/#/login">Masuk</a></button>
         </div>
 
         <div class="right">             

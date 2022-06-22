@@ -21,7 +21,7 @@ class LoginContainer extends HTMLElement {
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 
                 <input type="submit" value="Masuk">
-                <p>Belum memiliki akun? <a href="/#/registration">Daftar</a></p>
+                <button><a href="/#/registration">Daftar</a></button>
               </form>          
           </div>
       </div>

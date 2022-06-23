@@ -1,0 +1,53 @@
+@use '../root.scss' as root;
+
+article.page-notfound {
+  margin-top: 2em;
+  width: 100%;
+  text-align: center;
+
+  img {
+    width: 100%;
+  }
+
+  p {
+    margin-top: 1em;
+    font-size: 1.2em;
+    font-style: italic;
+    color: root.$dark-primary;
+  }
+
+  a {
+    display: inline-block;
+    margin-top: 1em;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: 500;
+    padding: .5em 1em;
+    background-color: root.$primary;
+    color: root.$white;
+    border-radius: 5px;
+    border: 2px solid root.$primary;
+    box-shadow: 0 4px 5px rgba(0,0,0,.2);
+
+    &:hover {
+      background-color: root.$scondary-1;
+      border-color: root.$scondary-1;
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  article.page-notfound {
+    img {
+      width: 70%;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  article.page-notfound {
+    img {
+      width: 50%;
+    }
+  }
+}

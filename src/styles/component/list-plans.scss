@@ -1,4 +1,32 @@
+@use '../root.scss' as root;
+
 div.list-plans {
   margin-top: 1em;
   padding-bottom: 5em;
+
+  .not-found {
+    text-align: center;
+    width: 100%;
+
+    img {
+      width: 80%;
+    }
+
+    p {
+      color: root.$dark-primary;
+      font-weight: 500;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  div.list-plans {
+    .not-found {
+      img {
+        width: 30%;
+      }
+    }
+  }
 }

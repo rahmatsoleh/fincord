@@ -15,6 +15,22 @@ article.notification {
   .notification-list {
     margin-top: 1em;
 
+    .not-found {
+      text-align: center;
+      width: 100%;
+
+      img {
+        width: 80%;
+      }
+
+      p {
+        color: root.$dark-primary;
+        font-weight: 500;
+        font-size: 1.2rem;
+        font-style: italic;
+      }
+    }
+
     .notif-item.readed {
       background-color: #fff;
     }
@@ -50,6 +66,30 @@ article.notification {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 500px) {
+  article.notification {
+    .notification-list {
+      .not-found {
+        img {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  article.notification {
+    .notification-list {
+      .not-found {
+        img {
+          width: 30%;
         }
       }
     }

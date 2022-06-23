@@ -7,7 +7,8 @@ class landingContainer extends HTMLElement {
 
   render() {
     this.innerHTML = `
-    <section class="home"> 
+    <section class="landing">
+    <div class="home"> 
             
         <!-- <div class="image">
             <img src="homeapp.png" alt="">
@@ -19,10 +20,10 @@ class landingContainer extends HTMLElement {
             <button><a href="/#/login">Mulai</a></button>
         </div>
 
-    </section>    
+    </div>    
     
 
-    <section class="about">
+    <div class="about">
     
         <h1 class="heading">Lorem ipsum</h1>
     
@@ -40,9 +41,9 @@ class landingContainer extends HTMLElement {
     
     </div>
     
-    </section>    
+    </div>    
       
-    <section class="usage">
+    <div class="usage">
     
         <h1 class="heading">Lorem ipsum</h1>
     
@@ -78,10 +79,10 @@ class landingContainer extends HTMLElement {
     
         </div>
     
-    </section>    
+    </div>    
     
     
-    <section class="features">
+    <div class="features">
     
         <h1 class="heading">Lorem ipsum</h1>
     
@@ -120,7 +121,8 @@ class landingContainer extends HTMLElement {
     
         </div>
     
-    </section>    
+    </div>    
+    </section>
     `;
   }
 }

@@ -8,4 +8,15 @@
     font-weight: 500;
     color: root.$primary;
   }
+
+  .content {
+    text-align: center;
+    p:first-child {
+      color: root.$dark;
+      font-size: 2rem;
+    }
+    img {
+      width: 80%;
+    }
+  }
 }

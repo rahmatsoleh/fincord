@@ -8,4 +8,34 @@
     color: root.$primary;
     margin-bottom: 1em;
   }
+
+  .cards {
+    .not-found {
+      text-align: center;
+      width: 100%;
+
+      img {
+        width: 80%;
+      }
+
+      p {
+        color: root.$dark-primary;
+        font-weight: 500;
+        font-size: 1.2rem;
+        font-style: italic;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .bill-dashboard {
+    .cards {
+      .not-found {
+        img {
+          width: 30%;
+        }
+      }
+    }
+  }
 }

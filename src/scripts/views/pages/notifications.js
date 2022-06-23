@@ -7,9 +7,8 @@ const Notifications = {
     return '<notification-container></notification-container>';
   },
 
-  async afterRender() {
-    console.log('Halaman Notifikasi');
-  },
+  // eslint-disable-next-line no-empty-function
+  async afterRender() {},
 };
 
 export default Notifications;

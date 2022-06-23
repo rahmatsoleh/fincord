@@ -13,6 +13,7 @@ import Notifications from '../views/pages/notifications';
 import Category from '../views/pages/category';
 import AddTagihanPage from '../views/pages/add-tagihan';
 import logout from '../utils/logout';
+import PageNotfound from '../views/pages/page-notfound';
 
 const routes = {
   '/': LandingPage,
@@ -31,6 +32,7 @@ const routes = {
   '/edit-tagihan/:id': AddTagihanPage,
   '/notifikasi': Notifications,
   '/category/:id': Category,
+  '/404': PageNotfound,
 };
 
 // get token from localStorage data

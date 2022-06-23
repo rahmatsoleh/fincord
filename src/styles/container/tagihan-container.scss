@@ -112,6 +112,22 @@
       cursor: pointer;
     }
   }
+
+  .not-found {
+    text-align: center;
+    width: 100%;
+
+    img {
+      width: 80%;
+    }
+
+    p {
+      color: root.$dark-primary;
+      font-weight: 500;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -119,6 +135,7 @@
     width: auto !important;
     margin: 12px 12px !important;
   }
+
 }
 
 // Modal Container
@@ -233,6 +250,17 @@
 
     &:hover {
       cursor: pointer;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  
+  .wrapper-content {
+    .not-found {
+      img {
+        width: 40%;
+      }
     }
   }
 }

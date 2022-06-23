@@ -19,7 +19,10 @@ class ListPlans extends HTMLElement {
   render() {
     this.innerHTML = `
       <div class="list-plans">
-        
+        <div class="not-found">
+          <img src="no-data.svg" alt="Data masih kosong"/>
+          <p>Data masih kosong</p>
+        </div>
       </div>
     `;
   }
@@ -61,7 +64,8 @@ class ListPlans extends HTMLElement {
       `;
     });
 
-    tempList.innerHTML = result;
+    if (dataImpian.length > 0) tempList.innerHTML = result;
+
     // Hapus
     const buttonDelete = document.querySelectorAll('.delete-button');
     buttonDelete.forEach((item) => item.onclick = () => {

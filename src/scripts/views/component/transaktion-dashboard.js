@@ -11,8 +11,11 @@ class TransaktionDashboard extends HTMLElement {
   set props(value) {
     this._transaksi = value;
     const listTransaktion = document.querySelector('.dashboard-expend div');
-    // listTransaktion.innerHTML = cardExpends(this._transaksi);
-    this.renderProgressBar();
+
+    if (this._transaksi.length > 0) {
+      listTransaktion.innerHTML = cardExpends(this._transaksi);
+      this.renderProgressBar();
+    }
   }
 
   connectedCallback() {
@@ -24,8 +27,10 @@ class TransaktionDashboard extends HTMLElement {
       <div class="dashboard-expend">
         <p class="title">Pengeluaran bulan ini</p>
         <div class="content">
-          <img src="no-data.svg" alt="Data masih kosong"/>
-          <p>Data masih kosong</p>
+          <div class="not-found">
+            <img src="no-data.svg" alt="Data masih kosong"/>
+            <p>Data masih kosong</p>
+          </div>
         </div>
       </div>
     `;

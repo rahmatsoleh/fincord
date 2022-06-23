@@ -1,5 +1,6 @@
 /* eslint-disable radix */
 import Swal from 'sweetalert2';
+import moment from 'moment';
 import '../../../styles/container/tagihan-container.scss';
 import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
 import '../items/tagihan-item';
@@ -18,6 +19,10 @@ class TagihanContainer extends HTMLElement {
             <button class='add-reminder'>Tambahkan Pengingat</button>
         </section>
         <section class='wrapper-content'>
+          <div class="not-found">
+            <img src="no-data.svg" alt="Data masih kosong"/>
+            <p>Data masih kosong</p>
+          </div>
         </section>
     `;
   }
@@ -27,11 +32,15 @@ class TagihanContainer extends HTMLElement {
     const content = document.querySelectorAll('.wrapper-content')[0];
     let card = '';
 
-    dataTagihan
-      .sort(
-        (a, b) => parseInt(this.reminder(b.date, b.rememberBefore))
-          - parseInt(this.reminder(a.date, a.rememberBefore)),
-      )
+    const paidTrue = dataTagihan.filter((item) => item.paid === true)
+      .sort((a, b) => moment(a.date, 'YYYY-MM-DD').isBefore(moment(b.date, 'YYYY-MM-DD')) ? 1 : -1);
+
+    const paidFalse = dataTagihan.filter((item) => item.paid === false)
+      .sort((a, b) => moment(a.date, 'YYYY-MM-DD').isBefore(moment(b.date, 'YYYY-MM-DD')) ? -1 : 1);
+
+    const resumeBills = [...paidFalse, ...paidTrue];
+
+    resumeBills
       .forEach((item) => {
         card += `
       <tagihan-item
@@ -45,7 +54,8 @@ class TagihanContainer extends HTMLElement {
       `;
       });
 
-    content.innerHTML = card;
+    if (dataTagihan.length > 0) content.innerHTML = card;
+
     const buttonEdit = document.querySelectorAll('.edit-button');
     const buttonDelete = document.querySelectorAll('.delete-button');
     buttonDelete.forEach(
@@ -92,15 +102,6 @@ class TagihanContainer extends HTMLElement {
     buttonReminder.addEventListener('click', async () => {
       window.location.href = '#/add-tagihan';
     });
-  }
-
-  reminder(date, rememberBefore) {
-    const dateNow = new Date();
-    const endDate = new Date(date);
-    const differentTime = dateNow.getTime() - endDate.getTime();
-    const differentOfDay = Math.ceil(differentTime / (24 * 3600 * 1000));
-    const reminder = Math.ceil(differentOfDay - rememberBefore);
-    return reminder;
   }
 }
 

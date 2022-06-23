@@ -55,6 +55,11 @@ class AddTagihanContainer extends HTMLElement {
         (item) => item._id.toLowerCase() == UrlParser.parseActiveWithoutCombiner().id,
       );
 
+      if (!dataTagihan) {
+        window.location.href = '/#/404';
+        return;
+      }
+
       id = dataTagihan._id;
       input[0].value = dataTagihan.name;
       input[1].value = dataTagihan.payment;
@@ -66,7 +71,7 @@ class AddTagihanContainer extends HTMLElement {
     const button = this.querySelector('button');
     button.onclick = async () => {
       const dataForm = {
-        _id: id || nanoid(16),
+        _id: id || `bills-${nanoid(16)}`,
         name: input[0].value,
         payment: input[1].value,
         date: input[2].value,

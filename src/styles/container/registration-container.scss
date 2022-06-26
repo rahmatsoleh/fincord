@@ -17,6 +17,10 @@
         flex-direction: column;
         padding: 10%;
         justify-content: center;
+        
+        svg{
+            display: none;
+        }
 
         img{
             height: 150px;
@@ -61,7 +65,10 @@
 
         button:hover{
             background-color: root.$white;
-            color: root.$primary;
+
+            a{
+                color: root.$primary;
+            }
         }
     }
 
@@ -153,16 +160,67 @@
         flex-direction: column;
         .left{
             width: 80%;
-            min-height: 15vh;
+            min-height: 0vh;
             border-radius: 0;
+
+            svg{
+                display: block;
+                position: absolute;
+                top: 2%;
+                left: 10%;
+                color: white;
+                font-size: 2rem;
+                padding: 12px;
+
+                a{
+                    display: inline-block;
+                    padding: 20px;
+                }
+            }
 
             h2, p, button{
                 display: none;
             }
         }
         .right{
+            min-height: 50vh;
             width: 80%;
-            margin: 10%;
+            margin: 5%;
+
+            form{
+                
+            
+            button {
+                width: 100%;
+                background-color: root.$white;
+                display: inline-block;
+                margin: 5px 0 8px;
+                border: none;
+                border-radius: 4px;
+                border: 1px solid root.$primary;
+                cursor: pointer;
+
+                a{
+                    // width: 100%;
+                    padding: 12px 20px;
+                    display: inline-block;
+                    color: root.$primary;
+                    font-size: 16px;
+                    font-weight: bolder;
+                    text-decoration: none;
+                }
+            }
+            
+            button:hover {
+                background-color: #e0e0e0;
+                border: 1px solid root.$white;
+
+                a{
+                    color: root.$white;
+                    text-decoration: none;
+                }
+            }
+            }
         }
     }
 }

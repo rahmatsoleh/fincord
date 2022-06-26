@@ -9,6 +9,7 @@ class RegistrationContainer extends HTMLElement {
     this.innerHTML = `
     <div class="main-registration">
         <div class="left">
+          <a href="/"><i class="keluar fa-solid fa-arrow-left"></i></a>
           <h2>Datang Kembali<h2/>
           <p>Silahkan terhubung kembali dengan akun yang sudah ada</p>
           <button><a href="/#/login">Masuk</a></button>
@@ -33,6 +34,7 @@ class RegistrationContainer extends HTMLElement {
           <input type="password" placeholder="Konfirmasi Password" name="psw-repeat" id="psw-repeat" required>
           
           <input type="submit" value="Daftar">
+          <button><a href="/#/login">Masuk</a></button>
         </form>        
         </div>
     </div>

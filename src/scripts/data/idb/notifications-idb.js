@@ -14,25 +14,26 @@ class NotificationsIdb extends BaseIdb {
     const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
-    const dataNotif = dataFromApi.data.notifications.data;
+    // const dataNotif = dataFromApi.data.notifications.data;
 
     const dataFromIdb = await super.getDataDB(idDB);
 
-    if (dataFromIdb.length === 0) {
-      dataNotif.forEach(async (item) => {
-        const notifName = {
-          _id: item._id,
-          tag: item.tag,
-          name: item.name,
-          date: item.date,
-          link: item.link,
-          desc: item.desc,
-          isReading: item.is_reading,
-        };
+    // if (dataFromIdb.length === 0) {
+    //   dataNotif.forEach(async (item) => {
+    //     const notifName = {
+    //       _id: item._id,
+    //       idFK: 'asdfasdasds',
+    //       title: item.name,
+    //       tag: item.tag,
+    //       date: item.date,
+    //       dateline: item.dateline,
+    //       desc: item.desc,
+    //       read: item.is_reading,
+    //     };
 
-        await super.putDataDB(idDB, notifName);
-      });
-    }
+    //     await super.putDataDB(idDB, notifName);
+    //   });
+    // }
 
     document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;
@@ -40,13 +41,14 @@ class NotificationsIdb extends BaseIdb {
     // output
     /**
     [
-      {  _id: ,
-        tag: ,
-        name: ,
-        date: ,
-        link: ,
-        desc: ,
-        isReading: ,
+      {  _id:
+          idFK:
+          title:
+          tag:
+          date:
+          dateline:
+          desc:
+          read:
       }
     ]
     */
@@ -57,13 +59,14 @@ class NotificationsIdb extends BaseIdb {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
     // Data yang harus diterima notif
     /**
-     * {  _id: ,
-        tag: ,
-        name: ,
-        date: ,
-        link: ,
-        desc: ,
-        isReading: ,
+     * {  _id:
+          idFK:
+          title:
+          tag:
+          date:
+          dateline:
+          desc:
+          read:
       }
      */
 

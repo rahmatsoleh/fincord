@@ -1,5 +1,6 @@
 import pageRender from '../../utils/page-render';
 import '../container/tagihan-container';
+import SessionLogin from '../../utils/session-login';
 
 const TagihanPage = {
   async render() {
@@ -8,7 +9,9 @@ const TagihanPage = {
   },
 
   // eslint-disable-next-line no-empty-function
-  async afterRender() {},
+  async afterRender() {
+    SessionLogin();
+  },
 
 };
 

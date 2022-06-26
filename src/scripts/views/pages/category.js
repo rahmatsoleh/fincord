@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2';
 import pageRender from '../../utils/page-render';
 import UrlParser from '../../routes/url-parser';
+import SessionLogin from '../../utils/session-login';
 import '../container/category-container';
 import getNumberFromString from '../../utils/getNumberFromString';
 import IncomeCategoryIdb from '../../data/idb/income-category-idb';
@@ -13,6 +14,7 @@ const Category = {
   },
 
   async afterRender() {
+    SessionLogin();
     const url = UrlParser.parseActiveWithoutCombiner().id;
     const navButtonCategory = document.querySelectorAll('.category-nav div a');
     const listCategory = document.querySelector('.category-main');

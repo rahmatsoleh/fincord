@@ -11,25 +11,25 @@ class IncomeCategoryIdb extends BaseIdb {
   // Melihat seluruh data kategori pemasukan
   static async getAllData() {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
-    const dataFromApi = await FincordAPI.getAllData();
+    // const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
-    const dataIncome = dataFromApi.data.transaksi.pemasukan.data;
+    // const dataIncome = dataFromApi.data.transaksi.pemasukan.data;
 
     const dataFromIdb = await super.getDataDB(idDB);
 
-    if (dataFromIdb.length === 0) {
-      dataIncome.forEach(async (item) => {
-        const categoryData = {
-          _id: item._id,
-          created_at: item.created_at,
-          updated_at: item.updated_at,
-          title: item.title,
-        };
+    // if (dataFromIdb.length === 0) {
+    //   dataIncome.forEach(async (item) => {
+    //     const categoryData = {
+    //       _id: item._id,
+    //       created_at: item.created_at,
+    //       updated_at: item.updated_at,
+    //       title: item.title,
+    //     };
 
-        await super.putDataDB(idDB, categoryData);
-      });
-    }
+    //     await super.putDataDB(idDB, categoryData);
+    //   });
+    // }
 
     document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;

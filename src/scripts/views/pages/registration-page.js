@@ -10,7 +10,6 @@ const RegistrationPage = {
 
   async afterRender() {
     registration();
-    console.log('Halaman Registration Page');
   },
 };
 

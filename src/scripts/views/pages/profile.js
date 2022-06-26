@@ -1,5 +1,6 @@
 import pageRender from '../../utils/page-render';
 import '../container/profile-container';
+import SessionLogin from '../../utils/session-login';
 
 const ProfilePage = {
   async render() {
@@ -8,7 +9,7 @@ const ProfilePage = {
   },
 
   async afterRender() {
-    console.log('Halaman Profile');
+    SessionLogin();
   },
 };
 

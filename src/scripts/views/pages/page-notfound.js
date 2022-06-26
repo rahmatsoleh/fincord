@@ -1,5 +1,6 @@
 import '../../../styles/container/page-notfound.scss';
 import pageRender from '../../utils/page-render';
+import SessionLogin from '../../utils/session-login';
 
 const PageNotfound = {
   async render() {
@@ -15,7 +16,7 @@ const PageNotfound = {
   },
 
   async afterRender() {
-    console.log('Halaman Kosong');
+    SessionLogin();
   },
 };
 

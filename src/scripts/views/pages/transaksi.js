@@ -7,6 +7,7 @@ import getNumberFromString from '../../utils/getNumberFromString';
 import IncomeTransactionIdb from '../../data/idb/income-transactions';
 import ClientError from '../../execeptions/ClientError';
 import ExpenseTransactionIdb from '../../data/idb/expense-transaction-idb';
+import SessionLogin from '../../utils/session-login';
 
 const TransaksiPage = {
   async render() {
@@ -15,6 +16,7 @@ const TransaksiPage = {
   },
 
   async afterRender() {
+    SessionLogin();
     const url = UrlParser.parseActiveWithoutCombiner().id;
     const mainForm = document.querySelector('.trans-main-form');
     const navTransaction = document.querySelectorAll('.transaction-main-nav a');

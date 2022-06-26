@@ -1,5 +1,5 @@
 /* eslint-disable no-empty-function */
-import UrlParser from '../../routes/url-parser';
+import SessionLogin from '../../utils/session-login';
 import pageRender from '../../utils/page-render';
 import '../container/add-tagihan-container';
 
@@ -9,7 +9,9 @@ const AddTagihanPage = {
     return '<add-tagihan-container></add-tagihan-container>';
   },
 
-  async afterRender() {},
+  async afterRender() {
+    SessionLogin();
+  },
 
 };
 

@@ -13,6 +13,7 @@ import monthData from '../../utils/report/month-data';
 import yearData from '../../utils/report/year-data';
 import historyTransaction from '../../utils/report/history-transaction';
 import renderHistoryList from '../items/render-history-list';
+import SessionLogin from '../../utils/session-login';
 
 const LaporanPage = {
   async render() {
@@ -21,6 +22,8 @@ const LaporanPage = {
   },
 
   async afterRender() {
+    SessionLogin();
+
     // Data from idb
     const incomeTransaction = await IncomeTransactionIdb.getAllData();
     const expenseTransaction = await ExpenseTransactionIdb.getAllData();

@@ -16,7 +16,7 @@ class LoginContainer extends HTMLElement {
           <div class="right">       
               <form id="login" action="javascript:void(0)">
                 <div class="title"><h1>Masuk<h1/></div>
-                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="text" id="email" name="email" placeholder="email" required>
 
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 

@@ -9,7 +9,6 @@ const LoginPage = {
   },
 
   async afterRender() {
-    console.log('Halaman Login Page');
     login();
   },
 };

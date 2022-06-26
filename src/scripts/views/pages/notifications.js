@@ -1,5 +1,6 @@
 import pageRender from '../../utils/page-render';
 import '../container/notification-container';
+import SessionLogin from '../../utils/session-login';
 
 const Notifications = {
   async render() {
@@ -7,8 +8,9 @@ const Notifications = {
     return '<notification-container></notification-container>';
   },
 
-  // eslint-disable-next-line no-empty-function
-  async afterRender() {},
+  async afterRender() {
+    SessionLogin();
+  },
 };
 
 export default Notifications;

@@ -1,4 +1,5 @@
 import pageRender from '../../utils/page-render';
+import SessionLogin from '../../utils/session-login';
 import '../component/target-landing';
 
 const BerandaPage = {
@@ -8,7 +9,7 @@ const BerandaPage = {
   },
 
   async afterRender() {
-    console.log('Halaman Beranda');
+    SessionLogin();
   },
 };
 

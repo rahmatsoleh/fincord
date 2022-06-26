@@ -1,4 +1,5 @@
 import pageRender from '../../utils/page-render';
+import SessionLogin from '../../utils/session-login';
 import '../container/edit-profile-container';
 
 const editProfilePage = {
@@ -8,7 +9,7 @@ const editProfilePage = {
   },
 
   async afterRender() {
-    console.log('Halaman edit Profile');
+    SessionLogin();
   },
 };
 

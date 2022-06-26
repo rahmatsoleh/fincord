@@ -4,6 +4,7 @@ import pageRender from '../../utils/page-render';
 import '../container/rencana-container';
 import { nanoid } from 'nanoid';
 import SavingPlanIdb from '../../data/idb/saving-plan-idb';
+import SessionLogin from '../../utils/session-login';
 
 const RencanaPage = {
   async render() {
@@ -12,6 +13,7 @@ const RencanaPage = {
   },
 
   async afterRender() {
+    SessionLogin();
     const addPlans = document.querySelector('#add-plans');
 
     // Add new plan

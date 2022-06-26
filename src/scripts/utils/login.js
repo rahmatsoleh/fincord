@@ -5,11 +5,11 @@ const login = () => {
   const form = document.querySelector('form#login');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.querySelector('#username').value;
-    const passwd = document.querySelector('#password').value;
+    const email = document.querySelector('#email').value;
+    const password = document.querySelector('#password').value;
     const details = {
-      username: name,
-      password: passwd,
+      email,
+      password,
       grant_type: 'password',
     };
 
@@ -28,11 +28,15 @@ const login = () => {
       return response.json();
     }).then((data) => {
       if (!data.error) {
-        localStorage.setItem('data', JSON.stringify(data.data));
+        const dataForLocal = {
+          id: data.data.id,
+          token: data.data.token,
+        };
+        localStorage.setItem('appFin', JSON.stringify(dataForLocal));
         // redirect('/#/beranda');
-        window.location.href = '/#/beranda';
+        window.location.href = '/';
       } else {
-        swal('Oops...', 'Username atau Password salah!', 'error');
+        swal('Oops...', 'Email atau Password salah!', 'error');
         console.log(data);
       }
     }).catch((err) => {

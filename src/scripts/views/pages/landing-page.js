@@ -1,5 +1,6 @@
 import pageRender from '../../utils/page-render';
 import '../container/landing-page-container';
+import AfterLogin from '../../utils/after-login';
 
 const LandingPage = {
   async render() {
@@ -8,7 +9,7 @@ const LandingPage = {
   },
 
   async afterRender() {
-    console.log('Halaman Landing Page');
+    AfterLogin();
   },
 };
 

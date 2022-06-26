@@ -14,24 +14,24 @@ class TagihanItemIdb extends BaseIdb {
     const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
-    const dataTagihan = dataFromApi.data.bills.data;
+    // const dataTagihan = dataFromApi.data.bills.data;
 
     const dataFromIdb = await super.getDataDB(idDB);
 
-    if (dataFromIdb.length === 0) {
-      dataTagihan.forEach(async (item) => {
-        const tagihanItem = {
-          _id: item._id,
-          name: item.name,
-          payment: item.payment,
-          date: item.date,
-          remember: item.remember,
-          paid: false,
-        };
+    // if (dataFromIdb.length === 0) {
+    //   dataTagihan.forEach(async (item) => {
+    //     const tagihanItem = {
+    //       _id: item._id,
+    //       name: item.name,
+    //       payment: item.payment,
+    //       date: item.date,
+    //       remember: item.remember,
+    //       paid: false,
+    //     };
 
-        await super.putDataDB(idDB, tagihanItem);
-      });
-    }
+    //     await super.putDataDB(idDB, tagihanItem);
+    //   });
+    // }
 
     document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;

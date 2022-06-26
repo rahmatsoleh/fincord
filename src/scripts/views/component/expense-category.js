@@ -2,6 +2,7 @@
 import { nanoid } from 'nanoid';
 import Swal from 'sweetalert2';
 import ExpenseCategoryIdb from '../../data/idb/expense-category-idb';
+import FincordApi from '../../data/api/fincord-api';
 
 class ExpenseCategory extends HTMLElement {
   connectedCallback() {
@@ -41,6 +42,7 @@ class ExpenseCategory extends HTMLElement {
       </div>
     `;
 
+    const formModal = document.querySelector('.category-modal .container form');
     const addCategory = document.querySelector('.category-main .add-category');
     const resetButton = document.querySelector('.button-control .reset');
     const modalForm = document.querySelector('.category-modal');
@@ -49,8 +51,9 @@ class ExpenseCategory extends HTMLElement {
 
     addCategory.addEventListener('click', () => {
       modalForm.classList.add('active');
-      idInput.value = nanoid(16);
+      idInput.value = `cat-${nanoid(16)}`;
       created.value = new Date().toISOString();
+      formModal.dataset.method = 'POST';
     });
 
     resetButton.addEventListener('click', () => {
@@ -95,13 +98,15 @@ class ExpenseCategory extends HTMLElement {
           confirmButtonText: 'Hapus',
         }).then(async (result) => {
           if (result.isConfirmed) {
-            await ExpenseCategoryIdb.deleteData(id).then(() => {
-              Swal.fire(
-                'Berhasil',
-                `Data ${name} berhasil terhapus`,
-                'success',
-              ).then(() => window.location.reload());
-            });
+            await ExpenseCategoryIdb.deleteData(id);
+
+            await FincordApi.manageCategory('DELETE', { id });
+
+            Swal.fire(
+              'Berhasil',
+              `Data ${name} berhasil terhapus`,
+              'success',
+            ).then(() => window.location.reload());
           }
         });
       });
@@ -109,6 +114,7 @@ class ExpenseCategory extends HTMLElement {
 
     // Untuk edit kategori
     const buttonUpdateItems = document.querySelectorAll('button.update');
+    const formModal = document.querySelector('.category-modal .container form');
 
     buttonUpdateItems.forEach((element) => {
       element.addEventListener('click', () => {
@@ -125,6 +131,7 @@ class ExpenseCategory extends HTMLElement {
         inputId.value = id;
         inputName.value = name;
         inputLimit.value = this.getFormatNumber(limit, 'Rp. ');
+        formModal.dataset.method = 'PUT';
 
         // Agar modal form muncul
         const modalForm = document.querySelector('.category-modal');

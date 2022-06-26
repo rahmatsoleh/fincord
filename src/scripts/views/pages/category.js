@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 import Swal from 'sweetalert2';
 import pageRender from '../../utils/page-render';
 import UrlParser from '../../routes/url-parser';
@@ -6,6 +7,7 @@ import '../container/category-container';
 import getNumberFromString from '../../utils/getNumberFromString';
 import IncomeCategoryIdb from '../../data/idb/income-category-idb';
 import ExpenseCategoryIdb from '../../data/idb/expense-category-idb';
+import FincordApi from '../../data/api/fincord-api';
 
 const Category = {
   async render() {
@@ -14,7 +16,7 @@ const Category = {
   },
 
   async afterRender() {
-    SessionLogin();
+    const userId = SessionLogin();
     const url = UrlParser.parseActiveWithoutCombiner().id;
     const navButtonCategory = document.querySelectorAll('.category-nav div a');
     const listCategory = document.querySelector('.category-main');
@@ -33,6 +35,7 @@ const Category = {
     const formModal = document.querySelector('.category-modal form');
     formModal.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const { method } = formModal.dataset;
       const id = formModal.querySelector('input#id-category').value;
       const name = formModal.querySelector('input#category-name').value;
       const created = formModal.querySelector('input#created').value;
@@ -44,7 +47,15 @@ const Category = {
           updated_at: new Date().toISOString(),
           title: name,
         };
-        await IncomeCategoryIdb.putData(result).then(() => Swal.fire('Success', `${result.title} berhasil disimpan`, 'success')).then(() => window.location.reload());
+        await IncomeCategoryIdb.putData(result);
+        await FincordApi.manageCategory(method, {
+          id: result._id,
+          name: result.title,
+          user_id: userId,
+          type: 'income',
+          limited: 0,
+        });
+        Swal.fire('Success', `${result.title} berhasil disimpan`, 'success').then(() => window.location.reload());
       }
 
       if (url === 'out') {
@@ -56,7 +67,16 @@ const Category = {
           title: name,
           limited: limit,
         };
-        await ExpenseCategoryIdb.putData(result).then(() => Swal.fire('Success', `${result.title} berhasil disimpan`, 'success')).then(() => window.location.reload());
+        await ExpenseCategoryIdb.putData(result);
+
+        await FincordApi.manageCategory(method, {
+          id: result._id,
+          name: result.title,
+          user_id: userId,
+          type: 'expense',
+          limited: parseInt(result.limited),
+        });
+        Swal.fire('Success', `${result.title} berhasil disimpan`, 'success').then(() => window.location.reload());
       }
     });
   },

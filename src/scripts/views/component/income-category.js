@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
 import Swal from 'sweetalert2';
 import IncomeCategoryIdb from '../../data/idb/income-category-idb';
+import FincordApi from '../../data/api/fincord-api';
 
 class IncomeCategory extends HTMLElement {
   connectedCallback() {
@@ -35,6 +36,7 @@ class IncomeCategory extends HTMLElement {
       </div>
     `;
 
+    const formModal = document.querySelector('.category-modal .container form');
     const addCategory = document.querySelector('.category-main .add-category');
     const resetButton = document.querySelector('.button-control .reset');
     const modalForm = document.querySelector('.category-modal');
@@ -43,7 +45,8 @@ class IncomeCategory extends HTMLElement {
 
     addCategory.addEventListener('click', () => {
       modalForm.classList.add('active');
-      idInput.value = nanoid(16);
+      formModal.dataset.method = 'POST';
+      idInput.value = `cat-${nanoid(16)}`;
       created.value = new Date().toISOString();
     });
 
@@ -88,13 +91,14 @@ class IncomeCategory extends HTMLElement {
           confirmButtonText: 'Hapus',
         }).then(async (result) => {
           if (result.isConfirmed) {
-            await IncomeCategoryIdb.deleteData(id).then(() => {
-              Swal.fire(
-                'Berhasil',
-                `Data ${name} berhasil terhapus`,
-                'success',
-              ).then(() => window.location.reload());
-            });
+            await IncomeCategoryIdb.deleteData(id);
+
+            await FincordApi.manageCategory('DELETE', { id });
+            Swal.fire(
+              'Berhasil',
+              `Data ${name} berhasil terhapus`,
+              'success',
+            ).then(() => window.location.reload());
           }
         });
       });
@@ -102,6 +106,7 @@ class IncomeCategory extends HTMLElement {
 
     // Untuk edit kategori
     const buttonUpdateItems = document.querySelectorAll('button.update');
+    const formModal = document.querySelector('.category-modal .container form');
 
     buttonUpdateItems.forEach((element) => {
       element.addEventListener('click', () => {
@@ -114,6 +119,7 @@ class IncomeCategory extends HTMLElement {
         inputCreated.value = created;
         inputId.value = id;
         inputName.value = name;
+        formModal.dataset.method = 'PUT';
 
         // Agar modal form muncul
         const modalForm = document.querySelector('.category-modal');

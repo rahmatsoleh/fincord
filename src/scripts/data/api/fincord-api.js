@@ -14,7 +14,25 @@ class FincordApi {
       if (dataCategory.length > 0) {
         const incomeCategoryFromApi = dataCategory.filter((item) => item.type === 'income');
         const expenseCategoryFromApi = dataCategory.filter((item) => item.type === 'expense');
-        console.log(incomeCategoryFromApi, expenseCategoryFromApi);
+
+        incomeCategoryFromApi.forEach(async (item) => {
+          await IncomeCategoryIdb.putData({
+            _id: item.id,
+            title: item.name,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          });
+        });
+
+        expenseCategoryFromApi.forEach(async (item) => {
+          await ExpenseCategoryIdb.putData({
+            _id: item.id,
+            title: item.name,
+            limited: item.limited,
+            created_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          });
+        });
       } else {
         defaultCategory(idUser).forEach(async (item) => {
           if (item.type === 'income') {
@@ -36,7 +54,7 @@ class FincordApi {
             });
           }
 
-          await this.addCategory(item);
+          await this.manageCategory('POST', item);
         });
       }
     } catch (error) {
@@ -44,9 +62,9 @@ class FincordApi {
     }
   }
 
-  static async addCategory(dataItem) {
+  static async manageCategory(method, dataItem) {
     const response = await fetch(API_ENDPOINT.addCategory, {
-      method: 'POST',
+      method,
       headers: {
         'Content-type': 'application/json',
       },

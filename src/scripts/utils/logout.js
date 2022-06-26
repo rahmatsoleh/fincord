@@ -9,7 +9,8 @@ const logout = () => {
     xhr.onload = () => {
       if (xhr.status === 200) {
         console.log('logout successful');
-        localStorage.removeItem('data');
+        localStorage.clear();
+        sessionStorage.clear();
         window.location.hash = '#/';
         // remove idb data
       }

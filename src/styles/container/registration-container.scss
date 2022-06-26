@@ -18,8 +18,11 @@
         padding: 10%;
         justify-content: center;
         
-        svg{
+        a{
             display: none;
+            svg{
+                display: none;
+            }
         }
 
         img{
@@ -163,18 +166,21 @@
             min-height: 0vh;
             border-radius: 0;
 
-            svg{
-                display: block;
+            a{
+                display: flex;
+                padding: 5px;
                 position: absolute;
                 top: 2%;
                 left: 10%;
                 color: white;
-                font-size: 2rem;
-                padding: 12px;
+                text-decoration: none;
+                font-size: 1.5rem;
+                align-items: center;
+                flex-direction: row;
 
-                a{
-                    display: inline-block;
-                    padding: 20px;
+                svg{
+                    display: block;
+                    padding: 12px;
                 }
             }
 

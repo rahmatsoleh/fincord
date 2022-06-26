@@ -10,7 +10,7 @@ class LoginContainer extends HTMLElement {
     this.innerHTML = `
       <div class="main-login">
           <div class="left">
-          <a href="/"><i class="keluar fa-solid fa-arrow-left"></i></a>
+          <a href="/"><i class="keluar fa-solid fa-arrow-left"></i> Kembali</a>
             <img alt="fincord" src="fincord.png"/>
             <h2>FINCORD<h2/>
           </div>

@@ -9,7 +9,7 @@ class RegistrationContainer extends HTMLElement {
     this.innerHTML = `
     <div class="main-registration">
         <div class="left">
-          <a href="/"><i class="keluar fa-solid fa-arrow-left"></i></a>
+          <a href="/"><i class="keluar fa-solid fa-arrow-left"></i> Kembali</a>
           <h2>Datang Kembali<h2/>
           <p>Silahkan terhubung kembali dengan akun yang sudah ada</p>
           <button><a href="/#/login">Masuk</a></button>

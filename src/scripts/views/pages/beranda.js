@@ -6,6 +6,7 @@ import ExpenseTransactionIdb from '../../data/idb/expense-transaction-idb';
 import { commaSeparateNumber } from '../../utils/number';
 import renderCategoryElement from '../../utils/dashboard/render-category';
 import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
+import RenderNotifications from '../../utils/notifications/render-notifications';
 
 const BerandaPage = {
   async render() {
@@ -36,6 +37,8 @@ const BerandaPage = {
     renderCategoryElement(expenseTransaction);
 
     billDashboardElement.props = dataBills;
+
+    RenderNotifications();
   },
 };
 

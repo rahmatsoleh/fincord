@@ -33,7 +33,7 @@ const registration = () => {
       return response.json();
     }).then((data) => {
       if (!data.error) {
-        localStorage.setItem('data', JSON.stringify(data.data));
+        localStorage.setItem('appFin', JSON.stringify(data.data));
         // redirect('/#/beranda');
         window.location.href = '/#/beranda';
       } else {

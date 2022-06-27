@@ -5,22 +5,23 @@ const login = () => {
   const form = document.querySelector('form#login');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = document.querySelector('#email').value;
-    const password = document.querySelector('#password').value;
+    const email = e.target.querySelector('#email').value;
+    const password = e.target.querySelector('#password').value;
     const details = {
       email,
       password,
-      grant_type: 'password',
+      // grant_type: 'password',
     };
+    console.log(details);
 
-    const formBody = encode(details);
+    // const formBody = encode(details);
 
     fetch('http://localhost:3000/api/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+        'Content-Type': 'application/json;charset=UTF-8',
       },
-      body: formBody,
+      body: JSON.stringify(details),
     }).then((response) => {
       if (response.status === 200) {
         return response.json();

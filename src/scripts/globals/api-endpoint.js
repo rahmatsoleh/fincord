@@ -5,6 +5,8 @@ const API_ENDPOINT = {
   login: `${CONFIG.URL}/login`,
   getAllData: (idUser) => `${CONFIG.URL}/getalldata?id=${idUser}`,
   addCategory: `${CONFIG.URL}/category`,
+  updateCategory: `${CONFIG.URL}/category`,
+  getCategory: (idCategory) => `${CONFIG.URL}/category?id=${idCategory}`,
 };
 
 export default API_ENDPOINT;

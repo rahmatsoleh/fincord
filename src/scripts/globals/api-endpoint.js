@@ -18,6 +18,11 @@ const API_ENDPOINT = {
   // getExpense: (userID) => `${CONFIG.URL}/getexpense?id=${userID}`,
   storeIncome: `${CONFIG.URL}/storeincome`,
   storeExpense: `${CONFIG.URL}/storeexpense`,
+
+  // Saving
+  saving: `${CONFIG.URL}/saving`,
+  // Saving Record
+  savingRecord: `${CONFIG.URL}/savingrecord`,
 };
 
 export default API_ENDPOINT;

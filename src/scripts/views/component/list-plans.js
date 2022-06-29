@@ -9,6 +9,7 @@ import { nanoid } from 'nanoid';
 import moment from 'moment';
 import SavingPlanIdb from '../../data/idb/saving-plan-idb';
 import SavingTransactionIdb from '../../data/idb/saving-transaction-idb';
+import API_ENDPOINT from '../../globals/api-endpoint';
 
 class ListPlans extends HTMLElement {
   connectedCallback() {
@@ -122,12 +123,29 @@ class ListPlans extends HTMLElement {
           idFK: fk,
         };
 
+        const forAPI = {
+          id: result._id,
+          saving_plan_id: result.idFK,
+          save: result.save,
+          date: result.date,
+        };
+
+        const response = await fetch(API_ENDPOINT.savingRecord, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+          body: JSON.stringify(forAPI),
+        }).then((res) => res.json()).catch((err) => console.log(err));
+
+        console.log(response);
+
         await SavingTransactionIdb.putData(result);
-        Swal.fire(
-          'Success',
-          'Uang anda berhasil disimpan',
-          'success',
-        ).then(() => window.location.reload());
+        // Swal.fire(
+        //   'Success',
+        //   'Uang anda berhasil disimpan',
+        //   'success',
+        // ).then(() => window.location.reload());
       }
     });
 
@@ -163,9 +181,27 @@ class ListPlans extends HTMLElement {
           dateline: formValues.date,
         };
 
+        const forAPI = {
+          id: result._id,
+          user_id: JSON.parse(localStorage.getItem('appFin')).id,
+          name: result.title,
+          goal_amount: result.nominal,
+          due_date: result.dateline,
+          type: 'monthly',
+        };
+
+        const response = await fetch(API_ENDPOINT.saving, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+          body: JSON.stringify(forAPI),
+        }).then((response) => response.json()).catch((err) => console.log(err));
+        console.log(response);
+
         await SavingPlanIdb.putData(result);
 
-        Swal.fire('Tersimpan', `Tabungan ${result.dateline} ${result.title} berhasil diupdate`, 'success').then(() => window.location.reload());
+        // Swal.fire('Tersimpan', `Tabungan ${result.dateline} ${result.title} berhasil diupdate`, 'success').then(() => window.location.reload());
       }
     });
   }

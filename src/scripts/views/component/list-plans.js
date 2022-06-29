@@ -84,12 +84,19 @@ class ListPlans extends HTMLElement {
         cancelButtonText: 'Batal',
       }).then(async (result) => {
         if (result.isConfirmed) {
+          const response = await fetch(`${API_ENDPOINT.saving}/${id}`, {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8',
+            },
+          }).then((response) => response.json()).catch((error) => console.log(error));
+          console.log(response);
           await SavingPlanIdb.deleteData(id).then(() => {
-            Swal.fire(
-              'Success',
-              'Data berhasil terhapus',
-              'success',
-            ).then(() => window.location.reload());
+            // Swal.fire(
+            //   'Success',
+            //   'Data berhasil terhapus',
+            //   'success',
+            // ).then(() => window.location.reload());
           });
         }
       });

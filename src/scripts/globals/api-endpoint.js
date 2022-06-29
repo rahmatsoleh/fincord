@@ -5,6 +5,7 @@ const API_ENDPOINT = {
   login: `${CONFIG.URL}/login`,
   getAllData: (idUser) => `${CONFIG.URL}/getalldata?id=${idUser}`,
   addCategory: `${CONFIG.URL}/category`,
+  notifications: `${CONFIG.URL}/notifications`,
 };
 
 export default API_ENDPOINT;

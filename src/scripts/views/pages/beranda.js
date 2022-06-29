@@ -7,6 +7,7 @@ import { commaSeparateNumber } from '../../utils/number';
 import renderCategoryElement from '../../utils/dashboard/render-category';
 import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
 import RenderNotifications from '../../utils/notifications/render-notifications';
+import FincordApi from '../../data/api/fincord-api';
 
 const BerandaPage = {
   async render() {
@@ -15,7 +16,8 @@ const BerandaPage = {
   },
 
   async afterRender() {
-    SessionLogin();
+    const id = SessionLogin();
+    // await FincordApi.getAllData(id);
 
     // Variable component
     const currentElement = document.querySelector('#current');

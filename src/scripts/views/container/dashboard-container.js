@@ -3,11 +3,12 @@ import getProfileByName from '../items/profile';
 import '../component/saldo-dashboard';
 import '../component/transaktion-dashboard';
 import '../component/bill-dashboard';
+import NotificationsIdb from '../../data/idb/notifications-idb';
 
 class DashboardContainer extends HTMLElement {
   connectedCallback() {
     this.render();
-    this.name = localStorage.getItem('name');
+    this.newNotifications();
   }
 
   async render() {
@@ -36,6 +37,20 @@ class DashboardContainer extends HTMLElement {
         </section>
       </article>
     `;
+  }
+
+  async newNotifications() {
+    const newIcon = document.querySelector('.dashboard-header a span.active');
+
+    const notificattion = await NotificationsIdb.getAllData();
+    const newNote = notificattion.find((data) => data.read === false);
+
+    if (newNote) {
+      newIcon.classList.add('new');
+      return;
+    }
+
+    newIcon.classList.remove('new');
   }
 }
 

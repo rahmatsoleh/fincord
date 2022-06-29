@@ -1,6 +1,8 @@
+import moment from 'moment';
 import API_ENDPOINT from '../../globals/api-endpoint';
 import IncomeCategoryIdb from '../idb/income-category-idb';
 import ExpenseCategoryIdb from '../idb/expense-category-idb';
+import NotificationsIdb from '../idb/notifications-idb';
 import defaultCategory from '../client';
 
 class FincordApi {
@@ -9,6 +11,8 @@ class FincordApi {
       const response = await fetch(API_ENDPOINT.getAllData(idUser));
       const allData = await response.json();
       const dataCategory = allData.data.categories;
+      const notification = allData.data.notifications;
+      const dataStoreIncome = allData.data.transaksi.pemasukan.data;
 
       // Jika Data Category Kosong maka buatkan kategory
       if (dataCategory.length > 0) {
@@ -57,6 +61,21 @@ class FincordApi {
           await this.manageCategory('POST', item);
         });
       }
+
+      // Input To Notification
+      notification.forEach(async (data) => {
+        const item = {
+          _id: data.id,
+          idFK: data.bill,
+          title: data.name,
+          tag: data.tag,
+          date: moment.utc(data.date).format('YYYY-MM-DD'),
+          dateline: moment.utc(data.dateline).format('YYYY-MM-DD'),
+          desc: data.description,
+          read: data.is_reading > 0,
+        };
+        await NotificationsIdb.putData(item);
+      });
     } catch (error) {
       console.log(error);
     }
@@ -69,6 +88,18 @@ class FincordApi {
         'Content-type': 'application/json',
       },
       body: JSON.stringify(dataItem),
+    });
+    const responseJson = response.json();
+    return responseJson;
+  }
+
+  static async manageNotification(method, dataBody) {
+    const response = await fetch(API_ENDPOINT.notifications, {
+      method,
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(dataBody),
     });
     const responseJson = response.json();
     return responseJson;

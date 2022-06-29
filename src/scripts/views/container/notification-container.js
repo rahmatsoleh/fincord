@@ -1,5 +1,7 @@
 import moment from 'moment';
 import '../../../styles/container/notification-container.scss';
+import FincordApi from '../../data/api/fincord-api';
+import NotificationsIdb from '../../data/idb/notifications-idb';
 
 const notion = [
   {
@@ -36,14 +38,15 @@ class NotificationContainer extends HTMLElement {
     `;
   }
 
-  renderNotif() {
+  async renderNotif() {
     const notifList = document.querySelector('.notification-list');
-    const data = notion;
+    // const data = notion;
+    const dataNotif = await NotificationsIdb.getAllData();
     let cards = '';
 
-    data.forEach((item) => {
+    dataNotif.forEach((item) => {
       cards += `
-      <a href="/#/tagihan" class="notif-item ${item.read ? 'readed' : ''}" data-id="${item.id}">
+      <a href="/#/tagihan" class="notif-item ${item.read ? 'readed' : ''}" data-id="${item._id}">
         <div>
           <p>Waktunya bayar</p>
           <h3>${item.title}</h3>
@@ -56,7 +59,20 @@ class NotificationContainer extends HTMLElement {
     `;
     });
 
-    if (data.length > 0) notifList.innerHTML = cards;
+    if (dataNotif.length > 0) notifList.innerHTML = cards;
+
+    const notifItems = document.querySelectorAll('.notif-item');
+
+    notifItems.forEach((element) => element.addEventListener('click', async () => {
+      const { id } = element.dataset;
+      const dataItem = dataNotif.find((item) => item._id === id);
+
+      dataItem.read = true;
+
+      // Mengubah Data Notifications
+      await NotificationsIdb.putData(dataItem);
+      await FincordApi.manageNotification('PUT', { id });
+    }));
   }
 }
 

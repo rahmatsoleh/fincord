@@ -20,12 +20,12 @@ setCacheNameDetails({
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-registerRoute(
-  ({ url }) => (url.origin === 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,300&display=swap'),
-  new StaleWhileRevalidate({
-    cacheName: 'google-fonts',
-  }),
-);
+// registerRoute(
+//   ({ url }) => (url.origin === 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,300&display=swap'),
+//   new StaleWhileRevalidate({
+//     cacheName: 'google-fonts',
+//   }),
+// );
 
 // registerRoute(
 //   ({ request, url }) => (
@@ -61,25 +61,25 @@ registerRoute(
 //   }),
 // );
 
-registerRoute(
-  ({ request }) => request.destination === 'image',
-  new CacheFirst({
-    cacheName: 'images',
-    plugins: [
-      new ExpirationPlugin({
-        maxEntries: 60,
-        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
-      }),
-    ],
-  }),
-);
+// registerRoute(
+//   ({ request }) => request.destination === 'image',
+//   new CacheFirst({
+//     cacheName: 'images',
+//     plugins: [
+//       new ExpirationPlugin({
+//         maxEntries: 60,
+//         maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+//       }),
+//     ],
+//   }),
+// );
 
-registerRoute(
-  ({ request }) => (
-    request.destination === 'script'
-    || request.destination === 'style'
-  ),
-  new StaleWhileRevalidate({
-    cacheName: 'static-resources',
-  }),
-);
+// registerRoute(
+//   ({ request }) => (
+//     request.destination === 'script'
+//     || request.destination === 'style'
+//   ),
+//   new StaleWhileRevalidate({
+//     cacheName: 'static-resources',
+//   }),
+// );

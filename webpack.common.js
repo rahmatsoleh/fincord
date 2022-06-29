@@ -73,6 +73,7 @@ module.exports = {
     new InjectManifest({
       swSrc: path.resolve(__dirname, 'src/scripts/service-worker.js'),
       swDest: 'service-worker.js',
+      mode: process.env.NODE_ENV !== 'production' ? 'development' : 'production',
     }),
     new MiniCssExtractPlugin(),
     new CopyWebpackPlugin({

@@ -68,6 +68,7 @@ class ProfileContainer extends HTMLElement {
             </table>
           </div>
         </div>
+        <button><a href="">Logout</a></button>
       </article>
     </section>
     `;

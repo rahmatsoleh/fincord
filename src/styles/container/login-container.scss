@@ -18,8 +18,12 @@
         border-radius: 0;
         justify-content: center;
 
-        svg{
+        a{
             display: none;
+
+            svg{
+                display: none;
+            }
         }
 
         img{
@@ -152,25 +156,28 @@
         padding: 0;
         flex-direction: column;
         .left{
-            padding: 15%;
+            padding: 25%;
             min-height: 35vh;
             width: 100%;
             display: flex;
             border-radius: 0;
             justify-content: center;
 
-            svg{
-                display: block;
+            a{
+                display: flex;
+                padding: 5px;
                 position: absolute;
                 top: 2%;
                 left: 10%;
                 color: white;
-                font-size: 2rem;
-                padding: 12px;
+                text-decoration: none;
+                font-size: 1.5rem;
+                align-items: center;
+                flex-direction: row;
 
-                a{
-                    display: inline-block;
-                    padding: 20px;
+                svg{
+                    display: block;
+                    padding: 12px;
                 }
             }
 

@@ -4,6 +4,7 @@ import '../component/saldo-dashboard';
 import '../component/transaktion-dashboard';
 import '../component/bill-dashboard';
 import NotificationsIdb from '../../data/idb/notifications-idb';
+import ProfileIdb from '../../data/idb/profile-idb';
 
 class DashboardContainer extends HTMLElement {
   connectedCallback() {
@@ -17,9 +18,8 @@ class DashboardContainer extends HTMLElement {
         <section class="dashboard-header">
           <a href="/#/profile" class="profile">
             <div class="profile-images">
-              ${getProfileByName('Ilyas')}
             </div>
-            <p>Halo Ilyas</p>
+            <p>Halo </p>
           </a>
           <a href="#/notifikasi" aria-label="notification">
             <span class="icon">
@@ -41,16 +41,21 @@ class DashboardContainer extends HTMLElement {
 
   async newNotifications() {
     const newIcon = document.querySelector('.dashboard-header a span.active');
+    const profile = await ProfileIdb.getAllData();
+    const name = profile.name.split(' ')[0];
+
+    document.querySelector('.profile-images').innerHTML = getProfileByName(name);
+    document.querySelector('.profile p').innerHTML = `Halo ${name}`;
 
     const notificattion = await NotificationsIdb.getAllData();
     const newNote = notificattion.find((data) => data.read === false);
 
     if (newNote) {
-      newIcon.classList.add('new');
+      await newIcon.classList.add('new');
       return;
     }
 
-    newIcon.classList.remove('new');
+    await newIcon.classList.remove('new');
   }
 }
 

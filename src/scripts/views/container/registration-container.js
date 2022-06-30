@@ -33,8 +33,7 @@ class RegistrationContainer extends HTMLElement {
           <label for="psw-repeat">Konfirmasi Password</label>
           <input type="password" placeholder="Konfirmasi Password" name="psw-repeat" id="psw-repeat" required>
           
-          <input type="submit" value="Daftar">
-          <button><a href="/#/login">Masuk</a></button>
+          <button type="submit">Daftar</button>
         </form>        
         </div>
     </div>

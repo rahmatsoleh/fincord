@@ -1,45 +1,42 @@
+import Swal from 'sweetalert2';
 import '../../../styles/container/profile-container.scss';
 import getProfileByName from '../items/profile';
+import ProfileIdb from '../../data/idb/profile-idb';
 
 class ProfileContainer extends HTMLElement {
   connectedCallback() {
     this.render();
+    this.renderLogout();
   }
 
-  render() {
+  async render() {
     this.innerHTML = `
     <section class="main">
       <header>
         <div class="profile">
           <div class="images">
-            ${getProfileByName('Ilyas')}
           </div>
-          <h1>M Ilyas Arman S</h1>
-          <p>@milyasarmans</p>
-          <button>Edit Profile</button>
         </div>
       </header>
       <article>
         <div class="card">
           <div class="header">
-            <p>Full Name</p>
+            <p>Nama</p>
           </div>
           <div class="detail">
             <table>
-              <tr>
-                M Ilyas Arman S
+              <tr id="name">
               </tr>
             </table>
           </div>
         </div>
         <div class="card">
           <div class="header">
-            <p>Address</p>
+            <p>Username</p>
           </div>
           <div class="detail">
             <table>
-              <tr>
-                Pringsewu, Lampung
+              <tr id="username">
               </tr>
             </table>
           </div>
@@ -50,8 +47,7 @@ class ProfileContainer extends HTMLElement {
           </div>
           <div class="detail">
             <table>
-              <tr>
-                milyasarmans13@gmail.com
+              <tr id="email">
               </tr>
             </table>
           </div>
@@ -63,15 +59,49 @@ class ProfileContainer extends HTMLElement {
           <div class="detail">
             <table>
               <tr>
-                08127833455
+                -
               </tr>
             </table>
           </div>
         </div>
-        <button><a href="">Logout</a></button>
+        <button id="btn-logout">Logout</button>
       </article>
     </section>
     `;
+  }
+
+  async renderLogout() {
+    const profile = await ProfileIdb.getAllData();
+    const name = profile.name.split(' ')[0];
+    const btnLogout = document.querySelector('#btn-logout');
+
+    // Set Profile
+    document.querySelector('.profile .images').innerHTML = getProfileByName(name);
+    document.querySelector('#name').innerHTML = profile.name;
+    document.querySelector('#username').innerHTML = profile.username;
+    document.querySelector('#email').innerHTML = profile.email;
+
+    btnLogout.addEventListener('click', async () => {
+      Swal.fire({
+        title: 'Ingin Keluar ?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya Keluar',
+        cancelButtonText: 'Enggak Jadi',
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          sessionStorage.clear();
+          localStorage.clear();
+          const dbs = await window.indexedDB.databases();
+
+          dbs.forEach((db) => { window.indexedDB.deleteDatabase(db.name); });
+
+          window.location.href = '/';
+        }
+      });
+    });
   }
 }
 

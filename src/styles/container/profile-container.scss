@@ -16,8 +16,8 @@ section.main{
 
       .images {
         margin: .5rem;
-        width: 80px;
-        height: 80px;
+        width: 150px;
+        height: 150px;
         background-color: #f8f8f8;
         border-radius: 50%;
         object-fit: cover;
@@ -88,25 +88,18 @@ section.main{
         border: 1px solid root.$primary;
         cursor: pointer;
 
-        a{
-            // width: 100%;
-            padding: 12px 20px;
-            display: inline-block;
-            color:  root.$white;
-            font-size: 16px;
-            font-weight: bolder;
-            text-decoration: none;
-        }
+        padding: 12px 20px;
+        display: inline-block;
+        color:  root.$white;
+        font-size: 16px;
+        font-weight: bolder;
+        text-decoration: none;
     }
             
     button:hover {
-        background-color: root.$white;
-        border: 1px solid root.$white;
-
-        a{
-            color: root.$primary;
-            text-decoration: none;
-        }
+        background-color: root.$dark-primary;
+        border: 1px solid root.$dark-primary;
+        color: root.$primary;
     }
   }
 }

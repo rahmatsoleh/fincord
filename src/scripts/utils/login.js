@@ -1,5 +1,6 @@
 import swal from 'sweetalert';
 import encode from './encode';
+import API_ENDPOINT from '../globals/api-endpoint';
 
 const login = () => {
   const form = document.querySelector('form#login');
@@ -15,7 +16,7 @@ const login = () => {
 
     const formBody = encode(details);
 
-    fetch('http://localhost:3000/api/login', {
+    fetch(API_ENDPOINT.login, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',

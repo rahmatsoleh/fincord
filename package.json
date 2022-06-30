@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "webpack-dev-server --config webpack.dev.js --port 8082",
+    "start-dev": "webpack-dev-server --config webpack.dev.js --port",
     "build": "webpack --config webpack.prod.js",
     "lint": "eslint ./src"
   },

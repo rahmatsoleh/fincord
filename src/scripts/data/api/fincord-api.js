@@ -3,6 +3,7 @@ import API_ENDPOINT from '../../globals/api-endpoint';
 import IncomeCategoryIdb from '../idb/income-category-idb';
 import ExpenseCategoryIdb from '../idb/expense-category-idb';
 import NotificationsIdb from '../idb/notifications-idb';
+import ProfileIdb from '../idb/profile-idb';
 import defaultCategory from '../client';
 
 class FincordApi {
@@ -13,6 +14,14 @@ class FincordApi {
       const dataCategory = allData.data.categories;
       const notification = allData.data.notifications;
       const dataStoreIncome = allData.data.transaksi.pemasukan.data;
+
+      // Insert Profile to ProfileIdb
+      await ProfileIdb.putData({
+        _id: allData._id,
+        email: allData.email,
+        username: allData.username,
+        name: allData.name,
+      });
 
       // Jika Data Category Kosong maka buatkan kategory
       if (dataCategory.length > 0) {

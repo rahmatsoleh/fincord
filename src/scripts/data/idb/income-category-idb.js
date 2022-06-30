@@ -1,4 +1,3 @@
-import FincordAPI from '../fincord-api';
 import BaseIdb from './base-idb';
 
 const idDB = {

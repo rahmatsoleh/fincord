@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import Swal from 'sweetalert2';
 import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
 import UrlParser from '../../routes/url-parser';
+import API_ENDPOINT from '../../globals/api-endpoint';
 
 class AddTagihanContainer extends HTMLElement {
   connectedCallback() {
@@ -16,7 +17,7 @@ class AddTagihanContainer extends HTMLElement {
         <section class='navbar-tagihan'>
             <h2 class='title'>Tambah Tagihan</h2>
         </section>
-        <section class='form-tambah'>
+        <section class='form-tambah' data-method="POST">
         
             <div class='form-group'>
                 <p class='label'>Nama Tagihan</p>
@@ -47,7 +48,9 @@ class AddTagihanContainer extends HTMLElement {
   async afterRender() {
     let id;
     const input = this.querySelectorAll('input');
+    const formInput = this.querySelector('.form-tambah');
     if (UrlParser.parseActiveWithoutCombiner().id) {
+      formInput.dataset.method = 'PUT';
       const headerTitle = document.querySelector('h2.title');
       headerTitle.textContent = 'Edit Tagihan';
       const data = await TagihanItemIdb.getAllData();
@@ -90,14 +93,35 @@ class AddTagihanContainer extends HTMLElement {
         cancelButtonText: 'Nggak jadi',
       }).then(async (result) => {
         if (result.isConfirmed) {
-          await TagihanItemIdb.putData(dataForm).then(() => {
-            Swal.fire({
-              title: 'Berhasil!',
-              text: 'Aksi Berhasil',
-              icon: 'success',
-            }).then(() => {
-              window.location.href = '#/tagihan';
-            });
+          const { method } = formInput.dataset;
+          await TagihanItemIdb.putData(dataForm);
+
+          const userId = JSON.parse(localStorage.getItem('appFin')).id;
+
+          const formApi = {
+            id: dataForm._id,
+            userId,
+            name: dataForm.name,
+            payment: dataForm.payment,
+            date: dataForm.date,
+            remember: dataForm.remember,
+            status: dataForm.paid,
+          };
+
+          await fetch(API_ENDPOINT.bill, {
+            method,
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8',
+            },
+            body: JSON.stringify(formApi),
+          });
+
+          Swal.fire({
+            title: 'Berhasil!',
+            text: 'Data berhasil disimpan',
+            icon: 'success',
+          }).then(() => {
+            window.location.href = '#/tagihan';
           });
         }
       });

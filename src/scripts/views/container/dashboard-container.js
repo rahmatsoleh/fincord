@@ -18,8 +18,9 @@ class DashboardContainer extends HTMLElement {
         <section class="dashboard-header">
           <a href="/#/profile" class="profile">
             <div class="profile-images">
+              ${getProfileByName('')}
             </div>
-            <p>Halo </p>
+            <p>Halo</p>
           </a>
           <a href="#/notifikasi" aria-label="notification">
             <span class="icon">
@@ -42,10 +43,13 @@ class DashboardContainer extends HTMLElement {
   async newNotifications() {
     const newIcon = document.querySelector('.dashboard-header a span.active');
     const profile = await ProfileIdb.getAllData();
-    const name = profile.name.split(' ')[0];
 
-    document.querySelector('.profile-images').innerHTML = getProfileByName(name);
-    document.querySelector('.profile p').innerHTML = `Halo ${name}`;
+    if (profile) {
+      const name = profile.name.split(' ')[0];
+
+      document.querySelector('.profile-images').innerHTML = getProfileByName(name);
+      document.querySelector('.profile p').innerHTML = `Halo ${name}`;
+    }
 
     const notificattion = await NotificationsIdb.getAllData();
     const newNote = notificattion.find((data) => data.read === false);

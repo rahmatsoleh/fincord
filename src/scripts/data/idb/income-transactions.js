@@ -1,4 +1,3 @@
-import FincordAPI from '../fincord-api';
 import BaseIdb from './base-idb';
 
 const idDB = {
@@ -11,30 +10,30 @@ class IncomeTransactionIdb extends BaseIdb {
   // Melihat seluruh data kategori pengeluaran
   static async getAllData() {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
-    const dataFromApi = await FincordAPI.getAllData();
+    // const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
-    const dataIncomeTransaction = dataFromApi.data.transaksi.pemasukan.data;
+    // const dataIncomeTransaction = dataFromApi.data.transaksi.pemasukan.data;
 
     const dataFromIdb = await super.getDataDB(idDB);
 
-    if (dataFromIdb.length === 0) {
-      dataIncomeTransaction.forEach(async (item) => {
-        const idCategory = item._id;
+    // if (dataFromIdb.length === 0) {
+    //   dataIncomeTransaction.forEach(async (item) => {
+    //     const idCategory = item._id;
 
-        item.data.forEach(async (transaction) => {
-          const data = {
-            _id: transaction._id,
-            count: transaction.count,
-            date: transaction.date,
-            desc: transaction.description,
-            idFK: idCategory,
-          };
+    //     item.data.forEach(async (transaction) => {
+    //       const data = {
+    //         _id: transaction._id,
+    //         count: transaction.count,
+    //         date: transaction.date,
+    //         desc: transaction.description,
+    //         idFK: idCategory,
+    //       };
 
-          await super.putDataDB(idDB, data);
-        });
-      });
-    }
+    //       await super.putDataDB(idDB, data);
+    //     });
+    //   });
+    // }
 
     document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;

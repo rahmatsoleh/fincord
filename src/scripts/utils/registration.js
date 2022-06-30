@@ -6,18 +6,25 @@ const registration = () => {
   const form = document.querySelector('form#registration');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = e.target.querySelector('#email').value;
-    const name = e.target.querySelector('#fullname').value;
-    const passwd = e.target.querySelector('#psw').value;
+    const email = document.querySelector('#email').value;
+    const name = document.querySelector('#fullname').value;
+    const passwd = document.querySelector('#psw').value;
+    const passwordConfirm = document.querySelector('#psw-repeat').value;
+    const split = email.split('@');
+    const username = split[0];
+
+    if (passwd !== passwordConfirm) {
+      Swal.fire('Uppss', 'Pastikan konfirmasi password anda benar', 'error');
+      return;
+    }
 
     const details = {
       email,
       name,
+      username,
       password: passwd,
       grant_type: 'password',
     };
-
-    console.log(details);
 
     // const formBody = encode(details);
 
@@ -34,11 +41,9 @@ const registration = () => {
       return response.json();
     }).then((data) => {
       if (!data.error) {
-        localStorage.setItem('appFin', JSON.stringify(data.data));
-        // redirect('/#/beranda');
-        window.location.href = '/#/beranda';
+        Swal.fire('Success', 'Registrasi Berhasil', 'success').then(() => window.location.href = '/');
       } else {
-        swal('Oops...', `Error: ${data.error}`, 'error');
+        swal('Oops...', data.message, 'error');
         console.log(data);
       }
     });

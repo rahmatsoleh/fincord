@@ -9,7 +9,7 @@ const idDB = {
 class ExpenseCategoryIdb extends BaseIdb {
   // Melihat seluruh data kategori pengeluaran
   static async getAllData() {
-    document.querySelector('.loading-wrapper').classList.remove('d-none');
+    // document.querySelector('.loading-wrapper').classList.remove('d-none');
     // const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
@@ -31,7 +31,7 @@ class ExpenseCategoryIdb extends BaseIdb {
     //   });
     // }
 
-    document.querySelector('.loading-wrapper').classList.add('d-none');
+    // document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;
     // output
     /**

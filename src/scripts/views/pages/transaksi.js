@@ -76,7 +76,8 @@ const TransaksiPage = {
 
       if (url === 'out') {
         const hasil = await ExpenseTransactionIdb.putData(result);
-        const response = await fetch(API_ENDPOINT.storeIncome, {
+        console.log(forAPI);
+        const response = await fetch(API_ENDPOINT.storeExpense, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json;charset=UTF-8',

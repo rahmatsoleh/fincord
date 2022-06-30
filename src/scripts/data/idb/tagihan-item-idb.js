@@ -1,4 +1,3 @@
-import FincordAPI from '../fincord-api';
 import BaseIdb from './base-idb';
 
 const idDB = {
@@ -11,7 +10,6 @@ class TagihanItemIdb extends BaseIdb {
   // Melihat seluruh data kategori saving
   static async getAllData() {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
-    const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
     // const dataTagihan = dataFromApi.data.bills.data;

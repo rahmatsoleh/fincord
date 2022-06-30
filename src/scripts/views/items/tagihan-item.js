@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import moment from 'moment';
 import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
 import { commaSeparateNumber } from '../../utils/number';
+import API_ENDPOINT from '../../globals/api-endpoint';
 
 class TagihanItem extends HTMLElement {
   connectedCallback() {
@@ -170,6 +171,26 @@ class TagihanItem extends HTMLElement {
           };
 
           await TagihanItemIdb.putData(dataItem);
+
+          const userId = JSON.parse(localStorage.getItem('appFin')).id;
+
+          const formApi = {
+            id: dataItem._id,
+            userId,
+            name: dataItem.name,
+            payment: dataItem.payment,
+            date: dataItem.date,
+            remember: dataItem.remember,
+            status: dataItem.paid,
+          };
+
+          await fetch(API_ENDPOINT.bill, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json; charset=utf-8',
+            },
+            body: JSON.stringify(formApi),
+          });
 
           const text = pay > payment ? `Tagihan ${this.name} telah dilunasi. Pembayaran lebih Rp. ${commaSeparateNumber(pay - payment)}` : `Tagihan ${this.name} telah dilunasi`;
 

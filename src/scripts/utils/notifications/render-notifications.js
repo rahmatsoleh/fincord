@@ -5,39 +5,6 @@ import NotificationsIdb from '../../data/idb/notifications-idb';
 import NotificationHelper from './notification-helper';
 import FincordApi from '../../data/api/fincord-api';
 
-const notions = [
-  {
-    _id: `notif-${nanoid(16)}`,
-    idFK: 'bills-GXC1nU8kcTAR8pU9',
-    title: 'Sewa Kamera',
-    tag: 7,
-    date: moment().format('YYYY-MM-DD'),
-    dateline: '2022-06-28',
-    desc: 'Kurang 7 hari lagi',
-    read: false,
-  },
-  {
-    _id: `notif-${nanoid(16)}`,
-    idFK: 'bills-IBA-D_P7NuZz7yT6',
-    title: 'Cicilan Motor',
-    tag: 7,
-    date: moment().format('YYYY-MM-DD'),
-    dateline: '2022-07-03',
-    desc: 'Kurang 7 hari lagi',
-    read: false,
-  },
-  {
-    _id: `notif-${nanoid(16)}`,
-    idFK: 'bills-YO9bwY4sBD3fwnAL',
-    title: 'Bayar Hutang',
-    tag: 7,
-    date: moment().format('YYYY-MM-DD'),
-    dateline: '2022-06-29',
-    desc: 'Kurang 7 hari lagi',
-    read: true,
-  },
-];
-
 const RenderNotifications = async () => {
   const dataLocal = localStorage.getItem('appFin');
   const userId = JSON.parse(dataLocal).id;
@@ -79,19 +46,19 @@ const RenderNotifications = async () => {
 
     // Menambahkan Data Notifications
     await NotificationsIdb.putData(item);
-    await FincordApi.manageNotification('POST', {
-      userId,
-      id: item._id,
-      idBill: item.idFK,
-      name: item.title,
-      tag: item.tag,
-      date: item.date,
-      dateline: item.dateline,
-      description: item.desc,
-      reading: item.read,
-    });
-    console.log(item._id);
-    console.log(item._id);
+    // await FincordApi.manageNotification('POST', {
+    //   userId,
+    //   id: item._id,
+    //   idBill: item.idFK,
+    //   name: item.title,
+    //   tag: item.tag,
+    //   date: item.date,
+    //   dateline: item.dateline,
+    //   description: item.desc,
+    //   reading: item.read,
+    // });
+    // console.log(item._id);
+    // console.log(item._id);
   });
 };
 

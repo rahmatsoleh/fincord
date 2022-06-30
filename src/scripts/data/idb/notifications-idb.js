@@ -1,4 +1,3 @@
-import FincordAPI from '../fincord-api';
 import BaseIdb from './base-idb';
 
 const idDB = {
@@ -10,8 +9,8 @@ const idDB = {
 class NotificationsIdb extends BaseIdb {
   // Melihat seluruh data Notifications
   static async getAllData() {
-    document.querySelector('.loading-wrapper').classList.remove('d-none');
-    const dataFromApi = await FincordAPI.getAllData();
+    // document.querySelector('.loading-wrapper').classList.remove('d-none');
+    // const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
     // const dataNotif = dataFromApi.data.notifications.data;
@@ -35,7 +34,7 @@ class NotificationsIdb extends BaseIdb {
     //   });
     // }
 
-    document.querySelector('.loading-wrapper').classList.add('d-none');
+    // document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;
 
     // output

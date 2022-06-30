@@ -15,7 +15,7 @@ const renderCategoryElement = async (storage) => {
     const monthItem = split[1];
 
     if (yearItem == yearNow) {
-      if (parseInt(monthItem) == parseInt(monthNow + 1)) {
+      if (parseInt(monthItem) >= parseInt(monthNow + 1)) {
         dataMonthNow.push({
           category: item.idFk || item.idFK,
           count: item.count,

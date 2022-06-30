@@ -1,4 +1,3 @@
-import FincordAPI from '../fincord-api';
 import BaseIdb from './base-idb';
 
 const idDB = {
@@ -11,25 +10,25 @@ class SavingPlanIdb extends BaseIdb {
   // Melihat seluruh data kategori saving
   static async getAllData() {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
-    const dataFromApi = await FincordAPI.getAllData();
+    // const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
-    const dataSaving = dataFromApi.data.saving_plan.data;
+    // const dataSaving = dataFromApi.data.saving_plan.data;
 
     const dataFromIdb = await super.getDataDB(idDB);
 
-    if (dataFromIdb.length === 0) {
-      dataSaving.forEach(async (item) => {
-        const savingName = {
-          _id: item._id,
-          title: item.title,
-          nominal: item.nominal,
-          dateline: item.dateline,
-        };
+    // if (dataFromIdb.length === 0) {
+    //   dataSaving.forEach(async (item) => {
+    //     const savingName = {
+    //       _id: item._id,
+    //       title: item.title,
+    //       nominal: item.nominal,
+    //       dateline: item.dateline,
+    //     };
 
-        await super.putDataDB(idDB, savingName);
-      });
-    }
+    //     await super.putDataDB(idDB, savingName);
+    //   });
+    // }
 
     document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;

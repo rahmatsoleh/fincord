@@ -1,4 +1,4 @@
-import swal from 'sweetalert';
+import Swal from 'sweetalert2';
 import encode from './encode';
 import API_ENDPOINT from '../globals/api-endpoint';
 
@@ -38,11 +38,11 @@ const login = () => {
         // redirect('/#/beranda');
         window.location.href = '/';
       } else {
-        swal('Oops...', 'Email atau Password salah!', 'error');
+        Swal.fire('Oops...', 'Email atau Password salah!', 'error');
         console.log(data);
       }
     }).catch((err) => {
-      console.log(err);
+      Swal.fire('Oops...', 'Terjadi kesalahan pada server', 'error');
     });
 
     // XMLHttpRequest.prototype.sendAsJson = function (data) {

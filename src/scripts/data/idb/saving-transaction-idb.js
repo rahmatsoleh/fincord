@@ -1,4 +1,3 @@
-import FincordAPI from '../fincord-api';
 import BaseIdb from './base-idb';
 
 const idDB = {
@@ -11,29 +10,29 @@ class SavingTransactionIdb extends BaseIdb {
   // Melihat seluruh data transaction saving
   static async getAllData() {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
-    const dataFromApi = await FincordAPI.getAllData();
+    // const dataFromApi = await FincordAPI.getAllData();
 
     // Cek terlebih dahulu properti yang dimiliki
-    const dataSavingTransaction = dataFromApi.data.saving_plan.data;
+    // const dataSavingTransaction = dataFromApi.data.saving_plan.data;
 
     const dataFromIdb = await super.getDataDB(idDB);
 
-    if (dataFromIdb.length === 0) {
-      dataSavingTransaction.forEach(async (item) => {
-        const idCategory = item._id;
+    // if (dataFromIdb.length === 0) {
+    //   dataSavingTransaction.forEach(async (item) => {
+    //     const idCategory = item._id;
 
-        item.history.forEach(async (transaction) => {
-          const data = {
-            _id: transaction._id,
-            date: transaction.date,
-            save: transaction.save,
-            idFK: idCategory,
-          };
+    //     item.history.forEach(async (transaction) => {
+    //       const data = {
+    //         _id: transaction._id,
+    //         date: transaction.date,
+    //         save: transaction.save,
+    //         idFK: idCategory,
+    //       };
 
-          await super.putDataDB(idDB, data);
-        });
-      });
-    }
+    //       await super.putDataDB(idDB, data);
+    //     });
+    //   });
+    // }
 
     document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;

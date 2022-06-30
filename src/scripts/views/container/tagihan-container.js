@@ -4,6 +4,7 @@ import moment from 'moment';
 import '../../../styles/container/tagihan-container.scss';
 import TagihanItemIdb from '../../data/idb/tagihan-item-idb';
 import '../items/tagihan-item';
+import API_ENDPOINT from '../../globals/api-endpoint';
 
 class TagihanContainer extends HTMLElement {
   connectedCallback() {
@@ -71,16 +72,26 @@ class TagihanContainer extends HTMLElement {
           cancelButtonColor: '#d33',
           confirmButtonText: 'Hapus',
           cancelButtonText: 'Batal',
-        }).then((result) => {
+        }).then(async (result) => {
           if (result.isConfirmed) {
-            TagihanItemIdb.deleteData(id).then(() => {
-              Swal.fire({
-                title: 'Berhasil!',
-                text: 'Data berhasil dihapus',
-                icon: 'success',
-              }).then(() => {
-                window.location.reload();
-              });
+            await TagihanItemIdb.deleteData(id);
+
+            const userId = JSON.parse(localStorage.getItem('appFin')).id;
+
+            await fetch(API_ENDPOINT.bill, {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+              },
+              body: JSON.stringify({ id, userId }),
+            });
+
+            Swal.fire({
+              title: 'Berhasil!',
+              text: 'Data berhasil dihapus',
+              icon: 'success',
+            }).then(() => {
+              window.location.reload();
             });
           }
         });

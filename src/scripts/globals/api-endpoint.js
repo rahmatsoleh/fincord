@@ -23,6 +23,12 @@ const API_ENDPOINT = {
   saving: `${CONFIG.URL}/saving`,
   // Saving Record
   savingRecord: `${CONFIG.URL}/savingrecord`,
+
+  // Notifications
+  notifications: `${CONFIG.URL}/notifications`,
+
+  // Tagihan
+  bill: `${CONFIG.URL}/bill`,
 };
 
 export default API_ENDPOINT;

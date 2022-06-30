@@ -1,9 +1,15 @@
+/* eslint-disable radix */
 import moment from 'moment';
 import API_ENDPOINT from '../../globals/api-endpoint';
 import IncomeCategoryIdb from '../idb/income-category-idb';
 import ExpenseCategoryIdb from '../idb/expense-category-idb';
 import NotificationsIdb from '../idb/notifications-idb';
+import IncomeTransactionIdb from '../idb/income-transactions';
+import ExpenseTransactionIdb from '../idb/expense-transaction-idb';
+import SavingPlanIdb from '../idb/saving-plan-idb';
+import SavingTransactionIdb from '../idb/saving-transaction-idb';
 import ProfileIdb from '../idb/profile-idb';
+import TagihanItemIdb from '../idb/tagihan-item-idb';
 import defaultCategory from '../client';
 
 class FincordApi {
@@ -14,6 +20,10 @@ class FincordApi {
       const dataCategory = allData.data.categories;
       const notification = allData.data.notifications;
       const dataStoreIncome = allData.data.transaksi.pemasukan.data;
+      const dataStoreExpense = allData.data.transaksi.pengeluaran.data;
+      const savingPlan = allData.data.savings;
+      const savingRecord = allData.data.saving_record;
+      const { bills } = allData.data;
 
       // Insert Profile to ProfileIdb
       await ProfileIdb.putData({
@@ -71,19 +81,57 @@ class FincordApi {
         });
       }
 
-      // Input To Notification
-      notification.forEach(async (data) => {
-        const item = {
-          _id: data.id,
-          idFK: data.bill,
-          title: data.name,
-          tag: data.tag,
-          date: moment.utc(data.date).format('YYYY-MM-DD'),
-          dateline: moment.utc(data.dateline).format('YYYY-MM-DD'),
-          desc: data.description,
-          read: data.is_reading > 0,
-        };
-        await NotificationsIdb.putData(item);
+      // Input Transaction
+      dataStoreIncome.forEach(async (income) => {
+        await IncomeTransactionIdb.putData({
+          _id: income.id,
+          count: income.amount,
+          date: moment.utc(income.date).format('YYYY-MM-DD'),
+          desc: income.note,
+          idFK: income.category_id,
+        });
+      });
+
+      dataStoreExpense.forEach(async (expense) => {
+        await ExpenseTransactionIdb.putData({
+          _id: expense.id,
+          count: expense.amount,
+          date: moment.utc(expense.date).format('YYYY-MM-DD'),
+          desc: expense.note,
+          idFK: expense.category_id,
+        });
+      });
+
+      // Input Saving Plan
+      savingPlan.forEach(async (saving) => {
+        await SavingPlanIdb.putData({
+          _id: saving.id,
+          title: saving.name,
+          nominal: saving.goal_amount,
+          dateline: moment.utc(saving.due_date).format('YYYY-MM-DD'),
+        });
+      });
+
+      // Inpu Saving Transaction
+      savingRecord.forEach(async (record) => {
+        await SavingTransactionIdb.putData({
+          _id: record.id,
+          date: moment.utc(record.date).format('YYYY-MM-DD'),
+          save: parseInt(record.save),
+          idFK: record.saving_plan_id,
+        });
+      });
+
+      // Input To Bill
+      bills.forEach(async (bill) => {
+        await TagihanItemIdb.putData({
+          _id: bill.id,
+          name: bill.name,
+          payment: parseInt(bill.payment),
+          date: moment.utc(bill.date).format('YYYY-MM-DD'),
+          remember: bill.reminder > 0,
+          paid: bill.status_paid > 0,
+        });
       });
     } catch (error) {
       console.log(error);

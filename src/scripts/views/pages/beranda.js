@@ -17,7 +17,7 @@ const BerandaPage = {
 
   async afterRender() {
     const id = SessionLogin();
-    await FincordApi.getAllData(id);
+    // await FincordApi.getAllData(id);
 
     // Variable component
     const currentElement = document.querySelector('#current');

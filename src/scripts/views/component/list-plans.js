@@ -121,7 +121,15 @@ class ListPlans extends HTMLElement {
         },
       });
 
+      const findSum = sumCollectionTransaction.find((data) => data.idFK === fk);
+      const dataSave = dataImpian.find((data) => data._id === fk);
+      const cekTarget = parseInt(saveMoney) + parseInt(findSum ? findSum.save : 0);
+
       if (saveMoney) {
+        if (cekTarget > parseInt(dataSave.nominal)) {
+          Swal.fire('Uppss...', 'Uang anda melebihi target', 'warning');
+          return;
+        }
         const result = {
           _id: id,
           date: dateNow,

@@ -5,6 +5,7 @@ import '../container/rencana-container';
 import { nanoid } from 'nanoid';
 import SavingPlanIdb from '../../data/idb/saving-plan-idb';
 import SessionLogin from '../../utils/session-login';
+import API_ENDPOINT from '../../globals/api-endpoint';
 
 const RencanaPage = {
   async render() {
@@ -41,6 +42,43 @@ const RencanaPage = {
           nominal: formValues.nominal,
           dateline: formValues.date,
         };
+
+        const forAPI = {
+          id: result._id,
+          user_id: JSON.parse(localStorage.getItem('appFin')).id,
+          name: result.title,
+          goal_amount: result.nominal,
+          due_date: result.dateline,
+          type: 'monthly',
+        };
+
+        // const exist = await fetch(`API_ENDPOINT.saving/${forAPI.id}`, {
+        //   method: 'GET',
+        //   headers: {
+        //     'Content-Type': 'application/json; charset=utf-8',
+        //   },
+        //   body: JSON.stringify(forAPI),
+        // }).then((response) => response.json()).catch((err) => console.log(err));
+
+        // let response = null;
+        // if (exist.id === forAPI.id) {
+        //   response = await fetch('API_ENDPOINT.saving', {
+        //     method: 'PUT',
+        //     headers: {
+        //       'Content-Type': 'application/json; charset=utf-8',
+        //     },
+        //     body: JSON.stringify(forAPI),
+        //   });
+        // } else {
+        const response = await fetch(API_ENDPOINT.saving, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+          body: JSON.stringify(forAPI),
+        }).then((response) => response.json()).catch((err) => console.log(err));
+        // }
+        console.log(response);
 
         await SavingPlanIdb.putData(result);
         Swal.fire('Tersimpan', `Tabungan ${result.dateline} ${result.title} berhasil disimpan`, 'success').then(() => window.location.reload());

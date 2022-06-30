@@ -70,10 +70,10 @@ module.exports = {
         },
       ],
     }),
-    new InjectManifest({
-      swSrc: path.resolve(__dirname, 'src/scripts/service-worker.js'),
-      swDest: 'service-worker.js',
-    }),
+    // new InjectManifest({
+    //   swSrc: path.resolve(__dirname, 'src/scripts/service-worker.js'),
+    //   swDest: 'service-worker.js',
+    // }),
     new MiniCssExtractPlugin(),
     new CopyWebpackPlugin({
       patterns: [

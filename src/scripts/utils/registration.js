@@ -6,6 +6,7 @@ const registration = () => {
   const form = document.querySelector('form#registration');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     const email = document.querySelector('#email').value;
     const name = document.querySelector('#fullname').value;
     const passwd = document.querySelector('#psw').value;
@@ -17,23 +18,33 @@ const registration = () => {
       Swal.fire('Uppss', 'Pastikan konfirmasi password anda benar', 'error');
       return;
     }
+=======
+    const email = e.target.querySelector('#email').value;
+    const name = e.target.querySelector('#fullname').value;
+    const passwd = e.target.querySelector('#psw').value;
+>>>>>>> c2ce452c22ee14d73778238218e8d9ca61ff7f8c
 
     const details = {
       email,
       name,
-      username,
       password: passwd,
       grant_type: 'password',
     };
 
+<<<<<<< HEAD
     const formBody = encode(details);
+=======
+    console.log(details);
+
+    // const formBody = encode(details);
+>>>>>>> c2ce452c22ee14d73778238218e8d9ca61ff7f8c
 
     fetch(API_ENDPOINT.register, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+        'Content-Type': 'application/json;charset=UTF-8',
       },
-      body: formBody,
+      body: JSON.stringify(details),
     }).then((response) => {
       if (response.status === 200) {
         return response.json();
@@ -41,9 +52,18 @@ const registration = () => {
       return response.json();
     }).then((data) => {
       if (!data.error) {
+<<<<<<< HEAD
         Swal.fire('Success', 'Registrasi Berhasil', 'success').then(() => window.location.href = '/');
       } else {
         swal('Oops...', data.message, 'error');
+=======
+        localStorage.setItem('appFin', JSON.stringify(data.data));
+        // redirect('/#/beranda');
+        window.location.href = '/#/beranda';
+      } else {
+        swal('Oops...', `Error: ${data.error}`, 'error');
+        console.log(data);
+>>>>>>> c2ce452c22ee14d73778238218e8d9ca61ff7f8c
       }
     });
   });

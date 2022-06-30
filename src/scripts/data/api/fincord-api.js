@@ -91,15 +91,40 @@ class FincordApi {
   }
 
   static async manageCategory(method, dataItem) {
-    const response = await fetch(API_ENDPOINT.addCategory, {
-      method,
+    const checkAvailability = await fetch(API_ENDPOINT.getCategory(dataItem.id), {
+      method: 'GET',
       headers: {
-        'Content-type': 'application/json',
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
+      },
+    }).then((response) => response.json())
+      .catch((error) => console.log(error));
+    let response = '';
+    if (checkAvailability.data.id === dataItem.id) {
+      response = await this.updateCategory(dataItem);
+    } else {
+      response = await fetch(API_ENDPOINT.addCategory, {
+        method,
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify(dataItem),
+      });
+    }
+    // const responseJson = response.json();
+    return response;
+  }
+
+  static async updateCategory(dataItem) {
+    const response = await fetch(API_ENDPOINT.updateCategory, {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
       },
       body: JSON.stringify(dataItem),
     });
-    const responseJson = response.json();
-    return responseJson;
+    return response;
   }
 
   static async manageNotification(method, dataBody) {

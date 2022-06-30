@@ -8,6 +8,7 @@ import IncomeTransactionIdb from '../../data/idb/income-transactions';
 import ClientError from '../../execeptions/ClientError';
 import ExpenseTransactionIdb from '../../data/idb/expense-transaction-idb';
 import SessionLogin from '../../utils/session-login';
+import API_ENDPOINT from '../../globals/api-endpoint';
 
 const TransaksiPage = {
   async render() {
@@ -50,14 +51,39 @@ const TransaksiPage = {
         desc,
       };
 
+      const forAPI = {
+        id: result._id,
+        user_id: JSON.parse(localStorage.getItem('appFin')).id,
+        amount: result.count,
+        note: result.desc,
+        category_id: result.idFk,
+        date: result.date,
+      };
+
       if (url === 'in') {
         const hasil = await IncomeTransactionIdb.putData(result);
+        const response = await fetch(API_ENDPOINT.storeIncome, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+          },
+          body: JSON.stringify(forAPI),
+        }).then((response) => response.json()).catch((err) => Swal.handleError(err));
+        console.log(response);
         Swal.fire('Tersimpan', `Transaksi ${result.date} berhasil disimpan`, 'success').then(() => window.location.reload());
-        console.log(hasil);
+        console.log(response);
       }
 
       if (url === 'out') {
         const hasil = await ExpenseTransactionIdb.putData(result);
+        const response = await fetch(API_ENDPOINT.storeIncome, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+          },
+          body: JSON.stringify(forAPI),
+        }).then((response) => response.json()).catch((err) => Swal.handleError(err));
+        console.log(response);
         Swal.fire('Tersimpan', `Transaksi ${result.date} berhasil disimpan`, 'success').then(() => window.location.reload());
         console.log(hasil);
       }

@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 const getNumberFromString = (inputValue) => {
   if (inputValue) {
     const splitString = inputValue.split(' ');

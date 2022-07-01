@@ -1,8 +1,7 @@
-/* eslint-disable import/order */
+import { nanoid } from 'nanoid';
 import Swal from 'sweetalert2';
 import pageRender from '../../utils/page-render';
 import '../container/rencana-container';
-import { nanoid } from 'nanoid';
 import SavingPlanIdb from '../../data/idb/saving-plan-idb';
 import SessionLogin from '../../utils/session-login';
 import API_ENDPOINT from '../../globals/api-endpoint';
@@ -17,7 +16,6 @@ const RencanaPage = {
     SessionLogin();
     const addPlans = document.querySelector('#add-plans');
 
-    // Add new plan
     addPlans.addEventListener('click', async () => {
       const { value: formValues } = await Swal.fire({
         title: 'Tambahkan Rencana',
@@ -52,24 +50,6 @@ const RencanaPage = {
           type: 'monthly',
         };
 
-        // const exist = await fetch(`API_ENDPOINT.saving/${forAPI.id}`, {
-        //   method: 'GET',
-        //   headers: {
-        //     'Content-Type': 'application/json; charset=utf-8',
-        //   },
-        //   body: JSON.stringify(forAPI),
-        // }).then((response) => response.json()).catch((err) => console.log(err));
-
-        // let response = null;
-        // if (exist.id === forAPI.id) {
-        //   response = await fetch('API_ENDPOINT.saving', {
-        //     method: 'PUT',
-        //     headers: {
-        //       'Content-Type': 'application/json; charset=utf-8',
-        //     },
-        //     body: JSON.stringify(forAPI),
-        //   });
-        // } else {
         const response = await fetch(API_ENDPOINT.saving, {
           method: 'POST',
           headers: {
@@ -77,7 +57,7 @@ const RencanaPage = {
           },
           body: JSON.stringify(forAPI),
         }).then((response) => response.json()).catch((err) => console.log(err));
-        // }
+
         console.log(response);
 
         await SavingPlanIdb.putData(result);

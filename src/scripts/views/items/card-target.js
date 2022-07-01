@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import '../../../styles/items/card-target.scss';
 import { commaSeparateNumber } from '../../utils/number';
 

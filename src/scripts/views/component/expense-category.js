@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import { nanoid } from 'nanoid';
 import Swal from 'sweetalert2';
 import ExpenseCategoryIdb from '../../data/idb/expense-category-idb';
@@ -80,7 +79,6 @@ class ExpenseCategory extends HTMLElement {
 
     document.querySelector('.category-item ul').innerHTML = result;
 
-    // Untuk Menghapus Data
     const buttonDeleteItems = document.querySelectorAll('.category-item .delete');
 
     buttonDeleteItems.forEach((element) => {
@@ -112,7 +110,6 @@ class ExpenseCategory extends HTMLElement {
       });
     });
 
-    // Untuk edit kategori
     const buttonUpdateItems = document.querySelectorAll('button.update');
     const formModal = document.querySelector('.category-modal .container form');
 
@@ -133,7 +130,6 @@ class ExpenseCategory extends HTMLElement {
         inputLimit.value = this.getFormatNumber(limit, 'Rp. ');
         formModal.dataset.method = 'PUT';
 
-        // Agar modal form muncul
         const modalForm = document.querySelector('.category-modal');
         modalForm.classList.add('active');
       });

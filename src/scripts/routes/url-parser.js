@@ -23,7 +23,6 @@ const UrlParser = {
     return (splitedUrl.resource ? `/${splitedUrl.resource}` : '/')
     + (splitedUrl.id ? '/:id' : '')
     + (splitedUrl.verb ? '/:verb' : '');
-    // + (splitedUrl.verb ? `/${splitedUrl.verb}` : '');
   },
 };
 

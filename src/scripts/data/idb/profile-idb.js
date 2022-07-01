@@ -9,15 +9,7 @@ const idDB = {
 class ProfileIdb extends BaseIdb {
   static async getAllData() {
     const dataFromIdb = await super.getDataDB(idDB);
-    /**
-     * {
-     *  _id:,
-     *  email:,
-     *  username:,
-     *  name:,
-     *
-     * }
-     */
+
     return dataFromIdb[0];
   }
 

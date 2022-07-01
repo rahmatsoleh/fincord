@@ -16,16 +16,12 @@ const BerandaPage = {
   },
 
   async afterRender() {
-    const id = SessionLogin();
-    // await FincordApi.getAllData(id);
-
-    // Variable component
+    SessionLogin();
     const currentElement = document.querySelector('#current');
     const incomeElement = document.querySelector('#income');
     const expenseElement = document.querySelector('#expense');
     const billDashboardElement = document.querySelector('bill-dashboard');
 
-    // Variable Data
     const incomeTransaction = await IncomeTransactionIdb.getAllData();
     const expenseTransaction = await ExpenseTransactionIdb.getAllData();
     const sumIncome = incomeTransaction.reduce((accumulator, array) => accumulator + array.count, 0);

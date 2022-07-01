@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 const yearData = (storage) => {
   const yearNow = new Date().getFullYear();
   const dataCollections = [];

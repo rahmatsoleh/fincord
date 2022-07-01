@@ -1,7 +1,3 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable radix */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
 import '../items/plan-items';
 import '../../../styles/component/list-plans.scss';
 import Swal from 'sweetalert2';
@@ -67,12 +63,10 @@ class ListPlans extends HTMLElement {
 
     if (dataImpian.length > 0) tempList.innerHTML = result;
 
-    // Hapus
     const buttonDelete = document.querySelectorAll('.delete-button');
     buttonDelete.forEach((item) => item.onclick = () => {
       const { id } = item.dataset;
 
-      /** resolve */
       Swal.fire({
         title: 'Apakah anda yakin ?',
         text: 'Data yang dihapus tidak bisa dikembalikan.',
@@ -101,7 +95,6 @@ class ListPlans extends HTMLElement {
       });
     });
 
-    // Alokasi
     const buttonAlokasi = document.querySelectorAll('.alokasi');
     buttonAlokasi.forEach((item) => item.onclick = async () => {
       const id = `save-${nanoid(16)}`;
@@ -165,7 +158,6 @@ class ListPlans extends HTMLElement {
       }
     });
 
-    // Edit
     const buttonUpdate = document.querySelectorAll('.update-button');
     buttonUpdate.forEach((item) => item.onclick = async () => {
       const {

@@ -15,7 +15,7 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
-  // swRegister();
+  swRegister();
 });
 
 document.querySelector('header nav').innerHTML = '<nav-bar></nav-bar>';

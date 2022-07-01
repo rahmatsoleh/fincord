@@ -31,6 +31,12 @@
         "no-return-assign": "off",
         "no-confusing-arrow": "off",
         "no-await-in-loop": "off",
-        "no-useless-return": "off"
+        "no-useless-return": "off",
+        "radix": "off",
+        "eqeqeq": "off",
+        "guard-for-in": "off",
+        "no-restricted-syntax": "off",
+        "no-useless-concat": "off",
+        "no-nested-ternary": "off"
     }
 }

@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 import '../../../styles/component/form-transaction.scss';
 import IncomeCategoryIdb from '../../data/idb/income-category-idb';
 

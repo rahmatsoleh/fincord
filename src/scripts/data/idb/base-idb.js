@@ -1,9 +1,7 @@
-import { openDB, deleteDB } from 'idb';
+import { openDB } from 'idb';
 
 class BaseIdb {
-  // Melihat seluruh data
   static async getDataDB(idDB) {
-    // console.log(objectStore);
     const db = await openDB(idDB.DATABASE_NAME, idDB.DATABASE_VERSION, {
       upgrade(db) {
         db.createObjectStore(idDB.OBJECT_STORE, { keyPath: '_id' });
@@ -13,7 +11,6 @@ class BaseIdb {
     return db.getAll(idDB.OBJECT_STORE);
   }
 
-  // Menambah dan Mengubah data
   static async putDataDB(idDB, data) {
     const db = await openDB(idDB.DATABASE_NAME, idDB.DATABASE_VERSION, {
       upgrade(db) {
@@ -24,7 +21,6 @@ class BaseIdb {
     return db.put(idDB.OBJECT_STORE, data);
   }
 
-  // Menghapus data
   static async deleteDataDB(idDB, id) {
     const db = await openDB(idDB.DATABASE_NAME, idDB.DATABASE_VERSION, {
       upgrade(db) {

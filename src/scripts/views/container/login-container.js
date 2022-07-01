@@ -1,5 +1,4 @@
 import '../../../styles/container/login-container.scss';
-import login from '../../utils/login';
 
 class LoginContainer extends HTMLElement {
   connectedCallback() {

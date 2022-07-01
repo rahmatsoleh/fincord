@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 import moment from 'moment';
 
 const monthData = (storage, year = new Date().getFullYear()) => {

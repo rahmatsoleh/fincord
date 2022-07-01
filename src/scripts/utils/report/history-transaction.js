@@ -1,6 +1,3 @@
-/* eslint-disable radix */
-/* eslint-disable eqeqeq */
-// eslint-disable-next-line space-infix-ops
 import moment from 'moment';
 import IncomeCategoryIdb from '../../data/idb/income-category-idb';
 import ExpenseCategoryIdb from '../../data/idb/expense-category-idb';

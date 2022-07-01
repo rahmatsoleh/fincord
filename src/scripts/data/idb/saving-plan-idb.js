@@ -10,31 +10,13 @@ class SavingPlanIdb extends BaseIdb {
   // Melihat seluruh data kategori saving
   static async getAllData() {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
-    // const dataFromApi = await FincordAPI.getAllData();
-
-    // Cek terlebih dahulu properti yang dimiliki
-    // const dataSaving = dataFromApi.data.saving_plan.data;
 
     const dataFromIdb = await super.getDataDB(idDB);
-
-    // if (dataFromIdb.length === 0) {
-    //   dataSaving.forEach(async (item) => {
-    //     const savingName = {
-    //       _id: item._id,
-    //       title: item.title,
-    //       nominal: item.nominal,
-    //       dateline: item.dateline,
-    //     };
-
-    //     await super.putDataDB(idDB, savingName);
-    //   });
-    // }
 
     document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;
   }
 
-  // Menambahkan dan Mengubah data
   static async putData(plan) {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
     if (!plan.hasOwnProperty('_id')) {
@@ -46,7 +28,6 @@ class SavingPlanIdb extends BaseIdb {
     return result;
   }
 
-  // Menghapus kategori pemasukan
   static async deleteData(id) {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
     const result = await super.deleteDataDB(idDB, id);

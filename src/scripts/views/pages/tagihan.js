@@ -8,7 +8,6 @@ const TagihanPage = {
     return '<tagihan-container></tagihan-container>';
   },
 
-  // eslint-disable-next-line no-empty-function
   async afterRender() {
     SessionLogin();
   },

@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 import '../../../styles/container/tagihan-container.scss';
 import Swal from 'sweetalert2';
 import moment from 'moment';

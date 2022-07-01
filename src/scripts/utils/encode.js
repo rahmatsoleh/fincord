@@ -1,6 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable guard-for-in */
-
 const encode = (data) => {
   let formBody = [];
   for (const property in data) {

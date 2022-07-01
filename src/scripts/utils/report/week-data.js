@@ -1,9 +1,4 @@
-/* eslint-disable radix */
-/* eslint-disable eqeqeq */
 import moment from 'moment';
-/**
- * https://stackoverflow.com/questions/63526414/moment-js-how-to-get-weekly-data-startdate-enddate-of-each-week-for-given
- */
 
 const weekData = (monthIndex, year, storage) => {
   const getWeekNumber = (year, month) => {
@@ -40,7 +35,6 @@ const weekData = (monthIndex, year, storage) => {
     return weekStartEndDay;
   };
 
-  // Calling output
   const month = moment([year, monthIndex - 1]);
   const weekList = weeks(month);
   const result = [];

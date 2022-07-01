@@ -1,5 +1,5 @@
 const SessionLogin = () => {
-  const dataSession = sessionStorage.getItem('loginfin');
+  const dataSession = localStorage.getItem('loginfin');
 
   if (!dataSession) {
     window.location.href = '/';

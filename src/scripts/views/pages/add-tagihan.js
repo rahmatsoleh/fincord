@@ -1,4 +1,3 @@
-/* eslint-disable no-empty-function */
 import SessionLogin from '../../utils/session-login';
 import pageRender from '../../utils/page-render';
 import '../container/add-tagihan-container';

@@ -128,8 +128,6 @@ class PlanItems extends HTMLElement {
       to: { color: '#0077b6' },
       text: {
         style: {
-          // Text color.
-          // Default: same as stroke color (options.color)
           color: '#03045e',
           position: 'absolute',
           right: '0',
@@ -146,7 +144,7 @@ class PlanItems extends HTMLElement {
       },
     });
 
-    bar.animate(present); // Number from 0.0 to 1.0
+    bar.animate(present);
   }
 }
 

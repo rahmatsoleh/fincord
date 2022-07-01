@@ -2,6 +2,12 @@ dist/
 node_modules/
 package-lock.json
 
+#firebase
+.firebase
+firebase.json
+.firebaserc
+public
+
 # Logs
 logs
 *.log

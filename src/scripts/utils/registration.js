@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2';
-import encode from './encode';
 import API_ENDPOINT from '../globals/api-endpoint';
 
 const registration = () => {
@@ -26,8 +25,6 @@ const registration = () => {
       grant_type: 'password',
     };
 
-    // const formBody = encode(details);
-
     fetch(API_ENDPOINT.register, {
       method: 'POST',
       headers: {
@@ -43,7 +40,7 @@ const registration = () => {
       if (!data.error) {
         Swal.fire('Success', 'Registrasi Berhasil', 'success').then(() => window.location.href = '/');
       } else {
-        swal('Oops...', data.message, 'error');
+        Swal.fire('Oops...', data.message, 'error');
         console.log(data);
       }
     });

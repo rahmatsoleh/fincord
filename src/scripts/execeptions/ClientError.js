@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-constructor */
 import Swal from 'sweetalert2';
 
 class ClientError extends Error {

@@ -29,7 +29,6 @@ const TransaksiPage = {
 
     url === 'in' ? mainForm.innerHTML = '<income-form></income-form>' : mainForm.innerHTML = '<expense-form></expense-form>';
 
-    // Transaksi keuangan berdasarkan kategori
     const formTransaction = document.querySelector('.trans-main-form form');
 
     formTransaction.addEventListener('submit', async (e) => {
@@ -71,7 +70,6 @@ const TransaksiPage = {
         }).then((response) => response.json()).catch((err) => Swal.handleError(err));
         console.log(response);
         Swal.fire('Tersimpan', `Transaksi ${result.date} berhasil disimpan`, 'success').then(() => window.location.reload());
-        console.log(response);
       }
 
       if (url === 'out') {
@@ -84,9 +82,7 @@ const TransaksiPage = {
           },
           body: JSON.stringify(forAPI),
         }).then((response) => response.json()).catch((err) => Swal.handleError(err));
-        console.log(response);
         Swal.fire('Tersimpan', `Transaksi ${result.date} berhasil disimpan`, 'success').then(() => window.location.reload());
-        console.log(hasil);
       }
     });
   },

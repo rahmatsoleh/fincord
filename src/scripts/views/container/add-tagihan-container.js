@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 import '../../../styles/container/tagihan-container.scss';
 import { nanoid } from 'nanoid';
 import Swal from 'sweetalert2';

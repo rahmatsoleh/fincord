@@ -1,27 +1,5 @@
-/* eslint-disable no-nested-ternary */
 import '../../../styles/component/form-transaction.scss';
 import ExpenseCategoryIdb from '../../data/idb/expense-category-idb';
-
-const kategori = [
-  {
-    name: 'Transportasi',
-  },
-  {
-    name: 'Makan dan Minum',
-  },
-  {
-    name: 'Hiburan',
-  },
-  {
-    name: 'Pajak',
-  },
-  {
-    name: 'Investasi',
-  },
-  {
-    name: 'Sedekah',
-  },
-];
 
 class ExpenseForm extends HTMLElement {
   connectedCallback() {

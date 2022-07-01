@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2';
-import encode from './encode';
 import API_ENDPOINT from '../globals/api-endpoint';
 
 const login = () => {
@@ -11,12 +10,9 @@ const login = () => {
     const details = {
       email,
       password,
-      // grant_type: 'password',
     };
-    console.log(details);
 
-    // const formBody = encode(details);
-
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
     fetch(API_ENDPOINT.login, {
       method: 'POST',
       headers: {
@@ -29,29 +25,24 @@ const login = () => {
       }
       return response.json();
     }).then((data) => {
+      document.querySelector('.loading-wrapper').classList.add('d-none');
       if (!data.error) {
         const dataForLocal = {
           id: data.data.id,
           token: data.data.token,
         };
         localStorage.setItem('appFin', JSON.stringify(dataForLocal));
-        // redirect('/#/beranda');
         window.location.href = '/';
       } else {
         Swal.fire('Oops...', 'Email atau Password salah!', 'error');
         console.log(data);
       }
     }).catch((err) => {
+      document.querySelector('.loading-wrapper').classList.add('d-none');
       Swal.fire('Oops...', 'Terjadi kesalahan pada server', 'error');
     });
 
-    // XMLHttpRequest.prototype.sendAsJson = function (data) {
-    //   this.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    //   this.send(data);
-    // };
-    // const xhr = new XMLHttpRequest();
-    // xhr.open('POST', 'http://localhost:3000/api/login');
-    // xhr.sendAsJson(data);
+    document.querySelector('.loading-wrapper').classList.add('d-none');
   });
 };
 

@@ -75,7 +75,6 @@ class ProfileContainer extends HTMLElement {
     const name = profile.name.split(' ')[0];
     const btnLogout = document.querySelector('#btn-logout');
 
-    // Set Profile
     document.querySelector('.profile .images').innerHTML = getProfileByName(name);
     document.querySelector('#name').innerHTML = profile.name;
     document.querySelector('#username').innerHTML = profile.username;

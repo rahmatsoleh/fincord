@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 import Swal from 'sweetalert2';
 import moment from 'moment';
 import '../../../styles/container/tagihan-container.scss';
@@ -106,10 +105,8 @@ class TagihanContainer extends HTMLElement {
   }
 
   async afterRender() {
-    // modif this \ not working
     const buttonReminder = document.querySelectorAll('.add-reminder')[0];
 
-    // const modals = document.querySelectorAll('.modal')[0];
     buttonReminder.addEventListener('click', async () => {
       window.location.href = '#/add-tagihan';
     });

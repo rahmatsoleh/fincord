@@ -73,7 +73,6 @@ class IncomeCategory extends HTMLElement {
 
     document.querySelector('.category-item ul').innerHTML = result;
 
-    // Untuk Menghapus Data
     const buttonDeleteItems = document.querySelectorAll('.category-item .delete');
 
     buttonDeleteItems.forEach((element) => {
@@ -104,7 +103,6 @@ class IncomeCategory extends HTMLElement {
       });
     });
 
-    // Untuk edit kategori
     const buttonUpdateItems = document.querySelectorAll('button.update');
     const formModal = document.querySelector('.category-modal .container form');
 
@@ -121,7 +119,6 @@ class IncomeCategory extends HTMLElement {
         inputName.value = name;
         formModal.dataset.method = 'PUT';
 
-        // Agar modal form muncul
         const modalForm = document.querySelector('.category-modal');
         modalForm.classList.add('active');
       });

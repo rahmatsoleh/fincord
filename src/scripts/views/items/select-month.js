@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 const monthData = [
   {
     value: 1,

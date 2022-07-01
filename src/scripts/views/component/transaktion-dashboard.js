@@ -10,10 +10,20 @@ class TransaktionDashboard extends HTMLElement {
 
   set props(value) {
     this._transaksi = value;
+    this.dataTransaktion = [];
+
+    this._transaksi.forEach((item) => {
+      this.dataTransaktion.push({
+        id: item.id,
+        name: item.name,
+        use: item.use || 0,
+        max: item.max || 1000000,
+      });
+    });
     const listTransaktion = document.querySelector('.dashboard-expend div');
 
-    if (this._transaksi.length > 0) {
-      listTransaktion.innerHTML = cardExpends(this._transaksi);
+    if (this.dataTransaktion.length > 0) {
+      listTransaktion.innerHTML = cardExpends(this.dataTransaktion);
       this.renderProgressBar();
     }
   }
@@ -37,7 +47,7 @@ class TransaktionDashboard extends HTMLElement {
   }
 
   renderProgressBar() {
-    progressIndicator(this._transaksi);
+    progressIndicator(this.dataTransaktion);
   }
 }
 

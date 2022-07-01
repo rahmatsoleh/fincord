@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import cardBills from '../items/card-target';
 import '../../../styles/component/target-landing.scss';
 

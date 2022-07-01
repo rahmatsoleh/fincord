@@ -7,7 +7,7 @@ const AfterLogin = async () => {
   if (dataFromLocal) {
     const dataId = JSON.parse(dataFromLocal).id;
     await FincordApi.getAllData(dataId);
-    sessionStorage.setItem('loginfin', JSON.stringify(dataId));
+    localStorage.setItem('loginfin', JSON.stringify(dataId));
     window.location.href = '/#/beranda';
     return dataFromLocal;
   }

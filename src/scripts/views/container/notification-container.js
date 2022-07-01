@@ -3,19 +3,6 @@ import '../../../styles/container/notification-container.scss';
 import FincordApi from '../../data/api/fincord-api';
 import NotificationsIdb from '../../data/idb/notifications-idb';
 
-const notion = [
-  {
-    id: new Date().toISOString(),
-    idFK: 'jhdkajshdakjsd',
-    title: 'Pembayaran Wifi',
-    tag: 3,
-    date: '2022-06-26',
-    dateline: '2022-07-03',
-    desc: '3 hari lagi',
-    read: false,
-  },
-];
-
 class NotificationContainer extends HTMLElement {
   connectedCallback() {
     this.render();
@@ -40,7 +27,6 @@ class NotificationContainer extends HTMLElement {
 
   async renderNotif() {
     const notifList = document.querySelector('.notification-list');
-    // const data = notion;
     const dataNotif = await NotificationsIdb.getAllData();
     let cards = '';
 
@@ -69,7 +55,6 @@ class NotificationContainer extends HTMLElement {
 
       dataItem.read = true;
 
-      // Mengubah Data Notifications
       await NotificationsIdb.putData(dataItem);
       await FincordApi.manageNotification('PUT', { id });
     }));

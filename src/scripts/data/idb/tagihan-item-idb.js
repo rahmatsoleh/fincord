@@ -7,35 +7,15 @@ const idDB = {
 };
 
 class TagihanItemIdb extends BaseIdb {
-  // Melihat seluruh data kategori saving
   static async getAllData() {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
 
-    // Cek terlebih dahulu properti yang dimiliki
-    // const dataTagihan = dataFromApi.data.bills.data;
-
     const dataFromIdb = await super.getDataDB(idDB);
-
-    // if (dataFromIdb.length === 0) {
-    //   dataTagihan.forEach(async (item) => {
-    //     const tagihanItem = {
-    //       _id: item._id,
-    //       name: item.name,
-    //       payment: item.payment,
-    //       date: item.date,
-    //       remember: item.remember,
-    //       paid: false,
-    //     };
-
-    //     await super.putDataDB(idDB, tagihanItem);
-    //   });
-    // }
 
     document.querySelector('.loading-wrapper').classList.add('d-none');
     return dataFromIdb;
   }
 
-  // Menambahkan dan Mengubah data
   static async putData(plan) {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
     if (!plan.hasOwnProperty('_id')) {
@@ -47,7 +27,6 @@ class TagihanItemIdb extends BaseIdb {
     return result;
   }
 
-  // Menghapus kategori pemasukan
   static async deleteData(id) {
     document.querySelector('.loading-wrapper').classList.remove('d-none');
     const result = await super.deleteDataDB(idDB, id);

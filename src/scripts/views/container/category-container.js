@@ -1,4 +1,3 @@
-// import swal from 'sweetalert';
 import '../../../styles/container/category-container.scss';
 import '../component/income-category';
 import '../component/expense-category';

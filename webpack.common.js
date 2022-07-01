@@ -44,45 +44,42 @@ module.exports = {
     new MomentLocalesPlugin({
       localesToKeep: ['es-us', 'ru'],
     }),
-    // new WebpackPwaManifest({
-    //   name: 'Financial Record',
-    //   short_name: 'Fincord',
-    //   description: 'Aplikasi pencatatan keuangan pribadi',
-    //   background_color: '#ffffff',
-    //   theme_color: '#0077b6',
-    //   crossorigin: 'use-credentials',
-    //   start_url: './index.html',
-    //   inject: true,
-    //   filename: 'manifest.json',
-    //   publicPath: '/',
-    //   ios: true,
-    //   icons: [
-    //     {
-    //       src: path.resolve(__dirname, 'src/public/fincord.png'),
-    //       sizes: [96, 128, 192, 256, 384, 512],
-    //       purpose: 'maskable',
-    //       ios: true,
-    //     },
-    //     {
-    //       src: path.resolve(__dirname, 'src/public/fincord.png'),
-    //       sizes: '144x144',
-    //       purpose: 'any',
-    //     },
-    //   ],
-    // }),
-    // new InjectManifest({
-    //   swSrc: path.resolve(__dirname, 'src/scripts/service-worker.js'),
-    //   swDest: 'service-worker.js',
-    // }),
+    new WebpackPwaManifest({
+      name: 'Financial Record',
+      short_name: 'Fincord',
+      description: 'Aplikasi pencatatan keuangan pribadi',
+      background_color: '#ffffff',
+      theme_color: '#0077b6',
+      crossorigin: 'use-credentials',
+      start_url: './index.html',
+      inject: true,
+      filename: 'manifest.json',
+      publicPath: '/',
+      ios: true,
+      icons: [
+        {
+          src: path.resolve(__dirname, 'src/public/fincord.png'),
+          sizes: [96, 128, 192, 256, 384, 512],
+          purpose: 'maskable',
+          ios: true,
+        },
+        {
+          src: path.resolve(__dirname, 'src/public/fincord.png'),
+          sizes: '144x144',
+          purpose: 'any',
+        },
+      ],
+    }),
+    new InjectManifest({
+      swSrc: path.resolve(__dirname, 'src/scripts/service-worker.js'),
+      swDest: 'service-worker.js',
+    }),
     new MiniCssExtractPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'dist/'),
-          // globOptions: {
-          //   ignore: ['**/images/hero/**'],
-          // },
         },
       ],
     }),

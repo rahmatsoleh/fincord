@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 import '../../../styles/items/card-transaktion.scss';
 import { commaSeparateNumber } from '../../utils/number';
 

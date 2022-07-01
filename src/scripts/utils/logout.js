@@ -1,5 +1,4 @@
 const logout = () => {
-  // if url /#/logout is called, logout the user
   if (window.location.hash === '#/logout') {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:3000/api/logout');
@@ -12,7 +11,6 @@ const logout = () => {
         localStorage.clear();
         sessionStorage.clear();
         window.location.hash = '#/';
-        // remove idb data
       }
     };
     xhr.onerror = () => {

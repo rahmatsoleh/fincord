@@ -1,5 +1,5 @@
-/* eslint-disable radix */
 import moment from 'moment';
+import Swal from 'sweetalert2';
 import API_ENDPOINT from '../../globals/api-endpoint';
 import IncomeCategoryIdb from '../idb/income-category-idb';
 import ExpenseCategoryIdb from '../idb/expense-category-idb';
@@ -15,6 +15,7 @@ import defaultCategory from '../client';
 class FincordApi {
   static async getAllData(idUser) {
     try {
+      document.querySelector('.loading-wrapper').classList.remove('d-none');
       const response = await fetch(API_ENDPOINT.getAllData(idUser));
       const allData = await response.json();
       const dataCategory = allData.data.categories;
@@ -133,8 +134,10 @@ class FincordApi {
           paid: bill.status_paid > 0,
         });
       });
+      document.querySelector('.loading-wrapper').classList.add('d-none');
     } catch (error) {
-      console.log(error);
+      document.querySelector('.loading-wrapper').classList.add('d-none');
+      Swal.fire('Uppss...', error.message, 'warning');
     }
   }
 

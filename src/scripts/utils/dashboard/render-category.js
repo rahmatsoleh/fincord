@@ -1,5 +1,3 @@
-/* eslint-disable radix */
-/* eslint-disable eqeqeq */
 import ExpenseCategoryIdb from '../../data/idb/expense-category-idb';
 
 const renderCategoryElement = async (storage) => {

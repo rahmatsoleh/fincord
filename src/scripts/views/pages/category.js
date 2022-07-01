@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 import Swal from 'sweetalert2';
 import pageRender from '../../utils/page-render';
 import UrlParser from '../../routes/url-parser';
@@ -31,7 +30,6 @@ const Category = {
 
     if (url === 'out') listCategory.innerHTML = '<expense-category></expense-category>';
 
-    // Menambahkan Kategori baru dan mengubah
     const formModal = document.querySelector('.category-modal form');
     formModal.addEventListener('submit', async (e) => {
       e.preventDefault();

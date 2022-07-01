@@ -4,10 +4,13 @@ An application made as a project capstone for the "Kampus Merdeka x dicoding Bat
 ## Features
 - [ ] Register and login
 - [ ] Login with Email or Username
-- [ ] Login with Google  
-- [ ] Landing Page
-- [ ] Dashboard
-- [ ] Notification
+- [ ] CRUD for transaction
+- [ ] UI/UX simple and user friendly
+- [ ] Project able to provide Notifications
+- [ ] Using API
+- [ ] Using Progressive Web Apps
+- [ ] Responsive web design
+
 
 ## Installation
 1. Clone the repository
@@ -36,8 +39,9 @@ npm run build
 ```
 
 ## Usage
-- Login with Email or Username  
-    > Username: User1  
+- Create new user
+- Login with Email and Password  
+    > Email: example@mail.com  
     > Password: 12345678
     
 ## Contributors
@@ -45,3 +49,6 @@ npm run build
 - [x] [Hafidz Ubaidillah](https://github.com/Dzyfhuba)
 - [x] [Eka Zuni Selviana](https://github.com/Ekazunis)
 - [x] [M Ilyas Arman S](https://github.com/milyasarmans)
+
+## User can be access
+https://fin-cord.web.app/

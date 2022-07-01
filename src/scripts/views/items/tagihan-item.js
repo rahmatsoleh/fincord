@@ -181,24 +181,26 @@ class TagihanItem extends HTMLElement {
             payment: dataItem.payment,
             date: dataItem.date,
             remember: dataItem.remember,
-            status: dataItem.paid,
+            status: true,
           };
+          console.log(formApi);
 
-          await fetch(API_ENDPOINT.bill, {
+          const response = await fetch(API_ENDPOINT.bill, {
             method: 'PUT',
             headers: {
               'Content-Type': 'application/json; charset=utf-8',
             },
             body: JSON.stringify(formApi),
-          });
+          }).then((response) => response.json()).catch((error) => console.log(error));
 
           const text = pay > payment ? `Tagihan ${this.name} telah dilunasi. Pembayaran lebih Rp. ${commaSeparateNumber(pay - payment)}` : `Tagihan ${this.name} telah dilunasi`;
 
-          Swal.fire({
-            title: 'Lunas',
-            icon: 'success',
-            text,
-          }).then(() => window.location.reload());
+          console.log(response);
+          // Swal.fire({
+          //   title: 'Lunas',
+          //   icon: 'success',
+          //   text,
+          // }).then(() => window.location.reload());
         }
       });
     });

@@ -5,6 +5,7 @@ const registration = () => {
   const form = document.querySelector('form#registration');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    document.querySelector('.loading-wrapper').classList.remove('d-none');
     const email = document.querySelector('#email').value;
     const name = document.querySelector('#fullname').value;
     const passwd = document.querySelector('#psw').value;
@@ -32,11 +33,13 @@ const registration = () => {
       },
       body: JSON.stringify(details),
     }).then((response) => {
+      document.querySelector('.loading-wrapper').classList.add('d-none');
       if (response.status === 200) {
         return response.json();
       }
       return response.json();
     }).then((data) => {
+      document.querySelector('.loading-wrapper').classList.add('d-none');
       if (!data.error) {
         Swal.fire('Success', 'Registrasi Berhasil', 'success').then(() => window.location.href = '/');
       } else {

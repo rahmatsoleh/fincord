@@ -17,7 +17,7 @@ class AddTagihanContainer extends HTMLElement {
             <h2 class='title'>Tambah Tagihan</h2>
         </section>
         <section class='form-tambah' data-method="POST">
-        
+          <form class="tagihan">
             <div class='form-group'>
                 <p class='label'>Nama Tagihan</p>
                 <input type='text' name='nama-tagihan' placeholder='Nama Tagihan' />
@@ -38,8 +38,9 @@ class AddTagihanContainer extends HTMLElement {
                 <label for="reminder" class='ml-2'>Ingatkan setiap bulan</label><br>
             </div>
             <div style="margin: 12px 16px">
-                <button class='button simpan'>Simpan</button>
+                <button class='button simpan' type="submit">Simpan</button>
             </div>
+          </form>
         </section>
     `;
   }
@@ -70,8 +71,9 @@ class AddTagihanContainer extends HTMLElement {
         input[3].checked = true;
       }
     }
-    const button = this.querySelector('button');
-    button.onclick = async () => {
+    const formSubmit = this.querySelector('form.tagihan');
+    formSubmit.onsubmit = async (event) => {
+      event.preventDefault();
       const dataForm = {
         _id: id || `bills-${nanoid(16)}`,
         name: input[0].value,
@@ -92,6 +94,7 @@ class AddTagihanContainer extends HTMLElement {
         cancelButtonText: 'Nggak jadi',
       }).then(async (result) => {
         if (result.isConfirmed) {
+          document.querySelector('.loading-wrapper').classList.remove('d-none');
           const { method } = formInput.dataset;
           await TagihanItemIdb.putData(dataForm);
 
@@ -114,6 +117,8 @@ class AddTagihanContainer extends HTMLElement {
             },
             body: JSON.stringify(formApi),
           });
+
+          document.querySelector('.loading-wrapper').classList.add('d-none');
 
           Swal.fire({
             title: 'Berhasil!',

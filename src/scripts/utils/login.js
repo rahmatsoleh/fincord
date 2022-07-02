@@ -34,7 +34,7 @@ const login = () => {
         localStorage.setItem('appFin', JSON.stringify(dataForLocal));
         window.location.href = '/';
       } else {
-        Swal.fire('Oops...', 'Email atau Password salah!', 'error');
+        Swal.fire('Oops...', data.message, 'error');
         console.log(data);
       }
     }).catch((err) => {

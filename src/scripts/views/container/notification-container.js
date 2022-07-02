@@ -1,6 +1,5 @@
 import moment from 'moment';
 import '../../../styles/container/notification-container.scss';
-import FincordApi from '../../data/api/fincord-api';
 import NotificationsIdb from '../../data/idb/notifications-idb';
 
 class NotificationContainer extends HTMLElement {
@@ -56,7 +55,6 @@ class NotificationContainer extends HTMLElement {
       dataItem.read = true;
 
       await NotificationsIdb.putData(dataItem);
-      await FincordApi.manageNotification('PUT', { id });
     }));
   }
 }

@@ -20,8 +20,8 @@ class LoginContainer extends HTMLElement {
 
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 
-                <input type="submit" value="Masuk">
-                <button><a href="/#/registration">Daftar</a></button>
+                <button type="submit">Masuk</button>
+                <a href="/#/registration" class="registry">Daftar</a>
               </form>          
           </div>
       </div>

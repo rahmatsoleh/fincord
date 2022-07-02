@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-dev": "npx webpack serve --port 3001 --config webpack.dev.js",
+    "start-dev": "npx webpack serve --port 3005 --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "lint": "eslint ./src"
   },

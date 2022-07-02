@@ -26,7 +26,7 @@ const RenderNotifications = async () => {
         tag: differentOfDay,
         date: moment().format('YYYY-MM-DD'),
         dateline: bill.date,
-        desc: `Kurang ${differentOfDay} hari lagi.`,
+        desc: differentOfDay < 0 ? `Terlambat ${Math.abs(differentOfDay)} hari.` : `Kurang ${differentOfDay} hari.`,
         read: false,
       });
     }

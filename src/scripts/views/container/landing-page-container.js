@@ -9,10 +9,6 @@ class landingContainer extends HTMLElement {
     this.innerHTML = `
     <section class="landing">
     <div class="home"> 
-            
-        <!-- <div class="image">
-            <img src="homeapp.png" alt="">
-        </div> --!>
 
         <div class="content">
             <h3>Financial Record</h3>

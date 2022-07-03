@@ -26,7 +26,7 @@ class landingContainer extends HTMLElement {
     <div class="row">
             
         <div class="image">
-            <img src="app.png" alt="">
+            <img src="app.png" alt="Tampilan aplikasi financial record" loading="lazy">
         </div>    
     
         <div class="content">
@@ -58,7 +58,7 @@ class landingContainer extends HTMLElement {
                 </div>
             </div>
     
-            <img src="beranda.png" alt="">
+            <img src="beranda.png" alt="Tampilan beranda aplikasi" loading="lazy">
     
             <div class="box-container">
                 <div class="box">

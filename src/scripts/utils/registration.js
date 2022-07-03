@@ -14,7 +14,10 @@ const registration = () => {
     const username = split[0];
 
     if (passwd !== passwordConfirm) {
-      Swal.fire('Uppss', 'Pastikan konfirmasi password anda benar', 'error');
+      document.querySelector('.loading-wrapper').classList.add('d-none');
+      Swal.fire('Uppss', 'Pastikan konfirmasi password anda benar', 'error').then(() => {
+        document.querySelector('#psw-repeat').focus();
+      });
       return;
     }
 
